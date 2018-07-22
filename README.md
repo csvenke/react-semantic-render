@@ -1,4 +1,4 @@
-# React semantics (WIP)
+# React semantic helper components
 
 Are you tired of your react components looking like an unreadable mess?
 Have you often asked yourself: "there must be a better way!"?
