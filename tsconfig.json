@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out",
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types"],
+    "target": "es5",
+    "lib": ["dom", "es2015"],
+    "module": "commonjs",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false
+  },
+  "exclude": ["node_modules", "dist"]
+}

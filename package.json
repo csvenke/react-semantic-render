@@ -1,0 +1,63 @@
+{
+  "name": "react-semantics",
+  "version": "0.1.0",
+  "description": "Useful semantic helper components for working with React.",
+  "author": "Christian Svenkerud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csvenke/react-semantics.git"
+  },
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-components",
+    "react-utils",
+    "react-library",
+    "components",
+    "semantic"
+  ],
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react-dom": "^16.4.1",
+    "react": "^16.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "husky": "1.0.0-rc.2",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "react-dom": "^16.4.1",
+    "react": "^16.4.1",
+    "rimraf": "^2.6.2",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-plugin-prettier": "^1.3.0",
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2"
+  },
+  "scripts": {
+    "build": "npm run clean:build && npm run lint && npm run prettify && tsc -p ./tsconfig.build.json && cp ./package.json ./dist/lib",
+    "clean:build": "rimraf ./dist/lib",
+    "dist": "cd ./dist/lib && npm publish",
+    "lint": "tslint -c tslint.json './src/**/*'",
+    "lintfix": "tslint -c tslint.json --fix './src/**/*'",
+    "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier -c .prettierrc --write",
+      "tslint -c tslint.json --fix",
+      "git add"
+    ]
+  }
+}
