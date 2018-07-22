@@ -1,4 +1,4 @@
-# React semantics
+# React semantics (WIP
 
 Are you tired of your react components looking like an unreadable mess?
 Have you often asked yourself: "there must be a better way!"?
@@ -60,7 +60,7 @@ Coming soon...
 
 ```javascript
 import React from 'react';
-import { Show, Array } from 'react-semantics';
+import { Show } from 'react-semantics';
 
 <Show when={5 === 2 + 2}>
   <div>Will only render in 1984</div>
