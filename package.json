@@ -7,8 +7,11 @@
     "type": "git",
     "url": "https://github.com/csvenke/react-semantics.git"
   },
-  "main": "index.ts",
-  "types": "index.d.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -47,9 +50,9 @@
     "typescript": "^2.9.2"
   },
   "scripts": {
-    "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json && cp ./package.json ./dist/lib",
-    "clean:build": "rimraf ./dist/lib",
-    "dist": "cd ./dist/lib && npm publish",
+    "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json",
+    "clean:build": "rimraf ./dist",
+    "prepublish": "npm run build",
     "lint": "tslint -c tslint.json './src/**/*'",
     "lintfix": "tslint -c tslint.json --fix './src/**/*'",
     "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\"",
