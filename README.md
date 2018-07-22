@@ -31,14 +31,14 @@ const Menu = ({ showMenuItems }) => (
 ### After
 
 ```javascript
-import { Array, Show } from 'react-semantics';
+import { ArrayMap, Show } from 'react-semantics';
 
 const Menu = ({ showMenuItems }) => (
   <nav>
     <a href="/">Home</a>
     <Show when={showMenuItems}>
       <ul>
-        <Array.Map
+        <ArrayMap
           array={['prices', 'contact', 'about']}
           render={m => (
             <li key={m}>
@@ -59,13 +59,16 @@ Coming soon...
 ## Usage
 
 ```javascript
-import React from 'react';
-import { Show } from 'react-semantics';
+import { ArrayMap, Show } from 'react-semantics';
+
+<ArrayMap
+  array={[1, 2, 3]}
+  render={n => <div key={n}>{n}</div>}
+/>
 
 <Show when={5 === 2 + 2}>
   <div>Will only render in 1984</div>
 </Show>
-
 ```
 
 ## API
