@@ -1,13 +1,13 @@
 {
   "name": "react-semantics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Useful semantic helper components for working with React.",
   "author": "Christian Svenkerud",
   "repository": {
     "type": "git",
     "url": "https://github.com/csvenke/react-semantics.git"
   },
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -52,7 +52,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json",
     "clean:build": "rimraf ./dist",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "lint": "tslint -c tslint.json './src/**/*'",
     "lintfix": "tslint -c tslint.json --fix './src/**/*'",
     "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\"",
