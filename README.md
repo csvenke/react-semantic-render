@@ -54,17 +54,14 @@ const Menu = ({ showMenuItems }) => (
 
 ## Install
 
-Coming soon...
+```
+npm install react-semantics
+```
 
 ## Usage
 
 ```javascript
-import { ArrayMap, Show } from 'react-semantics';
-
-<ArrayMap
-  array={[1, 2, 3]}
-  render={n => <div key={n}>{n}</div>}
-/>
+import { Show } from 'react-semantics';
 
 <Show when={5 === 2 + 2}>
   <div>Will only render in 1984</div>

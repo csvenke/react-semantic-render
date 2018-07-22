@@ -47,7 +47,7 @@
     "typescript": "^2.9.2"
   },
   "scripts": {
-    "build": "npm run clean:build && npm run lint && npm run prettify && tsc -p ./tsconfig.build.json && cp ./package.json ./dist/lib",
+    "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json && cp ./package.json ./dist/lib",
     "clean:build": "rimraf ./dist/lib",
     "dist": "cd ./dist/lib && npm publish",
     "lint": "tslint -c tslint.json './src/**/*'",
