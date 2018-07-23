@@ -19,10 +19,11 @@
 </p>
 
 <p align="center">
-  <a href="#install">Install</a> •
-  <a href="#usage">Usage</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#example-usage">Example usage</a> •
   <a href="#api">API</a> •
-  <a href="#contribute">Contribute</a> •
+  <a href="#development-setup">Development setup</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
 
@@ -58,14 +59,14 @@ const Menu = ({ showMenuItems }) => (
 ### After
 
 ```javascript
-import { ArrayMap, Show } from 'react-semantics';
+import { Map, Show } from 'react-semantics';
 
 const Menu = ({ showMenuItems }) => (
   <nav>
     <a href="/">Home</a>
     <Show when={showMenuItems}>
       <ul>
-        <ArrayMap
+        <Map
           array={['prices', 'contact', 'about']}
           render={m => (
             <li key={m}>
@@ -79,19 +80,20 @@ const Menu = ({ showMenuItems }) => (
 );
 ```
 
-## Install
+## Installation
 
-```
-npm install --save react-semantics
+```bash
+$ npm install react-semantics
 ```
 
-## Usage
+## Example usage
 
 ```javascript
+import React from 'react';
 import { Show } from 'react-semantics';
 
-<Show when={5 === 2 + 2}>
-  <div>Will only render in 1984</div>
+<Show when={5 > 4}>
+  <div>Render me!</div>
 </Show>
 ```
 
@@ -99,15 +101,9 @@ import { Show } from 'react-semantics';
 
 Coming soon...
 
-## Contribute
+## Development setup
 
-```
-# Clone repository
-$ git clone https://github.com/csvenke/react-semantics.git
-
-# Go into repository
-$ cd react-semantics
-
+```bash
 # Install dependencies
 $ npm install
 
@@ -118,6 +114,14 @@ npm run test
 npm run build
 ```
 
+## Contributing
+
+1.  Fork it
+1.  Create your feature branch
+1.  Commit your changes
+1.  Push to the branch
+1.  Create a new pull request
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/csvenke/react-semantics/blob/master/LICENSE) file for details.
