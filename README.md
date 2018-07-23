@@ -99,14 +99,20 @@ Coming soon...
 ## Contribute
 
 ```
-# Clone this repository
+# Clone repository
 $ git clone https://github.com/csvenke/react-semantics.git
 
-# Go into the repository
+# Go into repository
 $ cd react-semantics
 
 # Install dependencies
 $ npm install
+
+# Run tests
+npm test
+
+# Build
+npm run build
 ```
 
 ## License
