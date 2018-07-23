@@ -1,6 +1,6 @@
 {
   "name": "react-semantics",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Semantic helper components for working with React.",
   "author": "Christian Svenkerud",
   "repository": {
