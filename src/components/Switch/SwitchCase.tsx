@@ -1,3 +1,4 @@
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { isEmptyChildren } from '../../utils';
@@ -25,6 +26,12 @@ const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) =>
   }
 
   return null;
+};
+
+SwitchCase.propTypes = {
+  children: PropTypes.node,
+  render: PropTypes.func,
+  value: PropTypes.any.isRequired,
 };
 
 export default SwitchCase;

@@ -1,3 +1,4 @@
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import SwitchCase from './SwitchCase';
@@ -17,6 +18,11 @@ const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => 
       {children}
     </SwitchCase>
   );
+};
+
+SwitchDefault.propTypes = {
+  children: PropTypes.node,
+  render: PropTypes.func,
 };
 
 export default SwitchDefault;
