@@ -14,7 +14,7 @@ export interface ISwitchCaseProps {
 }
 
 const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) => {
-  if (value) {
+  if (value !== undefined) {
     if (children && !isEmptyChildren(children)) {
       return React.Children.only(children);
     }
