@@ -14,20 +14,6 @@ export interface ISwitchProps {
 
 /**
  * Returns primary content of first case that matches, returns default if no match and null if no default.
- *
- * @example
- *
- * <Switch value={3}>
- *  <Switch.Case value={1}>
- *    <div>Render me!</div>
- *  </Switch.Case>
- *  <Switch.Case value={2}>
- *    <div>No, render me!</div>
- *  </Switch.Case>
- *  <Switch.Default>
- *    <div>No, render me!</div>
- *  </Switch.Default>
- * </Switch>
  */
 class Switch extends React.Component<ISwitchProps> {
   public static propTypes = {

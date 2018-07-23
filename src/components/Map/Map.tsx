@@ -14,17 +14,6 @@ export interface IMapProps {
 
 /**
  * Calls `render` or `children` on each element of `array`, and returns the result.
- *
- * @example
- *
- * <Map
- *  array={[1, 2, 3]}
- *  render={n => <div>{n}</div>}
- * />
- *
- * <Map array={[1, 2, 3]}>
- *  {n => <div>{n}</div>}
- * </ArrayMap>
  */
 const Map: React.SFC<IMapProps> = ({ array, render, children }) => {
   const func = children ? children : render;
