@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export interface IArrayMapProps {
+export interface IMapProps {
   /** Array to map. */
   array: any[];
 
@@ -17,16 +17,16 @@ export interface IArrayMapProps {
  *
  * @example
  *
- * <ArrayMap
+ * <Map
  *  array={[1, 2, 3]}
  *  render={n => <div>{n}</div>}
  * />
  *
- * <ArrayMap array={[1, 2, 3]}>
+ * <Map array={[1, 2, 3]}>
  *  {n => <div>{n}</div>}
  * </ArrayMap>
  */
-const ArrayMap: React.SFC<IArrayMapProps> = ({ array, render, children }) => {
+const Map: React.SFC<IMapProps> = ({ array, render, children }) => {
   const func = children ? children : render;
 
   if (!func) {
@@ -36,10 +36,10 @@ const ArrayMap: React.SFC<IArrayMapProps> = ({ array, render, children }) => {
   return <React.Fragment>{array.map((a, b, c) => func(a, b, c))}</React.Fragment>;
 };
 
-ArrayMap.propTypes = {
+Map.propTypes = {
   array: PropTypes.arrayOf(PropTypes.any).isRequired,
   children: PropTypes.func,
   render: PropTypes.func,
 };
 
-export default ArrayMap;
+export default Map;
