@@ -11,6 +11,9 @@
     <img src="https://badge.fury.io/js/react-semantics.svg" alt="Gitter">
   </a>
   <a href="">
+    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="Gitter">
+  </a>
+  <a href="">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="Gitter">
   </a>
 </p>
@@ -109,7 +112,7 @@ $ cd react-semantics
 $ npm install
 
 # Run tests
-npm test
+npm run test
 
 # Build
 npm run build
