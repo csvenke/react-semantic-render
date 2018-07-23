@@ -52,7 +52,6 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json",
     "clean:build": "rimraf ./dist",
-    "prepare": "npm run build",
     "lint": "tslint -c tslint.json './src/**/*'",
     "lintfix": "tslint -c tslint.json --fix './src/**/*'",
     "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\"",
