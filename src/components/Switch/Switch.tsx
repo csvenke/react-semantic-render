@@ -25,7 +25,7 @@ export interface ISwitchProps {
  *    <div>No, render me!</div>
  *  </Switch.Case>
  *  <Switch.Default>
- *    <div>Nobody renders better than me!</div>
+ *    <div>No, render me!</div>
  *  </Switch.Default>
  * </Switch>
  */
