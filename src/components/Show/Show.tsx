@@ -4,8 +4,8 @@ import * as React from 'react';
 import { isEmptyChildren } from '../../utils';
 
 export interface IShowProps {
-  /** Conditional statement.  */
-  when: boolean;
+  /** Conditional statement. Will be cast to true/false value  */
+  when: any;
 
   /** Shorthand for primary content. */
   render?: () => React.ReactNode;
@@ -29,7 +29,7 @@ export interface IShowProps {
  * />
  */
 const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
-  if (when) {
+  if (!!when) {
     if (children && !isEmptyChildren(children)) {
       return React.Children.only(children);
     }
@@ -45,7 +45,7 @@ const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
 Show.propTypes = {
   children: PropTypes.node,
   render: PropTypes.func,
-  when: PropTypes.bool.isRequired,
+  when: PropTypes.any,
 };
 
 export default Show;
