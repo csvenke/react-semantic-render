@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import Resolve from './Resolve';
 
-describe.only('resolve', () => {
+describe('resolve', () => {
   const timeout = 10;
 
   const resolvable = resolved =>
