@@ -1,20 +1,22 @@
-<h1 align="center">
-  <br>
-  react-semantics
-  <br>
-</h1>
+<div align="center">
+  <img src='./media/logo.png' width="25%" alt='logo' />
+</div>
 
-<h4 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+<div align="center">
+  <h1><br>react-semantics<br></h1>
+</div>
+
+<h3 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
 <p align="center">
   <a href="https://badge.fury.io/js/react-semantics">
-    <img src="https://badge.fury.io/js/react-semantics.svg" alt="Gitter">
+    <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package">
   </a>
   <a href="">
-    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="Gitter">
+    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status">
   </a>
   <a href="">
-    <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="Gitter">
+    <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status">
   </a>
 </p>
 
@@ -35,11 +37,16 @@ Multiple studies from reputable anonymous sources have shown that projects using
 Does this sound too good to be true?
 Does the rational part of your brain see through this shallow pitch for yet another mediocre react library?
 
-Reject those thoughts and allow me to demonstrate the might of this library with a simple example below!
+Reject those thoughts and allow me to demonstrate the overwhelming might of this library with a simple example below!
 
 ### Before
 
-```javascript
+Here you see two common use cases where you have to show something when a condition is true and map content from an array of data.
+This is normally solved by inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
+
+```jsx
+import React from 'react';
+
 const Menu = ({ showMenuItems }) => (
   <nav>
     <a href="/">Home</a>
@@ -58,7 +65,13 @@ const Menu = ({ showMenuItems }) => (
 
 ### After
 
-```javascript
+Here you see all inline arrow functions replaced by semantic components that are easy to read and understand.
+What they do are intuitively obvious due to careful naming and all the noise from inline arrow functions are removed.
+
+It's components all the way down.
+
+```jsx
+import React from 'react';
 import { Map, Show } from 'react-semantics';
 
 const Menu = ({ showMenuItems }) => (
@@ -88,13 +101,47 @@ $ npm install react-semantics
 
 ## Example usage
 
-```javascript
-import React from 'react';
+### Show
+
+```jsx
 import { Show } from 'react-semantics';
 
 <Show when={5 > 4}>
   <div>Render me!</div>
 </Show>
+```
+
+### Map
+
+```jsx
+import { Map } from 'react-semantics';
+
+<Map
+  array={[1, 2, 3, 4, 5]}
+  render={n => (
+    <div key={n}>{`Render ${n}!`}</div>
+  )}
+/>
+```
+
+### Switch
+
+```jsx
+import { Switch } from 'react-semantics';
+
+<Switch value={3}>
+  <Switch.Case value={1}>
+    <div>Render me!</div>
+  </Switch.Case>
+
+  <Switch.Case value={2}>
+    <div>No, render me!</div>
+  </Switch.Case>
+
+  <Switch.Default>
+    <div>Nobody renders better than me!</div>
+  </Switch.Default>
+</Switch>
 ```
 
 ## API
@@ -107,21 +154,24 @@ Coming soon...
 # Install dependencies
 $ npm install
 
-# Run tests
-npm run test
+# Run linters
+$ npm run lint
 
-# Build
-npm run build
+# Run tests
+$ npm run test
+
+# Build project
+$ npm run build
 ```
 
 ## Contributing
 
-1.  Fork it
-1.  Create your feature branch
-1.  Commit your changes
-1.  Push to the branch
-1.  Create a new pull request
+1.  Fork repository
+1.  Create feature branch
+1.  Commit changes
+1.  Push to branch
+1.  Create new pull request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/csvenke/react-semantics/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see [LICENSE](https://github.com/csvenke/react-semantics/blob/master/LICENSE) file for details.
