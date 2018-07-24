@@ -1,11 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "./lib",
     "sourceMap": false,
     "declaration": true,
-    "removeComments": false
+    "removeComments": false,
+    "declarationDir": "lib/types"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/index.ts",
+    "src/components/**/index.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.ts"
+  ]
 }

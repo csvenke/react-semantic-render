@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out",
+    "outDir": "./build",
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types"],
     "target": "es5",
@@ -12,8 +12,9 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": false,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": false
+    "noUnusedParameters": true
   },
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ]
 }

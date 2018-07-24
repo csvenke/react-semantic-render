@@ -2,7 +2,9 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import SwitchCase, { ISwitchCaseProps } from './SwitchCase';
-import SwitchDefault from './SwitchDefault';
+import SwitchDefault, { ISwitchDefaultProps } from './SwitchDefault';
+
+type SwitchChildProps = ISwitchCaseProps & ISwitchDefaultProps;
 
 export interface ISwitchProps {
   /** Conditional statement. */
@@ -46,7 +48,7 @@ class Switch extends React.Component<ISwitchProps> {
 
     React.Children.forEach(
       this.props.children,
-      (element: React.ReactElement<ISwitchCaseProps>) => {
+      (element: React.ReactElement<SwitchChildProps>) => {
         if (match === undefined && React.isValidElement(element)) {
           const caseValue = element.props.value;
           child = element;
