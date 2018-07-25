@@ -1,10 +1,6 @@
-<div align="center">
-  <img src='./media/logo.png' width="25%" alt='logo' />
-</div>
+<p align="center"><img src='./media/logo.png' width="20%" alt='logo' /></p>
 
-<div align="center">
-  <h1><br>react-semantics<br></h1>
-</div>
+<h1 align="center"><br>react-semantics<br></h1>
 
 <h3 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
