@@ -1,4 +1,4 @@
-<p align="center"><img src='./media/logo.png' width="25%" alt='logo' /></p>
+<p align="center"><img src='./media/logo.png' width="20%" alt='logo' /></p>
 
 <h1 align="center"><br>react-semantics<br></h1>
 
