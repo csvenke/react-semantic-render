@@ -1,19 +1,31 @@
 import typescript from 'rollup-plugin-typescript2';
 import { uglify } from 'rollup-plugin-uglify';
+import pkg from './package.json';
 
-export default {
-  input: './src/index.ts',
-  output: {
-    file: 'lib/index.min.js',
-    format: 'cjs'
-  },
+const externals = [
+  ...(Object.keys(pkg.dependencies) || {}),
+  ...(Object.keys(pkg.peerDependencies) || {}),
+];
+
+const createConfig = ({ output } = {}) => ({
+  input: 'src/index.ts',
+  output,
+  external: externals,
   plugins: [
     typescript({
       useTsconfigDeclarationDir: true,
       tsconfig: './tsconfig.build.json',
-      typescript: require('typescript')
+      typescript: require('typescript'),
     }),
-    uglify()
+    uglify(),
   ],
-  external: ['react', 'react-dom', 'prop-types'],
-};
+});
+
+export default [
+  createConfig({
+    output: {
+      file: pkg.main,
+      format: 'cjs',
+    },
+  }),
+];

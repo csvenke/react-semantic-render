@@ -10,7 +10,9 @@
   "main": "lib/index.min.js",
   "types": "lib/types/index.d.ts",
   "files": [
-    "lib"
+    "lib/index.min.js",
+    "lib/types/index.d.ts",
+    "lib/types/components"
   ],
   "private": false,
   "license": "MIT",
@@ -55,9 +57,11 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
     "clean:build": "rimraf ./lib",
-    "lint": "tslint -c tslint.json './src/**/*'",
-    "lintfix": "tslint -c tslint.json --fix './src/**/*'",
-    "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\"",
+    "lint": "npm run lint:write './src/**/*'",
+    "lint:fix": "npm run lint:write --fix './src/**/*'",
+    "lint:write": "tslint -c tslint.json",
+    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "prettier:write": "prettier -c .prettierrc --write",
     "test": "jest"
   },
   "husky": {
