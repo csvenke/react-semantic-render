@@ -1,16 +1,18 @@
 {
   "name": "react-semantics",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Semantic helper components for working with React.",
   "author": "Christian Svenkerud",
   "repository": {
     "type": "git",
     "url": "https://github.com/csvenke/react-semantics.git"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.min.js",
+  "types": "lib/types/index.d.ts",
   "files": [
-    "dist"
+    "lib/index.min.js",
+    "lib/types/index.d.ts",
+    "lib/types/components"
   ],
   "private": false,
   "license": "MIT",
@@ -45,6 +47,9 @@
     "react-styleguidist": "^7.1.0",
     "react": "^16.4.1",
     "rimraf": "^2.6.2",
+    "rollup-plugin-typescript2": "^0.16.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "rollup": "^0.63.4",
     "ts-jest": "^23.0.1",
     "ts-loader": "^4.4.2",
     "tslint-config-prettier": "^1.14.0",
@@ -54,14 +59,15 @@
     "webpack": "^4.16.2"
   },
   "scripts": {
-    "build": "npm run clean:build && npm run lint && npm run prettify && npm run test && tsc -p ./tsconfig.build.json",
-    "clean:build": "rimraf ./dist",
-    "lint": "tslint -c tslint.json './src/**/*'",
-    "lintfix": "tslint -c tslint.json --fix './src/**/*'",
-    "prettify": "prettier -c .prettierrc --write \"src/**/*.@(ts|tsx)\"",
-    "test": "jest",
+    "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
+    "clean:build": "rimraf ./lib",
+    "lint": "npm run lint:write './src/**/*'",
+    "lint:fix": "npm run lint:write --fix './src/**/*'",
+    "lint:write": "tslint -c tslint.json",
+    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "prettier:write": "prettier -c .prettierrc --write",
     "docs": "styleguidist build",
-    "webpack": "webpack"
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -83,7 +89,7 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/dist/"
+      "<rootDir>/lib/"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.ts",
     "moduleFileExtensions": [

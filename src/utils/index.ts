@@ -1,1 +1,2 @@
-export * from './isEmptyChildren';
+export * from './isEmptyChildren/isEmptyChildren';
+export * from './isPromise/isPromise';
