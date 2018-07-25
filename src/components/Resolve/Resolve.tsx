@@ -25,17 +25,18 @@ const initialState = {
 type IResolveState = Readonly<typeof initialState>;
 
 /**
- * A component to render based on a promise
+ * Returns content based on specified promise.
  *
  * @example
+ *
  * <Resolve
- *  promise = {aPromise}
- *  resolved = {
- *    value => <p>{`Resolved value is ${value}`}</p>
- *  } />
+ *  promise={aPromise}
+ *  resolved={value => (
+ *    <p>{`Resolved value ${value}`}</p>
+ *  )}
+ * />
  */
 class Resolve extends React.Component<IResolveProps, IResolveState> {
-  // PropTypes
   public static propTypes = {
     pending: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     promise: isPromise,
@@ -51,7 +52,7 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
 
   public componentDidMount() {
     // Start handling the promise, must happen after mount as setState is called when promise is handled
-    this._handlePromise(this.props.promise);
+    this.handlePromise(this.props.promise);
   }
 
   public componentDidUpdate(prevProps) {
@@ -59,7 +60,7 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
       this.setState({
         status: statusTypes.none,
       });
-      this._handlePromise(this.props.promise);
+      this.handlePromise(this.props.promise);
     }
   }
 
@@ -67,8 +68,37 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
     this.unmounted = true;
   }
 
+  public render() {
+    const { pending, resolved, rejected } = this.props;
+    const { status, value } = this.state;
+
+    switch (status) {
+      case statusTypes.none:
+        break;
+      case statusTypes.pending:
+        if (pending) {
+          return pending;
+        }
+        break;
+      case statusTypes.resolved:
+        if (resolved) {
+          return resolved(value);
+        }
+        break;
+      case statusTypes.rejected:
+        if (rejected) {
+          return rejected(value);
+        }
+        break;
+      default:
+        break;
+    }
+
+    return null;
+  }
+
   // Promise resolver function
-  public _handlePromise(promise) {
+  private handlePromise(promise) {
     // Store the current promise to fast exit if promise is change during handling
     const currentPromise = promise;
     this.setState({
@@ -99,35 +129,6 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
           });
         }
       });
-  }
-
-  public render() {
-    const { pending, resolved, rejected } = this.props;
-    const { status, value } = this.state;
-
-    switch (status) {
-      case statusTypes.none:
-        break;
-      case statusTypes.pending:
-        if (pending) {
-          return pending;
-        }
-        break;
-      case statusTypes.resolved:
-        if (resolved) {
-          return resolved(value);
-        }
-        break;
-      case statusTypes.rejected:
-        if (rejected) {
-          return rejected(value);
-        }
-        break;
-      default:
-        break;
-    }
-
-    return null;
   }
 }
 
