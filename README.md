@@ -2,7 +2,7 @@
 
 <h1 align="center"><br>react-semantics<br></h1>
 
-<h3 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+<h3 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h3>
 
 <p align="center">
   <a href="https://badge.fury.io/js/react-semantics">
