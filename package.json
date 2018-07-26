@@ -56,7 +56,7 @@
   },
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
-    "clean:build": "rimraf ./lib",
+    "clean:build": "rimraf ./lib && rimraf ./build",
     "lint": "npm run lint:write './src/**/*'",
     "lint:fix": "npm run lint:write --fix './src/**/*'",
     "lint:write": "tslint -c tslint.json",
@@ -84,7 +84,8 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
-      "<rootDir>/lib/"
+      "<rootDir>/lib/",
+      "<rootDir>/build/"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.ts",
     "moduleFileExtensions": [
