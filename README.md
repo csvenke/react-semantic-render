@@ -14,7 +14,7 @@
   <a href="">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
   </a>
-  <a href="">
+  <a href="https://greenkeeper.io/">
     <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
   </a>
 </p>
