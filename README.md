@@ -8,10 +8,10 @@
   <a href="https://badge.fury.io/js/react-semantics">
     <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package" />
   </a>
-  <a href="">
+  <a href="https://travis-ci.com/csvenke/react-semantics">
     <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
   </a>
-  <a href="">
+  <a href="https://david-dm.org/csvenke/react-semantics">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
   </a>
   <a href="https://greenkeeper.io/">
