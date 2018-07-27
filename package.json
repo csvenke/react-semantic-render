@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
-    "clean:build": "rimraf ./lib",
+    "clean:build": "rimraf ./lib && rimraf ./build",
     "lint": "npm run lint:write './src/**/*'",
     "lint:fix": "npm run lint:write --fix './src/**/*'",
     "lint:write": "tslint -c tslint.json",
@@ -80,25 +80,6 @@
       "prettier -c .prettierrc --write",
       "tslint -c tslint.json --fix",
       "git add"
-    ]
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/lib/"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.ts",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
     ]
   }
 }

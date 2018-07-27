@@ -35,7 +35,11 @@ class Switch extends React.Component<ISwitchProps> {
     React.Children.forEach(
       this.props.children,
       (element: React.ReactElement<SwitchChildProps>) => {
-        if (match === undefined && React.isValidElement(element)) {
+        if (
+          match === undefined &&
+          React.isValidElement(element) &&
+          this.isValidChild(element)
+        ) {
           const caseValue = element.props.value;
           child = element;
           match = caseValue === switchValue || undefined;
@@ -44,13 +48,25 @@ class Switch extends React.Component<ISwitchProps> {
     );
 
     // No match found, return default if it exists.
-    if (!match && !child.props.value) {
+    if (!match && this.isSwitchDefault(child)) {
       return React.cloneElement(child);
     }
 
     // Return case if its a match.
     return match ? React.cloneElement(child) : null;
   }
+
+  private isValidChild = child => {
+    return this.isSwitchCase(child) || this.isSwitchDefault(child);
+  };
+
+  private isSwitchCase = child => {
+    return child.type.prototype === SwitchCase.prototype;
+  };
+
+  private isSwitchDefault = child => {
+    return child.type.prototype === SwitchDefault.prototype;
+  };
 }
 
 export default Switch;
