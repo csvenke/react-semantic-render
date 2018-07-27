@@ -14,6 +14,9 @@
   <a href="https://david-dm.org/csvenke/react-semantics">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
   </a>
+  <a href="https://david-dm.org/csvenke/react-semantics?type=dev">
+    <img src="https://david-dm.org/csvenke/react-semantics/dev-status.svg" alt="devdependencies status" />
+  </a>
   <a href="https://greenkeeper.io/">
     <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
   </a>
