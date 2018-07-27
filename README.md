@@ -6,13 +6,16 @@
 
 <p align="center">
   <a href="https://badge.fury.io/js/react-semantics">
-    <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package">
+    <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package" />
   </a>
   <a href="">
-    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status">
+    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
   </a>
   <a href="">
-    <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status">
+    <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
+  </a>
+  <a href="">
+    <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
   </a>
 </p>
 
@@ -36,8 +39,6 @@ Do you start to see through this shallow pitch for yet another react component l
 Reject those thoughts and allow me to demonstrate the might of this library with a simple example below!
 
 ### Before
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/csvenke/react-semantics.svg)](https://greenkeeper.io/)
 
 Here you see two common use cases where you have to show something when a condition is true and map content from an array of data.
 This is normally solved by inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
