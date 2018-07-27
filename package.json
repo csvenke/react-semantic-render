@@ -68,7 +68,8 @@
     "prettier:write": "prettier -c .prettierrc --write",
     "docs": "styleguidist build",
     "docs:server": "styleguidist server",
-    "test": "jest"
+    "test": "jest",
+    "commit": "npx git-cz"
   },
   "husky": {
     "hooks": {
