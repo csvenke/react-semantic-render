@@ -61,8 +61,8 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
     "clean:build": "rimraf ./lib && rimraf ./build",
-    "lint": "npm run lint:write './src/**/*'",
-    "lint:fix": "npm run lint:write --fix './src/**/*'",
+    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
+    "lint:fix": "npm run lint:write --fix \"src/**/*.@(ts|tsx)\"",
     "lint:write": "tslint -c tslint.json",
     "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
     "prettier:write": "prettier -c .prettierrc --write",
