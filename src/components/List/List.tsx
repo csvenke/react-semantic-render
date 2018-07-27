@@ -1,9 +1,9 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export interface IMapProps {
+export interface IListProps {
   /** Array to map. */
-  array: any[];
+  items: any[];
 
   /** Shorthand for primary content. */
   render?: (value?: any, index?: number, array?: any[]) => React.ReactNode;
@@ -13,22 +13,22 @@ export interface IMapProps {
 }
 
 /**
- * Calls `render` or `children` on each element of `array`, and returns the result.
+ * Calls `render` or `children` on each element of `items`, and returns the result.
  */
-const Map: React.SFC<IMapProps> = ({ array, render, children }) => {
+const List: React.SFC<IListProps> = ({ items, render, children }) => {
   const func = children ? children : render;
 
   if (!func) {
     return null;
   }
 
-  return <React.Fragment>{array.map((a, b, c) => func(a, b, c))}</React.Fragment>;
+  return <React.Fragment>{items.map((a, b, c) => func(a, b, c))}</React.Fragment>;
 };
 
-Map.propTypes = {
-  array: PropTypes.arrayOf(PropTypes.any).isRequired,
+List.propTypes = {
   children: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
   render: PropTypes.func,
 };
 
-export default Map;
+export default List;

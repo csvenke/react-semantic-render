@@ -67,6 +67,7 @@
     "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
     "prettier:write": "prettier -c .prettierrc --write",
     "docs": "styleguidist build",
+    "docs:server": "styleguidist server",
     "test": "jest"
   },
   "husky": {

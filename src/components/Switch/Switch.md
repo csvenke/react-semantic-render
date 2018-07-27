@@ -1,7 +1,3 @@
-```jsx static
-import React from 'react';
-import { Switch } from 'react-semantics';
-```
 
 ```jsx
 <Switch value={3}>
