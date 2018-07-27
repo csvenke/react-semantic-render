@@ -30,6 +30,8 @@
     "react": "^16.4.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/enzyme": "^3.1.12",
     "@types/jest": "^23.3.0",
@@ -69,11 +71,12 @@
     "docs": "styleguidist build",
     "docs:server": "styleguidist server",
     "test": "jest",
-    "commit": "npx git-cz"
+    "commitlint": "commitlint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run commit",
+      "commit-msg": "commitlint -E $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
       "pre-push": "npm run test"
     }
   },
