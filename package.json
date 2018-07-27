@@ -30,6 +30,9 @@
     "react": "^16.4.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/travis-cli": "^7.0.0",
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/enzyme": "^3.1.12",
     "@types/jest": "^23.3.0",
@@ -61,17 +64,18 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
     "clean:build": "rimraf ./lib && rimraf ./build",
-    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
+    "docs:server": "styleguidist server",
+    "docs": "styleguidist build",
     "lint:fix": "npm run lint:write --fix \"src/**/*.@(ts|tsx)\"",
     "lint:write": "tslint -c tslint.json",
-    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
     "prettier:write": "prettier -c .prettierrc --write",
-    "docs": "styleguidist build",
-    "docs:server": "styleguidist server",
+    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
     "test": "jest"
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
       "pre-push": "npm run test"
     }

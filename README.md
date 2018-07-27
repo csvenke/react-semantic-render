@@ -5,20 +5,23 @@
 
   <h4>Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
-  <p>
-    <a href="https://badge.fury.io/js/react-semantics">
-      <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package">
-    </a>
-    <a href="">
-      <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status">
-    </a>
-    <a href="">
-      <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status">
-    </a>
-    <a href="https://greenkeeper.io/">
-      <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
-    </a>
-  </p>
+<p>
+  <a href="https://badge.fury.io/js/react-semantics">
+    <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package" />
+  </a>
+  <a href="https://travis-ci.com/csvenke/react-semantics">
+    <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
+  </a>
+  <a href="https://david-dm.org/csvenke/react-semantics">
+    <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
+  </a>
+  <a href="https://david-dm.org/csvenke/react-semantics?type=dev">
+    <img src="https://david-dm.org/csvenke/react-semantics/dev-status.svg" alt="devdependencies status" />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
+  </a>
+</p>
 
   <p>
     <a href="#installation">Installation</a> •
