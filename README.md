@@ -37,6 +37,8 @@ Reject those thoughts and allow me to demonstrate the might of this library with
 
 ### Before
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/csvenke/react-semantics.svg)](https://greenkeeper.io/)
+
 Here you see two common use cases where you have to show something when a condition is true and map content from an array of data.
 This is normally solved by inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
