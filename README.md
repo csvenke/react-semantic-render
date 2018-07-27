@@ -19,7 +19,7 @@
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#example-usage">Example usage</a> •
-  <a href="#api">API</a> •
+  <a href="#documentation">Documentation</a> •
   <a href="#development-setup">Development setup</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
@@ -41,8 +41,6 @@ Here you see two common use cases where you have to show something when a condit
 This is normally solved by inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
 ```jsx
-import React from 'react';
-
 const Menu = ({ showMenuItems }) => (
   <nav>
     <a href="/">Home</a>
@@ -67,16 +65,15 @@ What they do are intuitively obvious due to careful naming and all the noise fro
 It's components all the way down.
 
 ```jsx
-import React from 'react';
-import { Map, Show } from 'react-semantics';
+import { Show, List } from 'react-semantics';
 
 const Menu = ({ showMenuItems }) => (
   <nav>
     <a href="/">Home</a>
     <Show when={showMenuItems}>
       <ul>
-        <Map
-          array={['prices', 'contact', 'about']}
+        <List
+          items={['prices', 'contact', 'about']}
           render={m => (
             <li key={m}>
               <a href={`/${m}`}>{m}</a>
@@ -97,52 +94,18 @@ $ npm install react-semantics
 
 ## Example usage
 
-### Show
-
 ```jsx
 import { Show } from 'react-semantics';
 
-<Show when={5 > 4}>
+<Show when={true}>
   <div>Render me!</div>
 </Show>
 ```
 
-### Map
+## Documentation
 
-```jsx
-import { Map } from 'react-semantics';
+https://csvenke.github.io/react-semantics/
 
-<Map
-  array={[1, 2, 3, 4, 5]}
-  render={n => (
-    <div key={n}>{`Render ${n}!`}</div>
-  )}
-/>
-```
-
-### Switch
-
-```jsx
-import { Switch } from 'react-semantics';
-
-<Switch value={3}>
-  <Switch.Case value={1}>
-    <div>Render me!</div>
-  </Switch.Case>
-
-  <Switch.Case value={2}>
-    <div>No, render me!</div>
-  </Switch.Case>
-
-  <Switch.Default>
-    <div>Nobody renders better than me!</div>
-  </Switch.Default>
-</Switch>
-```
-
-## API
-
-Coming soon...
 
 ## Development setup
 
