@@ -29,11 +29,11 @@ Are you tired of your react components looking like an unreadable mess?
 Have you often asked yourself: "there must be a better way!"?
 Then look no further, because this library is just what you need!
 
-Multiple studies from reputable anonymous sources have shown that projects using `react-semantics` have 24% higher productivity and increased life satisfaction.
+Multiple studies from reputable anonymous sources have shown that projects using this library have 24% higher productivity and increased life satisfaction.
 Does this sound too good to be true?
-Does the rational part of your brain see through this shallow pitch for yet another mediocre react library?
+Do you start to see through this shallow pitch for yet another react component library?
 
-Reject those thoughts and allow me to demonstrate the overwhelming might of this library with a simple example below!
+Reject those thoughts and allow me to demonstrate the might of this library with a simple example below!
 
 ### Before
 
