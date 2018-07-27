@@ -63,19 +63,18 @@
   "scripts": {
     "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
     "clean:build": "rimraf ./lib && rimraf ./build",
-    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
+    "docs:server": "styleguidist server",
+    "docs": "styleguidist build",
     "lint:fix": "npm run lint:write --fix \"src/**/*.@(ts|tsx)\"",
     "lint:write": "tslint -c tslint.json",
-    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
     "prettier:write": "prettier -c .prettierrc --write",
-    "docs": "styleguidist build",
-    "docs:server": "styleguidist server",
-    "test": "jest",
-    "commitlint": "commitlint"
+    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E $HUSKY_GIT_PARAMS",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
       "pre-push": "npm run test"
     }
