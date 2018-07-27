@@ -16,17 +16,6 @@ export interface IShowProps {
 
 /**
  * Renders primary content if `when` equals true.
- *
- * @example
- *
- * <Show when={2 === 1 + 1}>
- *  <div>render me</div>
- * </Show>
- *
- * <Show
- *  when={2 === 1 + 1}
- *  render={() => <div>render me</div>}
- * />
  */
 const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
   if (when) {

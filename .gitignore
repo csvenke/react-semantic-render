@@ -9,6 +9,7 @@
 
 # workspace
 .vscode
+/styleguide
 
 # misc
 .DS_Store
