@@ -12,7 +12,7 @@ export interface ISwitchDefaultProps {
 }
 
 const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
-  const value = '__switch_case_value_override__';
+  const value = '__SWITCH_CASE_VALUE_OVERRIDE_USE_THIS_AND_YOU_WILL_BE_FIRED__';
   return (
     <SwitchCase value={value} render={render}>
       {children}

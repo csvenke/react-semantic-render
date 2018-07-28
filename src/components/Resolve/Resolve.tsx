@@ -1,21 +1,27 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { isPromise } from '../../utils';
-import { statusTypes } from './config';
 
 export interface IResolveProps {
-  /** The promise to be resolved */
+  /** The promise. */
   promise?: Promise<any>;
 
-  /** Will be displayed after promise is resolved */
+  /** Returns content when promise is resolved. */
   resolved?: (value) => React.ReactNode;
 
-  /** Will be displayed while promise is handled */
+  /** Returns content while promise is being handled. */
   pending?: React.ReactNode;
 
-  /** Will be displayed if promise is rejected */
+  /** Returns content when promise is rejected. */
   rejected?: (error) => React.ReactNode;
 }
+
+export const statusTypes = {
+  none: 'none',
+  pending: 'pending',
+  rejected: 'rejected',
+  resolved: 'resolved',
+};
 
 export const initialState = {
   status: statusTypes.none,
@@ -26,15 +32,6 @@ export type IResolveState = Readonly<typeof initialState>;
 
 /**
  * Returns content based on specified promise.
- *
- * @example
- *
- * <Resolve
- *  promise={aPromise}
- *  resolved={value => (
- *    <p>{`Resolved value ${value}`}</p>
- *  )}
- * />
  */
 class Resolve extends React.Component<IResolveProps, IResolveState> {
   public static propTypes = {

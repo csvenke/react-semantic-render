@@ -1,15 +1,19 @@
-<p align="center"><img src='./media/logo.png' width="20%" alt='logo' /></p>
+<div align="center">
+  <img src='./media/logo.png' width="20%" alt='logo' />
 
-<h1 align="center"><br>react-semantics<br></h1>
+  <h1>react-semantics</h1>
 
-<h4 align="center">Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+  <h4>Blazing fast semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
-<p align="center">
+<p>
   <a href="https://badge.fury.io/js/react-semantics">
     <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package" />
   </a>
   <a href="https://travis-ci.com/csvenke/react-semantics">
     <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
+  </a>
+  <a href='https://coveralls.io/github/csvenke/react-semantics?branch=master'>
+    <img src='https://coveralls.io/repos/github/csvenke/react-semantics/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href="https://david-dm.org/csvenke/react-semantics">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
@@ -22,14 +26,15 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="#installation">Installation</a> •
-  <a href="#example-usage">Example usage</a> •
-  <a href="#documentation">Documentation</a> •
-  <a href="#development-setup">Development setup</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
-</p>
+  <p>
+    <a href="#installation">Installation</a> •
+    <a href="#example-usage">Example usage</a> •
+    <a href="#documentation">Documentation</a> •
+    <a href="#development-setup">Development setup</a> •
+    <a href="#contributing">Contributing</a> •
+    <a href="#license">License</a>
+  </p>
+</div>
 
 Are you tired of your react components looking like an unreadable mess?
 Have you often asked yourself: "there must be a better way!"?
