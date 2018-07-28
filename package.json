@@ -78,7 +78,7 @@
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc --write",
     "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
-    "publish": "npm run build && cd lib && npm publish",
+    "publish:lib": "npm run build && cd lib && npm publish && cd ..",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "test:prod": "npm run lint && npm run test --coverage --no-cache",
     "test:watch": "jest --watch",
