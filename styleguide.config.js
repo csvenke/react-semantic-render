@@ -24,6 +24,9 @@ module.exports = {
   skipComponentsWithoutExample: true,
   components: getComponents('src/components/**/*.tsx'),
   styleguideDir: 'docs',
+  context: {
+    faker: "faker"
+  },
   template: {
     head: {
       links: [

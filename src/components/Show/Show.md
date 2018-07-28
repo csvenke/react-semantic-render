@@ -1,6 +1,8 @@
 
 ```jsx
+const data = faker.fake("{{lorem.words}}");
+
 <Show when={true}>
-  <div>Render me!</div>
+  <div>{data}</div>
 </Show>
 ```
