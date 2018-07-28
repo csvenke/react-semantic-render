@@ -24,8 +24,9 @@ const createConfig = ({ output } = {}) => ({
 export default [
   createConfig({
     output: {
-      file: pkg.main,
+      file: 'lib/index.min.js',
       format: 'cjs',
+      exports: 'named',
     },
   }),
 ];

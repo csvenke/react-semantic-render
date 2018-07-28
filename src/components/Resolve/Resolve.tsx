@@ -16,19 +16,19 @@ export interface IResolveProps {
   rejected?: (error) => React.ReactNode;
 }
 
-export const statusTypes = {
+const statusTypes = {
   none: 'none',
   pending: 'pending',
   rejected: 'rejected',
   resolved: 'resolved',
 };
 
-export const initialState = {
+const initialState = {
   status: statusTypes.none,
   value: '',
 };
 
-export type IResolveState = Readonly<typeof initialState>;
+type IResolveState = Readonly<typeof initialState>;
 
 /**
  * Returns content based on specified promise.

@@ -1,4 +1,5 @@
 <div align="center">
+
   <img src='./media/logo.png' width="20%" alt='logo' />
 
   <h1>react-semantics</h1>
@@ -27,53 +28,24 @@
   </p>
 
   <p>
-    <a href="#installation">Installation</a> •
+    <a href="#install">Install</a> •
     <a href="#example-usage">Example usage</a> •
+    <a href="#why">Why?</a> •
     <a href="#documentation">Documentation</a> •
     <a href="#development-setup">Development setup</a> •
     <a href="#contributing">Contributing</a> •
+    <a href="#contributors">Contributors</a> •
     <a href="#license">License</a>
   </p>
 </div>
 
-Are you tired of your react components looking like an unreadable mess?
-Have you often asked yourself: "there must be a better way!"?
-Then look no further, because this library is just what you need!
+## Install
 
-Multiple studies from reputable anonymous sources have shown that projects using this library have 24% higher productivity and increased life satisfaction.
-Does this sound too good to be true?
-Do you start to see through this shallow pitch for yet another react component library?
-
-Reject those thoughts and allow me to demonstrate the might of this library with a simple example below!
-
-### Before
-
-Here you see two common use cases where you have to show something when a condition is true and map content from an array of data.
-This is normally solved by inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
-
-```jsx
-const Menu = ({ showMenuItems }) => (
-  <nav>
-    <a href="/">Home</a>
-    {showMenuItems ? (
-      <ul>
-        {['prices', 'contact', 'about'].map(m => (
-          <li key={m}>
-            <a href={`/${m}`}>{m}</a>
-          </li>
-        ))}
-      </ul>
-    ) : null}
-  </nav>
-);
+```bash
+$ npm install react-semantics
 ```
 
-### After
-
-Here you see all inline arrow functions replaced by semantic components that are easy to read and understand.
-What they do are intuitively obvious due to careful naming and all the noise from inline arrow functions are removed.
-
-It's components all the way down.
+## Example usage
 
 ```jsx
 import { Show, List } from 'react-semantics';
@@ -97,26 +69,38 @@ const Menu = ({ showMenuItems }) => (
 );
 ```
 
-## Installation
+## Why?
 
-```bash
-$ npm install react-semantics
-```
+In the example above you see two very common use cases where you have to show something when a condition is true and map content from an array of data.
+This is normally solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
-## Example usage
+Below you can see how it would look like with inline arrow functions.
 
 ```jsx
-import { Show } from 'react-semantics';
-
-<Show when={true}>
-  <div>Render me!</div>
-</Show>
+const Menu = ({ showMenuItems }) => (
+  <nav>
+    <a href="/">Home</a>
+    {showMenuItems ? (
+      <ul>
+        {['prices', 'contact', 'about'].map(m => (
+          <li key={m}>
+            <a href={`/${m}`}>{m}</a>
+          </li>
+        ))}
+      </ul>
+    ) : null}
+  </nav>
+)
 ```
+
+
+The purpose of this library is to develop and maintain semantic helper components that removes the need for inline arrow functions in react components.
+
+Do you have an idea about a component you think belong here? [Tell us here!](https://github.com/csvenke/react-semantics/issues/new)
 
 ## Documentation
 
-https://csvenke.github.io/react-semantics/
-
+For full list of components and how they are used, go to our [documentation](https://csvenke.github.io/react-semantics/).
 
 ## Development setup
 
@@ -136,11 +120,23 @@ $ npm run build
 
 ## Contributing
 
-1.  Fork repository
-1.  Create feature branch
-1.  Commit changes
-1.  Push to branch
-1.  Create new pull request
+In lieu of a formal styleguide, take care to maintain the existing coding style. 
+* Add unit tests for any new or changed functionality.
+* All library component props must be documented with jsdoc `/** */`, so that typescript definition files can be generated.
+* All library components must have `prop-types` that matches the component props interface.
+
+### Commit style guide
+We use [conventional commits style](https://conventionalcommits.org/).
+Read up on it before doing your first commit.
+Don't worry about making a mistake, `commitlint` will stop you if you do, and you can try again.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantics/commits?author=bergelf "Code") [⚠️](https://github.com/csvenke/react-semantics/commits?author=bergelf "Tests") [📖](https://github.com/csvenke/react-semantics/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
