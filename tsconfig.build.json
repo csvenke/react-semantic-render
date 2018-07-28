@@ -6,14 +6,5 @@
     "declaration": true,
     "removeComments": false,
     "declarationDir": "lib/types"
-  },
-  "include": [
-    "src/index.ts",
-    "src/components/**/index.ts"
-  ],
-  "exclude": [
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "src/**/*.md"
-  ]
+  }
 }

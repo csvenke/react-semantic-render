@@ -3,7 +3,7 @@
 
   <h1>react-semantics</h1>
 
-  <h4>Semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+  <h4>Blazing fast semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
 <p>
   <a href="https://badge.fury.io/js/react-semantics">
@@ -11,6 +11,9 @@
   </a>
   <a href="https://travis-ci.com/csvenke/react-semantics">
     <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
+  </a>
+  <a href='https://coveralls.io/github/csvenke/react-semantics?branch=master'>
+    <img src='https://coveralls.io/repos/github/csvenke/react-semantics/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href="https://david-dm.org/csvenke/react-semantics">
     <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />

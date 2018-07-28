@@ -6,6 +6,8 @@
 # production
 /lib
 /build
+/coverage
+/false
 
 # workspace
 .vscode

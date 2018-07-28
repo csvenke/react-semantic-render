@@ -3,11 +3,17 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '<rootDir>/lib/',
-    '<rootDir>/build/',
-  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
   setupTestFrameworkScriptFile: '<rootDir>/src/setupTests.ts',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  collectCoverage: true,
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 90,
+      lines: 90,
+      statements: 90,
+    },
+  },
+  collectCoverageFrom: ['src/@(components|utils)/**/*.@(ts|tsx)'],
+  coveragePathIgnorePatterns: ['index.ts'],
 };

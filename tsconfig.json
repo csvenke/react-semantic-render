@@ -15,6 +15,6 @@
     "noUnusedParameters": true
   },
   "include": [
-    "src/**/*"
+    "src"
   ]
 }

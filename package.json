@@ -36,9 +36,11 @@
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/enzyme": "^3.1.12",
     "@types/jest": "^23.3.0",
+    "@types/node": "^10.5.4",
     "@types/prop-types": "^15.5.3",
     "@types/react-dom": "^16.0.6",
     "@types/react": "^16.4.6",
+    "coveralls": "^3.0.2",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme": "^3.3.0",
     "husky": "1.0.0-rc.13",
@@ -57,20 +59,24 @@
     "ts-loader": "^4.4.2",
     "tslint-config-prettier": "^1.14.0",
     "tslint-plugin-prettier": "^1.3.0",
+    "tslint-react": "^3.6.0",
     "tslint": "^5.11.0",
     "typescript": "^2.9.2",
     "webpack": "^4.16.2"
   },
   "scripts": {
-    "build": "npm run clean:build && npm run lint && npm run test && rollup -c",
+    "build": "npm run clean:build && rollup -c",
     "clean:build": "rimraf ./lib && rimraf ./build",
     "docs:server": "styleguidist server",
     "docs": "styleguidist build",
-    "lint:fix": "npm run lint:write --fix \"src/**/*.@(ts|tsx)\"",
+    "lint:fix": "npm run lint:write --fix \"src/**/*.{ts,tsx}\"",
     "lint:write": "tslint -c tslint.json",
-    "lint": "npm run lint:write  \"src/**/*.@(ts|tsx)\"",
+    "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc --write",
-    "prettier": "npm run prettier:write \"src/**/*.@(ts|tsx)\"",
+    "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "test:prod": "npm run lint && npm run test --coverage --no-cache",
+    "test:watch": "jest --watch",
     "test": "jest"
   },
   "husky": {
@@ -81,7 +87,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "{src}/**/*.{ts,tsx}": [
       "prettier -c .prettierrc --write",
       "tslint -c tslint.json --fix",
       "git add"
