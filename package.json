@@ -1,6 +1,6 @@
 {
   "name": "react-semantics",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Blazing fast semantic helper components for working with React.",
   "author": "Christian Svenkerud",
   "repository": {
@@ -44,7 +44,7 @@
     "coveralls": "^3.0.2",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme": "^3.3.0",
-    "husky": "1.0.0-rc.13",
+    "husky": "^1.0.0-rc.13",
     "jest": "^23.4.1",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
