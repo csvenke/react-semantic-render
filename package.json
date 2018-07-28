@@ -1,6 +1,6 @@
 {
   "name": "react-semantics",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Blazing fast semantic helper components for working with React.",
   "author": "Christian Svenkerud",
   "repository": {
@@ -78,6 +78,7 @@
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc --write",
     "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
+    "publish": "npm run build && cd lib && npm publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "test:prod": "npm run lint && npm run test --coverage --no-cache",
     "test:watch": "jest --watch",

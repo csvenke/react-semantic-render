@@ -10,15 +10,27 @@
   "commit": false,
   "contributors": [
     {
+      "login": "csvenke",
+      "name": "Christian Svenkerud",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9643219?v=4",
+      "profile": "https://github.com/csvenke",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "test"
+      ]
+    },
+    {
       "login": "bergelf",
       "name": "Leiv Fredrik Berge",
       "avatar_url": "https://avatars2.githubusercontent.com/u/41568251?v=4",
       "profile": "https://github.com/bergelf",
       "contributions": [
         "code",
-        "test",
         "doc",
-        "ideas"
+        "ideas",
+        "test"
       ]
     }
   ]

@@ -134,8 +134,8 @@ Don't worry about making a mistake, `commitlint` will stop you if you do, and yo
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantics/commits?author=bergelf "Code") [⚠️](https://github.com/csvenke/react-semantics/commits?author=bergelf "Tests") [📖](https://github.com/csvenke/react-semantics/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") |
-| :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/9643219?v=4" width="100px;"/><br /><sub><b>Christian Svenkerud</b></sub>](https://github.com/csvenke)<br />[💻](https://github.com/csvenke/react-semantics/commits?author=csvenke "Code") [📖](https://github.com/csvenke/react-semantics/commits?author=csvenke "Documentation") [🤔](#ideas-csvenke "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantics/commits?author=csvenke "Tests") | [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantics/commits?author=bergelf "Code") [📖](https://github.com/csvenke/react-semantics/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantics/commits?author=bergelf "Tests") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
