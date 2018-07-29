@@ -7,8 +7,11 @@
   <h4>Blazing fast semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
   <p>
-    <a href="https://badge.fury.io/js/react-semantics">
-      <img src="https://badge.fury.io/js/react-semantics.svg" alt="npm package" />
+    <a href="https://www.npmjs.com/package/react-semantics">
+      <img src="https://img.shields.io/npm/v/react-semantics.svg" alt="npm package" />
+    </a>
+    <a href="https://bundlephobia.com/result?p=react-semantics">
+      <img src="https://img.shields.io/bundlephobia/min/react-semantics.svg" alt="bundle size" />
     </a>
     <a href="https://travis-ci.com/csvenke/react-semantics">
       <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
@@ -19,25 +22,28 @@
     <a href="https://david-dm.org/csvenke/react-semantics">
       <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
     </a>
-    <a href="https://david-dm.org/csvenke/react-semantics?type=dev">
-      <img src="https://david-dm.org/csvenke/react-semantics/dev-status.svg" alt="devdependencies status" />
-    </a>
-    <a href="https://greenkeeper.io/">
-      <img src="https://badges.greenkeeper.io/csvenke/react-semantics.svg" alt="greenkeeper" />
-    </a>
   </p>
 
   <p>
+    <a href="#key-features">Key features</a> •
     <a href="#install">Install</a> •
     <a href="#example-usage">Example usage</a> •
     <a href="#why">Why?</a> •
     <a href="#documentation">Documentation</a> •
-    <a href="#development-setup">Development setup</a> •
+    <a href="#development">Development</a> •
     <a href="#contributing">Contributing</a> •
     <a href="#contributors">Contributors</a> •
     <a href="#license">License</a>
   </p>
+
 </div>
+
+## Key features
+
+* __Blazing fast!__
+* __Small bundle size!__
+* __Typescript definition files!__
+* __Above 90% test coverage!__
 
 ## Install
 
@@ -102,7 +108,7 @@ Do you have an idea about a component you think belong here? [Tell us here!](htt
 
 For full list of components and how they are used, go to our [documentation](https://csvenke.github.io/react-semantics/).
 
-## Development setup
+## Development
 
 ```bash
 # Install dependencies
@@ -121,11 +127,12 @@ $ npm run build
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. 
+
 * Add unit tests for any new or changed functionality.
 * All library component props must be documented with jsdoc `/** */`, so that typescript definition files can be generated.
 * All library components must have `prop-types` that matches the component props interface.
 
-### Commit style guide
+#### Commit style guide
 We use [conventional commits style](https://conventionalcommits.org/).
 Read up on it before doing your first commit.
 Don't worry about making a mistake, `commitlint` will stop you if you do, and you can try again.
