@@ -15,7 +15,7 @@ export interface IShowProps {
 }
 
 /**
- * Renders primary content if `when` equals true.
+ * Semantic helper component that return content if `when` equals true.
  */
 const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
   if (when) {

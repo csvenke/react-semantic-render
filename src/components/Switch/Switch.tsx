@@ -15,7 +15,8 @@ export interface ISwitchProps {
 }
 
 /**
- * Returns primary content of first case that matches, returns default if no match and null if no default.
+ * Semantic helper component that returns content of the first case that matches `value`.
+ * It returns default if it exists and null if no default exists.
  */
 class Switch extends React.Component<ISwitchProps> {
   public static propTypes = {

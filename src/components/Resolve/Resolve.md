@@ -1,3 +1,11 @@
+### How to use
+
+```jsx static
+import React from 'react';
+import { Resolve } from 'react-semantics';
+```
+##### Output
+
 ```jsx
 const data = [1,2,3].map(() => faker.fake("{{lorem.sentence}}"));
 
@@ -7,12 +15,12 @@ class Example extends React.Component {
       <>
         <List
           items={data}
-          render={(v,i) => (
+          render={v => (
             <Resolve 
               promise={this._getData(v)}
-              pending={<div key={i}>Fetching data...</div>}
+              pending={<div key={v}>Fetching data...</div>}
               resolved={value => (
-                  <div key={i}>{v}</div>
+                  <div key={v}>{v}</div>
               )}
             />
           )}

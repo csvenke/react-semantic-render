@@ -7,7 +7,7 @@ const app = require('./package.json');
 const typescriptConfig = {
   resolver: docgen.resolver.findAllComponentDefinitions,
   propsParser: docgenTypescript.withDefaultConfig({
-    propFilter: { skipPropsWithoutDoc: true },
+    propFilter: { skipPropsWithoutDoc: true, skipPropsWithName: true },
   }).parse,
 };
 
@@ -21,26 +21,14 @@ module.exports = {
   title: app.name,
   version: app.version,
   exampleMode: 'expand',
+  usageMode: 'expand',
+  pagePerSection: true,
   skipComponentsWithoutExample: true,
+  pagePerSection: true,
   components: getComponents('src/components/**/*.tsx'),
   styleguideDir: 'docs',
   context: {
-    faker: "faker"
-  },
-  template: {
-    head: {
-      links: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Roboto',
-        },
-      ],
-    },
-  },
-  theme: {
-    fontFamily: {
-      base: '"Roboto", sans-serif',
-    },
+    faker: 'faker',
   },
   ...typescriptConfig,
 };

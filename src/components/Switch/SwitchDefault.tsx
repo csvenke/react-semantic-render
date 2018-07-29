@@ -11,6 +11,10 @@ export interface ISwitchDefaultProps {
   children?: React.ReactNode;
 }
 
+/**
+ * Semantic helper component that can be accessed from the `Switch` component.
+ * Only ment to be used inside the children of the `Switch` component.
+ */
 const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
   const value = '__SWITCH_CASE_VALUE_OVERRIDE_USE_THIS_AND_YOU_WILL_BE_FIRED__';
   return (

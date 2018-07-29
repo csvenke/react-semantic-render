@@ -31,7 +31,7 @@ const initialState = {
 type IResolveState = Readonly<typeof initialState>;
 
 /**
- * Returns content based on specified promise.
+ * Semantic helper component that returns content based on the status of the specified promise.
  */
 class Resolve extends React.Component<IResolveProps, IResolveState> {
   public static propTypes = {

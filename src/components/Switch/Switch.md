@@ -1,4 +1,20 @@
 
+### Static methods
+
+These helper components can be accessed from the `Switch` component like this `<Switch.Case />`.
+
+* [Case](#/SwitchCase)
+* [Default](#/SwitchDefault)
+
+### How to use
+
+```jsx static
+import React from 'react';
+import { Switch } from 'react-semantics';
+```
+
+##### Output
+
 ```jsx
 <Switch value={3}>
   <Switch.Case value={1}>
