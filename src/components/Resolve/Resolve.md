@@ -17,10 +17,11 @@ class Example extends React.Component {
           items={data}
           render={v => (
             <Resolve 
+              key={v}
               promise={this._getData(v)}
-              pending={<div key={v}>Fetching data...</div>}
+              pending={<div>Fetching data...</div>}
               resolved={value => (
-                  <div key={v}>{v}</div>
+                  <div>{v}</div>
               )}
             />
           )}
