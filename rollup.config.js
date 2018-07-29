@@ -1,5 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
 import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const externals = [
@@ -7,7 +8,7 @@ const externals = [
   ...(Object.keys(pkg.peerDependencies) || {}),
 ];
 
-const createConfig = ({ output } = {}) => ({
+const createConfig = ({ output, plugins } = {}) => ({
   input: 'src/index.ts',
   output,
   external: externals,
@@ -17,16 +18,17 @@ const createConfig = ({ output } = {}) => ({
       tsconfig: './tsconfig.build.json',
       typescript: require('typescript'),
     }),
-    uglify(),
+    ...plugins,
   ],
 });
 
 export default [
   createConfig({
-    output: {
-      file: 'lib/index.min.js',
-      format: 'cjs',
-      exports: 'named',
-    },
+    output: { file: 'lib/index.js', format: 'cjs' },
+    plugins: [uglify()],
+  }),
+  createConfig({
+    output: { file: 'lib/index.es.js', format: 'es' },
+    plugins: [terser()],
   }),
 ];
