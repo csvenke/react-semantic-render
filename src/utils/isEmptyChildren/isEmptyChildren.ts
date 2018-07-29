@@ -1,3 +1,5 @@
 import * as React from 'react';
 
-export const isEmptyChildren = children => React.Children.count(children) === 0;
+const isEmptyChildren = (children: any) => React.Children.count(children) === 0;
+
+export default isEmptyChildren;

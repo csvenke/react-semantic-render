@@ -1,34 +1,33 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { isPromise } from '../../utils';
 
 export interface IResolveProps {
   /** The promise. */
-  promise?: Promise<any>;
+  promise: Promise<any>;
 
   /** Returns content when promise is resolved. */
-  resolved?: (value) => React.ReactNode;
+  resolved?: (value: any) => React.ReactNode;
 
   /** Returns content while promise is being handled. */
   pending?: React.ReactNode;
 
   /** Returns content when promise is rejected. */
-  rejected?: (error) => React.ReactNode;
+  rejected?: (error: any) => React.ReactNode;
 }
 
-const statusTypes = {
+export const statusTypes = {
   none: 'none',
   pending: 'pending',
   rejected: 'rejected',
   resolved: 'resolved',
 };
 
-const initialState = {
+export const initialState = {
   status: statusTypes.none,
   value: '',
 };
 
-type IResolveState = Readonly<typeof initialState>;
+export type IResolveState = Readonly<typeof initialState>;
 
 /**
  * Semantic helper component that returns content based on the status of the specified promise.
@@ -36,7 +35,7 @@ type IResolveState = Readonly<typeof initialState>;
 class Resolve extends React.Component<IResolveProps, IResolveState> {
   public static propTypes = {
     pending: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-    promise: isPromise,
+    promise: PropTypes.instanceOf(Promise).isRequired,
     rejected: PropTypes.func,
     resolved: PropTypes.func,
   };
@@ -52,7 +51,7 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
     this.handlePromise(this.props.promise);
   }
 
-  public componentDidUpdate(prevProps) {
+  public componentDidUpdate(prevProps: IResolveProps) {
     if (this.props.promise !== prevProps.promise) {
       this.setState({
         status: statusTypes.none,
@@ -95,7 +94,7 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
   }
 
   // Promise resolver function
-  private handlePromise(promise) {
+  private handlePromise(promise: Promise<any>) {
     // Store the current promise to fast exit if promise is change during handling
     const currentPromise = promise;
     this.setState({

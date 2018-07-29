@@ -7,12 +7,12 @@
     "type": "git",
     "url": "https://github.com/csvenke/react-semantics.git"
   },
-  "main": "index.js",
-  "module": "index.es.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
   "types": "types/index.d.ts",
   "files": [
-    "index.js",
-    "index.es.js",
+    "index.cjs.js",
+    "index.esm.js",
     "types/index.d.ts",
     "types/components"
   ],
@@ -22,7 +22,9 @@
     "react",
     "react-components",
     "react-utils",
-    "react-library"
+    "react-library",
+    "react-component-library",
+    "semantic"
   ],
   "dependencies": {
     "prop-types": "^15.6.2"
@@ -78,7 +80,7 @@
     "docs:server": "styleguidist server",
     "docs": "styleguidist build",
     "lint:fix": "npm run lint:write --fix \"src/**/*.{ts,tsx}\"",
-    "lint:write": "tslint -c tslint.json",
+    "lint:write": "tslint -p tsconfig.build.json -c tslint.json",
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc --write",
     "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
@@ -86,7 +88,8 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "test:prod": "npm run lint && npm run test --coverage --no-cache",
     "test:watch": "jest --watch",
-    "test": "jest"
+    "test": "jest",
+    "tslint:check": "tslint-config-prettier-check ./tslint.json"
   },
   "husky": {
     "hooks": {

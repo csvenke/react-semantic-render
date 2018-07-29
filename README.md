@@ -25,7 +25,6 @@
   </p>
 
   <p>
-    <a href="#key-features">Key features</a> •
     <a href="#install">Install</a> •
     <a href="#example-usage">Example usage</a> •
     <a href="#why">Why?</a> •
@@ -37,13 +36,6 @@
   </p>
 
 </div>
-
-## Key features
-
-* __Blazing fast!__
-* __Small bundle size!__
-* __Typescript definition files!__
-* __Above 90% test coverage!__
 
 ## Install
 

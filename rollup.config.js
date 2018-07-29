@@ -3,15 +3,10 @@ import { uglify } from 'rollup-plugin-uglify';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
-const externals = [
-  ...(Object.keys(pkg.dependencies) || {}),
-  ...(Object.keys(pkg.peerDependencies) || {}),
-];
-
 const createConfig = ({ output, plugins } = {}) => ({
   input: 'src/index.ts',
   output,
-  external: externals,
+  external: ['react', 'prop-types'],
   plugins: [
     typescript({
       useTsconfigDeclarationDir: true,
@@ -24,11 +19,11 @@ const createConfig = ({ output, plugins } = {}) => ({
 
 export default [
   createConfig({
-    output: { file: 'lib/index.js', format: 'cjs' },
+    output: { file: `lib/${pkg.main}`, format: 'cjs' },
     plugins: [uglify()],
   }),
   createConfig({
-    output: { file: 'lib/index.es.js', format: 'es' },
+    output: { file: `lib/${pkg.module}`, format: 'es' },
     plugins: [terser()],
   }),
 ];

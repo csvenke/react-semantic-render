@@ -1,2 +1,1 @@
-export * from './isEmptyChildren/isEmptyChildren';
-export * from './isPromise/isPromise';
+export { default as isEmptyChildren } from './isEmptyChildren/isEmptyChildren';

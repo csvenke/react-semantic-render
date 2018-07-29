@@ -1,17 +1,10 @@
 {
   "rulesDirectory": ["tslint-plugin-prettier"],
   "extends": [
-    "tslint:latest", 
+    "tslint:recommended", 
     "tslint-react",
     "tslint-config-prettier"
   ],
-  "linterOptions": {
-    "exclude": [
-      "node_modules",
-      "src/**/*.test.{ts,tsx}",
-      "src/setupTests.ts"
-    ]
-  },
   "rules": {
     "prettier": true
   }

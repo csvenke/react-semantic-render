@@ -4,8 +4,7 @@ import * as React from 'react';
 import SwitchCase, { ISwitchCaseProps } from './SwitchCase';
 import SwitchDefault, { ISwitchDefaultProps } from './SwitchDefault';
 
-type SwitchChildProps = ISwitchCaseProps & ISwitchDefaultProps;
-
+export { ISwitchDefaultProps, ISwitchCaseProps };
 export interface ISwitchProps {
   /** Conditional statement. */
   value: any;
@@ -30,23 +29,20 @@ class Switch extends React.Component<ISwitchProps> {
 
   public render() {
     const switchValue = this.props.value;
-    let match;
-    let child;
+    let match: boolean | undefined;
+    let child: any;
 
-    React.Children.forEach(
-      this.props.children,
-      (element: React.ReactElement<SwitchChildProps>) => {
-        if (
-          match === undefined &&
-          React.isValidElement(element) &&
-          this.isValidChild(element)
-        ) {
-          const caseValue = element.props.value;
-          child = element;
-          match = caseValue === switchValue || undefined;
-        }
-      },
-    );
+    React.Children.forEach(this.props.children, element => {
+      if (
+        match === undefined &&
+        React.isValidElement(element) &&
+        this.isValidChild(element)
+      ) {
+        const caseValue = this.getElementValue(element);
+        child = element;
+        match = caseValue === switchValue || undefined;
+      }
+    });
 
     // No match found, return default if it exists.
     if (!match && this.isSwitchDefault(child)) {
@@ -57,15 +53,22 @@ class Switch extends React.Component<ISwitchProps> {
     return match ? React.cloneElement(child) : null;
   }
 
-  private isValidChild = child => {
+  private getElementValue = (element: any) => {
+    if (element && element.props) {
+      return element.props.value;
+    }
+    return undefined;
+  };
+
+  private isValidChild = (child: any) => {
     return this.isSwitchCase(child) || this.isSwitchDefault(child);
   };
 
-  private isSwitchCase = child => {
+  private isSwitchCase = (child: any) => {
     return child.type.prototype === SwitchCase.prototype;
   };
 
-  private isSwitchDefault = child => {
+  private isSwitchDefault = (child: any) => {
     return child.type.prototype === SwitchDefault.prototype;
   };
 }
