@@ -99,7 +99,7 @@
     }
   },
   "lint-staged": {
-    "{src}/**/*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "prettier -c .prettierrc --write",
       "tslint -c tslint.json --fix",
       "git add"
