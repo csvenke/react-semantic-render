@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export type ListItemCallbackFn = (
+type ListItemCallbackFn = (
   value?: any,
   index?: number,
   array?: any[],
@@ -24,7 +24,7 @@ export interface IListProps {
 const List: React.SFC<IListProps> = ({ items, render, children }) => {
   const func = children ? children : render;
 
-  if (!func) {
+  if (typeof func !== 'function') {
     return null;
   }
 

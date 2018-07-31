@@ -14,6 +14,5 @@ module.exports = {
       statements: 90,
     },
   },
-  collectCoverageFrom: ['src/@(components|utils)/**/*.@(ts|tsx)'],
-  coveragePathIgnorePatterns: ['index.ts'],
+  collectCoverageFrom: ['src/@(components|utils)/**/*.@(ts|tsx)']
 };

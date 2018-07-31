@@ -54,10 +54,7 @@ class Switch extends React.Component<ISwitchProps> {
   }
 
   private getElementValue = (element: any) => {
-    if (element && element.props) {
-      return element.props.value;
-    }
-    return undefined;
+    return element.props.value;
   };
 
   private isValidChild = (child: any) => {

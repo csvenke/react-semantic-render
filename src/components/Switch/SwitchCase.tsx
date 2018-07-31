@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { isEmptyChildren } from '../../utils';
+import { getChildrenOrRender } from '../../utils/';
 
 export interface ISwitchCaseProps {
   /** Conditional statement. */
@@ -17,18 +17,9 @@ export interface ISwitchCaseProps {
 /**
  * Semantic helper component that can be accessed from the `Switch` component.
  */
+// @ts-ignore `value` prop is used by parent component Switch.
 const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) => {
-  if (value !== undefined) {
-    if (children && !isEmptyChildren(children)) {
-      return React.Children.only(children);
-    }
-
-    if (render) {
-      return <React.Fragment>{render()}</React.Fragment>;
-    }
-  }
-
-  return null;
+  return getChildrenOrRender(children, render);
 };
 
 SwitchCase.propTypes = {
