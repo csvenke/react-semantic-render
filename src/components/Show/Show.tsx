@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { isEmptyChildren } from '../../utils';
+import { getChildrenOrRender } from '../../utils';
 
 export interface IShowProps {
   /** Conditional statement.  */
@@ -18,17 +18,7 @@ export interface IShowProps {
  * Semantic helper component that return content if `when` equals true.
  */
 const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
-  if (when) {
-    if (children && !isEmptyChildren(children)) {
-      return React.Children.only(children);
-    }
-
-    if (render) {
-      return <React.Fragment>{render()}</React.Fragment>;
-    }
-  }
-
-  return null;
+  return when ? getChildrenOrRender(children, render) : null;
 };
 
 Show.propTypes = {
