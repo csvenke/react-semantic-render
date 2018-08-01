@@ -2,32 +2,32 @@
 
   <img src='./media/logo.png' width="20%" alt='logo' />
 
-  <h1>react-semantics</h1>
+  <h1>react-semantic-render</h1>
 
-  <h4>Blazing fast semantic helper components for working with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+  <h4>Blazing fast semantic helper components for rendering content with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
   <p>
-    <a href="https://www.npmjs.com/package/react-semantics">
-      <img src="https://img.shields.io/npm/v/react-semantics.svg" alt="npm package" />
+    <a href="https://www.npmjs.com/package/react-semantic-render">
+      <img src="https://img.shields.io/npm/v/react-semantic-render.svg" alt="npm package" />
     </a>
-    <a href="https://bundlephobia.com/result?p=react-semantics">
-      <img src="https://img.shields.io/bundlephobia/min/react-semantics.svg" alt="bundle size" />
+    <a href="https://bundlephobia.com/result?p=react-semantic-render">
+      <img src="https://img.shields.io/bundlephobia/min/react-semantic-render.svg" alt="bundle size" />
     </a>
-    <a href="https://travis-ci.com/csvenke/react-semantics">
-      <img src="https://travis-ci.com/csvenke/react-semantics.svg?branch=master" alt="build status" />
+    <a href="https://travis-ci.com/csvenke/react-semantic-render">
+      <img src="https://travis-ci.com/csvenke/react-semantic-render.svg?branch=master" alt="build status" />
     </a>
-    <a href='https://coveralls.io/github/csvenke/react-semantics?branch=master'>
-      <img src='https://coveralls.io/repos/github/csvenke/react-semantics/badge.svg?branch=master' alt='Coverage Status' />
+    <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
+      <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master' alt='coverage status' />
     </a>
-    <a href="https://david-dm.org/csvenke/react-semantics">
-      <img src="https://david-dm.org/csvenke/react-semantics.svg" alt="dependencies status" />
+    <a href="https://david-dm.org/csvenke/react-semantic-render">
+      <img src="https://david-dm.org/csvenke/react-semantic-render.svg" alt="dependencies status" />
     </a>
   </p>
 
   <p>
+    <a href="#key-features">Key features</a> •
     <a href="#install">Install</a> •
-    <a href="#example-usage">Example usage</a> •
-    <a href="#why">Why?</a> •
+    <a href="#why">Why</a> •
     <a href="#documentation">Documentation</a> •
     <a href="#development">Development</a> •
     <a href="#contributing">Contributing</a> •
@@ -37,16 +37,37 @@
 
 </div>
 
+## Key features
+* __Growing list of semantic helper components__ 
+  * __[List](https://csvenke.github.io/react-semantics/#/List)__ - Render content from an array of data.
+  * __[Resolve](https://csvenke.github.io/react-semantics/#/Resolve)__ - Render content asynchronously.
+  * __[Show](https://csvenke.github.io/react-semantics/#/Show)__ - Render content when a condition is true.
+  * __[Switch](https://csvenke.github.io/react-semantics/#/Switch)__ - Render content from case that matches specified expression.
+    * __[Switch.Case](https://csvenke.github.io/react-semantics/#/SwitchCase)__
+    * __[Switch.Default](https://csvenke.github.io/react-semantics/#/SwitchDefault)__
+* __Small bundle size__
+* __Blazing fast__
+* __TypeScript type definitions__
+* __Above 90% test coverage__
+
 ## Install
 
+Using npm:
+
 ```bash
-$ npm install react-semantics
+$ npm install --save react-semantic-render
 ```
 
-## Example usage
+Using yarn:
+
+```bash
+$ yarn add react-semantic-render
+```
+
+### Example usage
 
 ```jsx
-import { Show, List } from 'react-semantics';
+import { Show, List } from 'react-semantic-render';
 
 const Menu = ({ showMenuItems }) => (
   <nav>
@@ -67,10 +88,10 @@ const Menu = ({ showMenuItems }) => (
 );
 ```
 
-## Why?
+## Why
 
-In the example above you see two very common use cases where you have to show something when a condition is true and map content from an array of data.
-This is normally solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
+In the example above you see two very common use cases where you have to render something when a condition is true and render content from an array of data.
+This is usually solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
 Below you can see how it would look like with inline arrow functions.
 
