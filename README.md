@@ -39,12 +39,12 @@
 
 ## Key features
 * __Growing list of semantic helper components__ 
-  * __[List](https://csvenke.github.io/react-semantics/#/List)__ - Render content from an array of data.
-  * __[Resolve](https://csvenke.github.io/react-semantics/#/Resolve)__ - Render content asynchronously.
-  * __[Show](https://csvenke.github.io/react-semantics/#/Show)__ - Render content when a condition is true.
-  * __[Switch](https://csvenke.github.io/react-semantics/#/Switch)__ - Render content from case that matches specified expression.
-    * __[Switch.Case](https://csvenke.github.io/react-semantics/#/SwitchCase)__
-    * __[Switch.Default](https://csvenke.github.io/react-semantics/#/SwitchDefault)__
+  * __[List](https://csvenke.github.io/react-semantic-render/#/List)__ - Render content from an array of data.
+  * __[Resolve](https://csvenke.github.io/react-semantic-render/#/Resolve)__ - Render content asynchronously.
+  * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__ - Render content when a condition is true.
+  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__ - Render content from case that matches specified expression.
+    * __[Switch.Case](https://csvenke.github.io/react-semantic-render/#/SwitchCase)__
+    * __[Switch.Default](https://csvenke.github.io/react-semantic-render/#/SwitchDefault)__
 * __Small bundle size__
 * __Blazing fast__
 * __TypeScript type definitions__
@@ -115,11 +115,11 @@ const Menu = ({ showMenuItems }) => (
 
 The purpose of this library is to develop and maintain semantic helper components that removes the need for inline arrow functions in react components.
 
-Do you have an idea about a component you think belong here? [Tell us here!](https://github.com/csvenke/react-semantics/issues/new)
+Do you have an idea about a component you think belong here? [Tell us here!](https://github.com/csvenke/react-semantic-render/issues/new)
 
 ## Documentation
 
-For full list of components and how they are used, go to our [documentation](https://csvenke.github.io/react-semantics/).
+For full list of components and how they are used, go to our [documentation](https://csvenke.github.io/react-semantic-render/).
 
 ## Development
 
@@ -160,4 +160,4 @@ Don't worry about making a mistake, `commitlint` will stop you if you do, and yo
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE](https://github.com/csvenke/react-semantics/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see [LICENSE](https://github.com/csvenke/react-semantic-render/blob/master/LICENSE) file for details.

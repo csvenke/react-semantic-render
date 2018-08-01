@@ -23,7 +23,7 @@ export default [
     plugins: [uglify()],
   }),
   createConfig({
-    output: { file: `lib/${pkg.module}`, format: 'es' },
+    output: { file: `lib/${pkg.module}`, format: 'esm' },
     plugins: [terser()],
   }),
 ];
