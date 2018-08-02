@@ -2,7 +2,7 @@
 
 ```jsx static
 import React from 'react';
-import { Resolve } from 'react-semantics';
+import { Resolve } from 'react-semantic-render';
 ```
 ##### Output
 

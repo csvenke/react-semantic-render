@@ -3,7 +3,7 @@
 
 ```jsx static
 import React from 'react';
-import { Switch } from 'react-semantics';
+import { Switch } from 'react-semantic-render';
 ```
 
 ##### Output

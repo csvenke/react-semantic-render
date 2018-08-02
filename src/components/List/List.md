@@ -2,7 +2,7 @@
 
 ```jsx static
 import React from 'react';
-import { List } from 'react-semantics';
+import { List } from 'react-semantic-render';
 ```
 
 #### With render prop

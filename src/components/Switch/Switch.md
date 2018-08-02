@@ -10,7 +10,7 @@ These helper components can be accessed from the `Switch` component like this `<
 
 ```jsx static
 import React from 'react';
-import { Switch } from 'react-semantics';
+import { Switch } from 'react-semantic-render';
 ```
 
 ##### Output
