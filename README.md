@@ -38,6 +38,9 @@
 </div>
 
 ## Key features
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/csvenke/react-semantic-render.svg)](https://greenkeeper.io/)
+
 * __Growing list of semantic helper components__ 
   * __[List](https://csvenke.github.io/react-semantic-render/#/List)__ - Render content from an array of data.
   * __[Resolve](https://csvenke.github.io/react-semantic-render/#/Resolve)__ - Render content asynchronously.
