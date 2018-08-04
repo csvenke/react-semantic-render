@@ -19,8 +19,8 @@
     <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
       <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master' alt='coverage status' />
     </a>
-    <a href="https://david-dm.org/csvenke/react-semantic-render">
-      <img src="https://david-dm.org/csvenke/react-semantic-render.svg" alt="dependencies status" />
+    <a href="https://greenkeeper.io/">
+      <img src="https://badges.greenkeeper.io/csvenke/react-semantic-render.svg" alt="greenkeeper" />
     </a>
   </p>
 
@@ -38,6 +38,7 @@
 </div>
 
 ## Key features
+
 * __Growing list of semantic helper components__ 
   * __[List](https://csvenke.github.io/react-semantic-render/#/List)__ - Render content from an array of data.
   * __[Resolve](https://csvenke.github.io/react-semantic-render/#/Resolve)__ - Render content asynchronously.
