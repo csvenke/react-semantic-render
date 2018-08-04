@@ -1,7 +1,7 @@
 
 ### Static methods
 
-These helper components can be accessed from the `Switch` component like this `<Switch.Case />`.
+These helper components can be accessed from the `Switch` component like this `<Switch.Case />` and `<Switch.Default />`.
 
 * [Case](#/SwitchCase)
 * [Default](#/SwitchDefault)

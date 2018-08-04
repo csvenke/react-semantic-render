@@ -2,9 +2,8 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import SwitchCase, { ISwitchCaseProps } from './SwitchCase';
-import SwitchDefault, { ISwitchDefaultProps } from './SwitchDefault';
+import SwitchDefault from './SwitchDefault';
 
-export { ISwitchDefaultProps, ISwitchCaseProps };
 export interface ISwitchProps {
   /** Conditional statement. */
   value: any;
@@ -13,61 +12,56 @@ export interface ISwitchProps {
   children: React.ReactNode;
 }
 
+type SwitchElement = React.ReactElement<ISwitchCaseProps>;
+
+type SwitchComponent = React.SFC<ISwitchProps> & {
+  Case?: typeof SwitchCase;
+  Default?: typeof SwitchDefault;
+};
+
+const isSwitchChild = (child: any, element: any) => {
+  return child.type.prototype === element.prototype;
+};
+
+const isValidSwitchChild = (child: any): child is SwitchElement => {
+  return (
+    React.isValidElement(child) &&
+    (isSwitchChild(child, SwitchCase) || isSwitchChild(child, SwitchDefault))
+  );
+};
+
 /**
- * Semantic helper component that returns content of the first case that matches `value`.
- * It returns default if it exists and null if no default exists.
+ * Renders content from first `Switch.Case` that matches `value`.
  */
-class Switch extends React.Component<ISwitchProps> {
-  public static propTypes = {
-    children: PropTypes.node.isRequired,
-    value: PropTypes.any.isRequired,
-  };
+const Switch: SwitchComponent = ({ value, children }) => {
+  const switchValue = value;
+  let match = false;
+  let child: any;
 
-  public static Case = SwitchCase;
-
-  public static Default = SwitchDefault;
-
-  public render() {
-    const switchValue = this.props.value;
-    let match: boolean | undefined;
-    let child: any;
-
-    React.Children.forEach(this.props.children, element => {
-      if (
-        match === undefined &&
-        React.isValidElement(element) &&
-        this.isValidChild(element)
-      ) {
-        const caseValue = this.getElementValue(element);
-        child = element;
-        match = caseValue === switchValue || undefined;
-      }
-    });
-
-    // No match found, return default if it exists.
-    if (!match && this.isSwitchDefault(child)) {
-      return React.cloneElement(child);
+  React.Children.forEach(children, (element: any) => {
+    if (match === false && isValidSwitchChild(element)) {
+      const caseValue = element.props.value;
+      child = element;
+      match = caseValue === switchValue;
     }
+  });
 
-    // Return case if its a match.
-    return match ? React.cloneElement(child) : null;
+  // No match found, return default if it exists.
+  if (!match && isSwitchChild(child, SwitchDefault)) {
+    return React.cloneElement(child);
   }
 
-  private getElementValue = (element: any) => {
-    return element.props.value;
-  };
+  // Return case if its a match.
+  return match ? React.cloneElement(child) : null;
+};
 
-  private isValidChild = (child: any) => {
-    return this.isSwitchCase(child) || this.isSwitchDefault(child);
-  };
+Switch.Case = SwitchCase;
 
-  private isSwitchCase = (child: any) => {
-    return child.type.prototype === SwitchCase.prototype;
-  };
+Switch.Default = SwitchDefault;
 
-  private isSwitchDefault = (child: any) => {
-    return child.type.prototype === SwitchDefault.prototype;
-  };
-}
+Switch.propTypes = {
+  children: PropTypes.node.isRequired,
+  value: PropTypes.any.isRequired,
+};
 
 export default Switch;

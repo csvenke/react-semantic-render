@@ -1,8 +1,14 @@
 {
   "name": "react-semantic-render",
   "version": "0.6.1",
-  "description": "Blazing fast semantic helper components for rendering content with React.",
+  "description": "Semantic helper components for rendering content with React.",
   "author": "Christian Svenkerud",
+  "contributors": [
+    {
+      "name": "bergelf",
+      "url": "https://github.com/bergelf"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/csvenke/react-semantic-render.git"
@@ -10,12 +16,6 @@
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "types/index.d.ts",
-  "files": [
-    "index.cjs.js",
-    "index.esm.js",
-    "types/index.d.ts",
-    "types/components"
-  ],
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -30,10 +30,10 @@
     "semantic"
   ],
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "tslib": "^1.9.3"
   },
   "peerDependencies": {
-    "react-dom": "^16.4.1",
     "react": "^16.4.1"
   },
   "devDependencies": {
@@ -61,6 +61,8 @@
     "react-styleguidist": "^7.1.0",
     "react": "^16.4.1",
     "rimraf": "^2.6.2",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-terser": "^1.0.1",
     "rollup-plugin-typescript2": "^0.16.1",
     "rollup-plugin-uglify": "^4.0.0",

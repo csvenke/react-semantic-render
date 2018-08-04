@@ -1,34 +1,28 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-type ListItemCallbackFn = (
-  value?: any,
-  index?: number,
-  array?: any[],
-) => React.ReactNode;
-
 export interface IListProps {
   /** Array to map. */
   items: any[];
 
   /** Shorthand for primary content. */
-  render?: ListItemCallbackFn;
+  render?: (item?: any, index?: number, array?: any[]) => React.ReactNode;
 
   /** Primary content. */
   children?: any;
 }
 
 /**
- * Semantic helper component that calls the specified callback function in either `render` or `children` on each element of `items`.
+ * Renders content from specified callback function from either `render` or `children` on each element of `items`.
  */
 const List: React.SFC<IListProps> = ({ items, render, children }) => {
-  const func = children ? children : render;
+  const itemRender = children ? children : render;
 
-  if (typeof func !== 'function') {
+  if (!itemRender) {
     return null;
   }
 
-  return <React.Fragment>{items.map((a, b, c) => func(a, b, c))}</React.Fragment>;
+  return <React.Fragment>{items.map(itemRender)}</React.Fragment>;
 };
 
 List.propTypes = {

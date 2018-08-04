@@ -1,62 +1,66 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export interface IResolveProps {
-  /** The promise. */
-  promise: Promise<any>;
-
-  /** Returns content when promise is resolved. */
-  resolved?: (value: any) => React.ReactNode;
-
-  /** Returns content while promise is being handled. */
-  pending?: React.ReactNode;
-
-  /** Returns content when promise is rejected. */
-  rejected?: (error: any) => React.ReactNode;
-}
-
-export const statusTypes = {
+const statusTypes = {
   none: 'none',
   pending: 'pending',
   rejected: 'rejected',
   resolved: 'resolved',
 };
 
-export const initialState = {
+const initialState = {
   status: statusTypes.none,
   value: '',
 };
 
-export type IResolveState = Readonly<typeof initialState>;
+export interface IShowAsyncProps {
+  /** The promise. */
+  when: Promise<any>;
+
+  /** Render content when promise is pending. */
+  pending?: () => React.ReactNode;
+
+  /** Render content when promise is rejected. */
+  rejected?: (error?: any) => React.ReactNode;
+
+  /** Shorthand for primary content. */
+  render?: (value?: any) => React.ReactNode;
+
+  /** Primary content. Renders content when promise is resolved. */
+  children?: any;
+}
+
+export type IShowAsyncState = Readonly<typeof initialState>;
 
 /**
- * Semantic helper component that returns content based on the status of the specified promise.
+ * Renders content when status of specified promise is pending, resolved or rejected.
  */
-class Resolve extends React.Component<IResolveProps, IResolveState> {
+class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState> {
   public static propTypes = {
-    pending: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-    promise: PropTypes.instanceOf(Promise).isRequired,
+    children: PropTypes.func,
+    pending: PropTypes.func,
     rejected: PropTypes.func,
-    resolved: PropTypes.func,
+    render: PropTypes.func,
+    when: PropTypes.instanceOf(Promise).isRequired,
   };
 
   // Initialize state
-  public readonly state: IResolveState = initialState;
+  public readonly state: IShowAsyncState = initialState;
 
   // Create escape hatch to stop handling of promise if unmounted
   public unmounted = false;
 
   public componentDidMount() {
     // Start handling the promise, must happen after mount as setState is called when promise is handled
-    this.handlePromise(this.props.promise);
+    this.handlePromise(this.props.when);
   }
 
-  public componentDidUpdate(prevProps: IResolveProps) {
-    if (this.props.promise !== prevProps.promise) {
+  public componentDidUpdate(prevProps: IShowAsyncProps) {
+    if (this.props.when !== prevProps.when) {
       this.setState({
         status: statusTypes.none,
       });
-      this.handlePromise(this.props.promise);
+      this.handlePromise(this.props.when);
     }
   }
 
@@ -65,20 +69,21 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
   }
 
   public render() {
-    const { pending, resolved, rejected } = this.props;
+    const { pending, render, rejected, children } = this.props;
     const { status, value } = this.state;
 
     switch (status) {
-      case statusTypes.none:
-        break;
       case statusTypes.pending:
         if (pending) {
-          return pending;
+          return pending();
         }
         break;
       case statusTypes.resolved:
-        if (resolved) {
-          return resolved(value);
+        if (children && typeof children === 'function') {
+          return children(value);
+        }
+        if (render) {
+          return render(value);
         }
         break;
       case statusTypes.rejected:
@@ -128,4 +133,4 @@ class Resolve extends React.Component<IResolveProps, IResolveState> {
   }
 }
 
-export default Resolve;
+export default ShowAsync;
