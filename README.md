@@ -39,12 +39,10 @@
 
 ## Key features
 * __Growing list of semantic helper components__ 
-  * __[List](https://csvenke.github.io/react-semantic-render/#/List)__ - Renders content from an array of data.
-  * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__ - Renders content when specified condition is true.
-  * __[ShowAsync](https://csvenke.github.io/react-semantic-render/#/Resolve)__ - Renders content when specified promise is pending, resolved or rejected.
-  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__ - Renders content from case that matches specified expression.
-    * __[Switch.Case](https://csvenke.github.io/react-semantic-render/#/SwitchCase)__
-    * __[Switch.Default](https://csvenke.github.io/react-semantic-render/#/SwitchDefault)__
+  * __[List](https://csvenke.github.io/react-semantic-render/#/List)__: Renders content from an array of data.
+  * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__: Renders content when specified condition is true.
+  * __[ShowAsync](https://csvenke.github.io/react-semantic-render/#/ShowAsync)__: Renders content when specified promise is pending, resolved and rejected.
+  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__: Renders content from first __[Switch.Case](https://csvenke.github.io/react-semantic-render/#/SwitchCase)__ that matches, else __[Switch.Default](https://csvenke.github.io/react-semantic-render/#/SwitchDefault)__ if it exists.
 * __Small bundle size__
 * __Blazing fast__
 * __TypeScript type definitions__
@@ -86,7 +84,7 @@ import { Show, List } from 'react-semantic-render';
 In the example above you see two very common use cases where you have to render something when a condition is true and render content from an array of data.
 This is usually solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
-Below you can see how it would look like with inline arrow functions.
+Below you can see how it would look with inline arrow functions.
 
 ```jsx
 <div>
@@ -96,8 +94,7 @@ Below you can see how it would look like with inline arrow functions.
 </div>
 ```
 
-
-The purpose of this library is to develop and maintain semantic helper components that removes the need for inline arrow functions in react components.
+The purpose of this library is to provide helpful semantic render components that makes the `React.Component` render method easier to read and follow.
 
 Do you have an idea about a component you think belong here? [Tell us here!](https://github.com/csvenke/react-semantic-render/issues/new)
 
@@ -130,7 +127,6 @@ $ npm run docs
 $ npm run docs:server
 ```
 
-
 ##### Build project
 ```
 $ npm run build
@@ -141,7 +137,7 @@ $ npm run build
 In lieu of a formal styleguide, take care to maintain the existing coding style. 
 
 * Add unit tests for any new or changed functionality.
-* All library component props must be documented with jsdoc `/** */`, so that typescript definition files can be generated.
+* All library components exposed to the user must be documented with jsdoc `/** */`.
 * All library components must have `prop-types` that matches the component props interface.
 
 #### Commit style guide
@@ -159,4 +155,4 @@ Don't worry about making a mistake, `commitlint` will stop you if you do, and yo
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE](https://github.com/csvenke/react-semantic-render/blob/master/LICENSE) file for details.
+[MIT](https://github.com/csvenke/react-semantic-render/blob/master/LICENSE)
