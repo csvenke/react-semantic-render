@@ -12,7 +12,7 @@ export interface ISwitchCaseProps extends ICoreProps {
  * Helper component that is accessed from `Switch` component.
  */
 // @ts-ignore `value` prop is used by parent component Switch.
-const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) => {
+export const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) => {
   return getChildrenOrRender(children, render);
 };
 

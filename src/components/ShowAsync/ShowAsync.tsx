@@ -35,7 +35,7 @@ export type IShowAsyncState = Readonly<typeof initialState>;
 /**
  * Renders content when status of specified promise is pending, resolved or rejected.
  */
-class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState> {
+export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState> {
   public static propTypes = {
     children: PropTypes.func,
     pending: PropTypes.func,

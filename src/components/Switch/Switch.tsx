@@ -33,7 +33,7 @@ const isValidSwitchChild = (child: any): child is SwitchElement => {
 /**
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
  */
-const Switch: SwitchComponent = ({ value, children }) => {
+export const Switch: SwitchComponent = ({ value, children }) => {
   const switchValue = value;
   let match = false;
   let child: any;

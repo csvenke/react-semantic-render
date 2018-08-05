@@ -11,7 +11,7 @@ export interface IShowProps extends ICoreProps {
 /**
  * Renders content if `when` equals true.
  */
-const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
+export const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
   return when ? getChildrenOrRender(children, render) : null;
 };
 

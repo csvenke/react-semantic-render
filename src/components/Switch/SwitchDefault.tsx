@@ -9,7 +9,7 @@ import {
 /**
  * Helper component that is accessed from `Switch` component.
  */
-const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
+export const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
   return getChildrenOrRender(children, render);
 };
 
