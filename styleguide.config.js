@@ -21,7 +21,6 @@ module.exports = {
   title: app.name,
   version: app.version,
   exampleMode: 'expand',
-  usageMode: 'expand',
   pagePerSection: true,
   skipComponentsWithoutExample: true,
   pagePerSection: true,
