@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { getChildrenOrRender } from './getChildrenOrRender';
+import { getChildrenOrRender } from './';
 
 describe('with children node and render function', () => {
   const children = <div>result</div>;

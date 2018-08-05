@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { isEmptyChildren } from '../isEmptyChildren/isEmptyChildren';
+import { isEmptyChildren } from '../isEmptyChildren';
 
 export const getChildrenOrRender = (children?: any, render?: () => React.ReactNode) => {
   if (typeof children === 'function') {

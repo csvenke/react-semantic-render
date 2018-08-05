@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import List from './List';
+import List from './';
 
 describe('with render', () => {
   const input = [1, 2, 3];

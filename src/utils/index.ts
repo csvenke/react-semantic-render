@@ -1,4 +1,3 @@
-export * from './isEmptyChildren/isEmptyChildren';
-export * from './getChildrenOrRender/getChildrenOrRender';
-
+export * from './isEmptyChildren';
+export * from './getChildrenOrRender';
 export * from './types';

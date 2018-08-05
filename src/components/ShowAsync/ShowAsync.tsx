@@ -74,10 +74,8 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
 
     switch (status) {
       case statusTypes.pending:
-        if (pending) {
-          return pending();
-        }
-        break;
+        return pending ? pending() : null;
+
       case statusTypes.resolved:
         if (children && typeof children === 'function') {
           return children(value);
@@ -85,17 +83,13 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
         if (render) {
           return render(value);
         }
-        break;
-      case statusTypes.rejected:
-        if (rejected) {
-          return rejected(value);
-        }
-        break;
-      default:
-        break;
-    }
+        return null;
 
-    return null;
+      case statusTypes.rejected:
+        return rejected ? rejected(value) : null;
+      default:
+        return null;
+    }
   }
 
   // Promise resolver function
