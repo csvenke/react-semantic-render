@@ -1,11 +1,11 @@
-import { List, Resolve, Show, Switch } from './index';
+import { List, ShowAsync, Show, Switch } from './index';
 
 test('List', () => {
   expect(List).toBeDefined();
 });
 
-test('Resolve', () => {
-  expect(Resolve).toBeDefined();
+test('ShowAsync', () => {
+  expect(ShowAsync).toBeDefined();
 });
 
 test('Show', () => {

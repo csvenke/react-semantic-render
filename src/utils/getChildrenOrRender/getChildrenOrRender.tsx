@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import isEmptyChildren from '../isEmptyChildren/isEmptyChildren';
+import { isEmptyChildren } from '../isEmptyChildren/isEmptyChildren';
 
-const getChildrenOrRender = (children?: any, render?: () => React.ReactNode) => {
+export const getChildrenOrRender = (children?: any, render?: () => React.ReactNode) => {
   if (typeof children === 'function') {
     return children();
   }
@@ -17,5 +17,3 @@ const getChildrenOrRender = (children?: any, render?: () => React.ReactNode) => 
 
   return null;
 };
-
-export default getChildrenOrRender;

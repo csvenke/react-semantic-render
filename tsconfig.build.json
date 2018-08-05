@@ -1,10 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./lib",
-    "sourceMap": false,
-    "declaration": true,
     "removeComments": false,
+    "declaration": true,
     "declarationDir": "lib/types"
   }
 }

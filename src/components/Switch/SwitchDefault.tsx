@@ -1,31 +1,18 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import SwitchCase from './SwitchCase';
-
-export interface ISwitchDefaultProps {
-  /** Shorthand for primary content. */
-  render?: () => React.ReactNode;
-
-  /** Primary content. */
-  children?: React.ReactNode;
-}
+import {
+  corePropTypes,
+  getChildrenOrRender,
+  ICoreProps as ISwitchDefaultProps,
+} from '../../utils';
 
 /**
- * Semantic helper component that can be accessed from the `Switch` component.
+ * Helper component that is accessed from `Switch` component.
  */
-const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
-  const value = '__SWITCH_CASE_VALUE_OVERRIDE_USE_THIS_AND_YOU_WILL_BE_FIRED__';
-  return (
-    <SwitchCase value={value} render={render}>
-      {children}
-    </SwitchCase>
-  );
+export const SwitchDefault: React.SFC<ISwitchDefaultProps> = ({ render, children }) => {
+  return getChildrenOrRender(children, render);
 };
 
-SwitchDefault.propTypes = {
-  children: PropTypes.node,
-  render: PropTypes.func,
-};
+SwitchDefault.propTypes = corePropTypes;
 
 export default SwitchDefault;
