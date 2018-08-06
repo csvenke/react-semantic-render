@@ -17,7 +17,7 @@
       <img src="https://travis-ci.com/csvenke/react-semantic-render.svg?branch=master" alt="build status" />
     </a>
     <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
-      <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master' alt='coverage status' />
+      <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master&service=github' alt='coverage status' />
     </a>
     <a href="https://greenkeeper.io/">
       <img src="https://badges.greenkeeper.io/csvenke/react-semantic-render.svg" alt="greenkeeper" />
