@@ -12,6 +12,7 @@ branches:
     - /^greenkeeper.*$/
   
 before_install:
+  - npm install -g npm@latest
   - npm install -g greenkeeper-lockfile
 
 install:
