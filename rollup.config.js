@@ -3,6 +3,7 @@ import { uglify } from 'rollup-plugin-uglify';
 import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import filesize from 'rollup-plugin-filesize';
+import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 const createConfig = ({ output, plugins } = {}) => ({
@@ -10,12 +11,13 @@ const createConfig = ({ output, plugins } = {}) => ({
   output,
   external: ['react', 'prop-types', 'tslib'],
   plugins: [
-    resolve(),
     typescript({
       useTsconfigDeclarationDir: true,
       tsconfig: './tsconfig.build.json',
       typescript: require('typescript'),
     }),
+    commonjs(),
+    resolve(),
     ...plugins,
   ],
 });
