@@ -68,37 +68,28 @@ declare module 'react-semantic-render/ShowAsync' {
   export default ShowAsync;
 }
 
-declare module 'react-semantic-render/SwitchCase' {
-  export interface ISwitchCaseProps extends ICoreProps {
-    /** Conditional statement. */
-    value: any;
-  }
-
-  /**
-   * Helper component that is accessed from `Switch` component.
-   */
-  export const SwitchCase: React.SFC<ISwitchCaseProps>;
-  export default SwitchCase;
-}
-
-declare module 'react-semantic-render/SwitchDefault' {
-  /**
-   * Helper component that is accessed from `Switch` component.
-   */
-  export const SwitchDefault: React.SFC<ICoreProps>;
-  export default SwitchDefault;
-}
-
 declare module 'react-semantic-render/Switch' {
-  import SwitchCase from 'react-semantic-render/SwitchCase';
-  import SwitchDefault from 'react-semantic-render/SwitchDefault';
-
   interface ISwitchProps {
     /** Conditional statement. */
     value: any;
     /** Primary content. */
     children: React.ReactNode;
   }
+
+  interface ISwitchCaseProps extends ICoreProps {
+    /** Conditional statement. */
+    value: any;
+  }
+
+  /**
+   * Helper component that is accessed from `Switch` component.
+   */
+  const SwitchCase: React.SFC<ISwitchCaseProps>;
+
+  /**
+   * Helper component that is accessed from `Switch` component.
+   */
+  const SwitchDefault: React.SFC<ICoreProps>;
 
   type SwitchComponent = React.SFC<ISwitchProps> & {
     Case?: typeof SwitchCase;
