@@ -39,8 +39,6 @@ export default [
       'src/components/Show/Show.tsx',
       'src/components/ShowAsync/ShowAsync.tsx',
       'src/components/Switch/Switch.tsx',
-      'src/components/Switch/SwitchCase.tsx',
-      'src/components/Switch/SwitchDefault.tsx',
     ],
     output: {
       dir: 'lib',
