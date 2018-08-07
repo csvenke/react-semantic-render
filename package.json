@@ -67,7 +67,7 @@
     "rollup-plugin-terser": "^1.0.1",
     "rollup-plugin-typescript2": "^0.16.1",
     "rollup-plugin-uglify": "^4.0.0",
-    "rollup": "^0.63.4",
+    "rollup": "^0.64.0",
     "ts-jest": "^23.0.1",
     "ts-loader": "^4.4.2",
     "tslint-config-prettier": "^1.14.0",
