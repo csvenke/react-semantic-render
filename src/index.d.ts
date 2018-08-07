@@ -119,5 +119,5 @@ declare module 'react-semantic-render' {
   import ShowAsync from 'react-semantic-render/ShowAsync';
   import Switch from 'react-semantic-render/Switch';
 
-  export default { List, Show, ShowAsync, Switch };
+  export { List, Show, ShowAsync, Switch };
 }
