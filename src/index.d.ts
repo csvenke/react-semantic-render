@@ -85,7 +85,7 @@ declare module 'react-semantic-render/SwitchDefault' {
   /**
    * Helper component that is accessed from `Switch` component.
    */
-  const SwitchDefault: React.SFC<ICoreProps>;
+  export const SwitchDefault: React.SFC<ICoreProps>;
   export default SwitchDefault;
 }
 
@@ -119,5 +119,5 @@ declare module 'react-semantic-render' {
   import ShowAsync from 'react-semantic-render/ShowAsync';
   import Switch from 'react-semantic-render/Switch';
 
-  export { List, Show, ShowAsync, Switch };
+  export default { List, Show, ShowAsync, Switch };
 }

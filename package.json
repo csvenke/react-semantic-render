@@ -87,7 +87,7 @@
     "docs:server": "styleguidist server",
     "docs": "styleguidist build",
     "lint:fix": "npm run lint:write --fix \"src/**/*.{ts,tsx}\"",
-    "lint:write": "tslint -p tsconfig.build.json -c tslint.json",
+    "lint:write": "tslint -p tsconfig.json -c tslint.json",
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc --write",
     "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
