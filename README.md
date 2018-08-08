@@ -47,7 +47,7 @@
 * __Small bundle size__
 * __Blazing fast__
 * __TypeScript type definitions__
-* __Above 90% test coverage__
+* __100% test coverage__
 
 ## Install
 
