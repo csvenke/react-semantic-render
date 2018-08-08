@@ -85,31 +85,22 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
     return null;
   }
 
-  private setStateAsync(state: any) {
-    return new Promise(resolve => {
-      this.setState(state, resolve);
-    });
-  }
-
   // Promise resolver function
   private handlePromise(promise: Promise<any>) {
-    return this.setStateAsync({
-      status: statusTypes.pending,
-    }).then(() => {
-      promise
-        .then(success => {
-          this.setState({
-            status: statusTypes.resolved,
-            value: success,
-          });
-        })
-        .catch(reason => {
-          this.setState({
-            status: statusTypes.rejected,
-            value: reason,
-          });
+    this.setState({ status: statusTypes.pending });
+    return promise
+      .then(success => {
+        this.setState({
+          status: statusTypes.resolved,
+          value: success,
         });
-    });
+      })
+      .catch(reason => {
+        this.setState({
+          status: statusTypes.rejected,
+          value: reason,
+        });
+      });
   }
 }
 
