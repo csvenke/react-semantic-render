@@ -74,7 +74,7 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
 
       case statusTypes.rejected:
         if (rejected) {
-          rejected(value);
+          return rejected(value);
         }
         break;
 
