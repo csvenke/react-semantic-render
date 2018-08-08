@@ -3,125 +3,130 @@ import * as React from 'react';
 
 import ShowAsync from './';
 
-const timeout = 100;
-
-const resolvable = resolved =>
+const resolve = () =>
   new Promise(resolve => {
     setTimeout(() => {
-      resolve(resolved);
-    }, timeout);
+      resolve('resolve');
+    }, 10);
   });
-
-const rejectable = rejected =>
+const reject = () =>
   new Promise((_, reject) => {
     setTimeout(() => {
-      reject(rejected);
-    }, timeout);
+      reject('reject');
+    }, 10);
+  });
+const waitForResult = () =>
+  new Promise(resolve => {
+    setTimeout(resolve, 11);
+  });
+const getPromise = wrapper => wrapper.prop('when');
+const pendingResult = '<div>pending</div>';
+const resolveResult = '<div>resolve</div>';
+const rejectResult = '<div>reject</div>';
+
+describe('render tests', () => {
+  test('resolve with nothing', async () => {
+    const element = <ShowAsync when={resolve()} />;
+    const wrapper = mount(element);
+
+    await expect(wrapper.html()).toEqual(null);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(null);
   });
 
-const getPromiseStatus = wrapper => wrapper.state('status');
+  test('reject with nothing', async () => {
+    const element = <ShowAsync when={reject()} />;
+    const wrapper = mount(element);
 
-describe('resolve', () => {
-  test('no pending, resolve, reject', () => {
-    const wrapper = mount(<ShowAsync when={resolvable('resolved')} />);
-    expect(wrapper.html()).toEqual(null);
+    await expect(wrapper.html()).toEqual(null);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(null);
   });
 
-  test('pending', () => {
-    const pending = () => <p>horse</p>;
-    const result = '<p>horse</p>';
-    const wrapper = mount(<ShowAsync when={resolvable('resolved')} pending={pending} />);
-    expect(wrapper.html()).toEqual(result);
-  });
-
-  test('resolve with render', done => {
-    const resolved = value => <p>{value}</p>;
-    const result = '<p>resolved</p>';
-    const wrapper = mount(<ShowAsync when={resolvable('resolved')} render={resolved} />);
-    setTimeout(() => {
-      expect(wrapper.html()).toEqual(result);
-      done();
-    }, timeout + 50);
-  });
-
-  test('resolve with children', done => {
-    const result = '<p>resolved</p>';
-    const wrapper = mount(
-      <ShowAsync when={resolvable('resolved')}>{value => <p>{value}</p>}</ShowAsync>,
-    );
-    setTimeout(() => {
-      expect(wrapper.html()).toEqual(result);
-      done();
-    }, timeout + 50);
-  });
-
-  test('resolve', done => {
-    const rejected = value => <p>{value}</p>;
-    const result = '<p>rejected</p>';
-    const wrapper = mount(
-      <ShowAsync when={rejectable('rejected')} rejected={rejected} />,
-    );
-    setTimeout(() => {
-      expect(wrapper.html()).toEqual(result);
-      done();
-    }, timeout + 50);
-  });
-
-  test('lifecycle', () => {
+  test('pending then resolve', async () => {
     const element = (
-      <ShowAsync
-        when={resolvable('result')}
-        pending={() => <div>pending</div>}
-        rejected={() => <div>rejected</div>}
-      >
+      <ShowAsync when={resolve()} pending={() => <div>pending</div>}>
         {value => <div>{value}</div>}
       </ShowAsync>
     );
     const wrapper = mount(element);
 
-    if (getPromiseStatus(wrapper) === 'pending') {
-      expect(wrapper.html()).toEqual('<div>pending</div>');
-    }
+    await expect(wrapper.html()).toEqual(pendingResult);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(resolveResult);
+  });
 
-    if (getPromiseStatus(wrapper) === 'resolved') {
-      expect(wrapper.html()).toEqual('<div>result</div>');
-    }
+  test('no pending then resolve', async () => {
+    const element = (
+      <ShowAsync when={resolve()}>{value => <div>{value}</div>}</ShowAsync>
+    );
+    const wrapper = mount(element);
 
-    wrapper.setProps({ when: rejectable('rejected') });
+    await expect(wrapper.html()).toEqual(null);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(resolveResult);
+  });
 
-    if (getPromiseStatus(wrapper) === 'pending') {
-      expect(wrapper.html()).toEqual('<div>pending</div>');
-    }
+  test('pending then reject', async () => {
+    const element = (
+      <ShowAsync
+        when={reject()}
+        pending={() => <div>pending</div>}
+        rejected={() => <div>reject</div>}
+      />
+    );
+    const wrapper = mount(element);
 
-    if (getPromiseStatus(wrapper) === 'rejected') {
-      expect(wrapper.html()).toEqual('<div>rejected</div>');
-    }
+    await expect(wrapper.html()).toEqual(pendingResult);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(rejectResult);
+  });
 
-    wrapper.unmount();
+  test('no pending then reject', async () => {
+    const element = <ShowAsync when={reject()} rejected={() => <div>reject</div>} />;
+    const wrapper = mount(element);
 
-    expect(wrapper.html()).toEqual(null);
+    await expect(wrapper.html()).toEqual(null);
+    await waitForResult();
+    await expect(wrapper.html()).toEqual(rejectResult);
+  });
+});
 
-    wrapper.mount();
+describe('promise tests', () => {
+  test('reject without rejected', async () => {
+    const element = <ShowAsync when={reject()} />;
+    const wrapper = mount(element);
 
-    wrapper.setProps({ when: rejectable('rejected'), rejected: undefined });
-    if (getPromiseStatus(wrapper) === 'rejected') {
-      expect(wrapper.html()).toEqual(null);
-    }
+    await expect(getPromise(wrapper)).rejects.toEqual('reject');
+  });
 
-    wrapper.setProps({
-      when: resolvable('result'),
-      render: undefined,
-      children: undefined,
-    });
-    if (getPromiseStatus(wrapper) === 'resolved') {
-      expect(wrapper.html()).toEqual(null);
-    }
+  test('reject with rejected', async () => {
+    const element = <ShowAsync when={reject()} rejected={error => <div>{error}</div>} />;
+    const wrapper = mount(element);
 
-    wrapper.unmount();
-    wrapper.mount();
-    wrapper.setProps({ pending: undefined });
-    if (getPromiseStatus(wrapper) === 'pending') {
-      expect(wrapper.html()).toEqual(null);
-    }
+    await expect(getPromise(wrapper)).rejects.toEqual('reject');
+  });
+
+  test('resolve without children/render', async () => {
+    const element = <ShowAsync when={resolve()} />;
+    const wrapper = mount(element);
+
+    await expect(getPromise(wrapper)).resolves.toEqual('resolve');
+  });
+
+  test('resolve with children', async () => {
+    const element = (
+      <ShowAsync when={resolve()}>{value => <div>{value}</div>}</ShowAsync>
+    );
+    const wrapper = mount(element);
+
+    await expect(getPromise(wrapper)).resolves.toEqual('resolve');
+  });
+
+  test('resolve with render', async () => {
+    const element = <ShowAsync when={resolve()} render={value => <div>{value}</div>} />;
+    const wrapper = mount(element);
+
+    await expect(getPromise(wrapper)).resolves.toEqual('resolve');
   });
 });
