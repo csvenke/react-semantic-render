@@ -47,25 +47,9 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
   // Initialize state
   public readonly state: IShowAsyncState = initialState;
 
-  // Create escape hatch to stop handling of promise if unmounted
-  public unmounted = false;
-
-  public componentDidMount() {
+  public async componentDidMount() {
     // Start handling the promise, must happen after mount as setState is called when promise is handled
-    this.handlePromise(this.props.when);
-  }
-
-  public componentDidUpdate(prevProps: IShowAsyncProps) {
-    if (this.props.when !== prevProps.when) {
-      this.setState({
-        status: statusTypes.none,
-      });
-      this.handlePromise(this.props.when);
-    }
-  }
-
-  public componentWillUnmount() {
-    this.unmounted = true;
+    await this.handlePromise(this.props.when);
   }
 
   public render() {
@@ -74,7 +58,10 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
 
     switch (status) {
       case statusTypes.pending:
-        return pending ? pending() : null;
+        if (pending) {
+          return pending();
+        }
+        break;
 
       case statusTypes.resolved:
         if (children && typeof children === 'function') {
@@ -83,47 +70,46 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
         if (render) {
           return render(value);
         }
-        return null;
+        break;
 
       case statusTypes.rejected:
-        return rejected ? rejected(value) : null;
+        if (rejected) {
+          rejected(value);
+        }
+        break;
+
       default:
-        return null;
+        break;
     }
+
+    return null;
+  }
+
+  private setStateAsync(state: any) {
+    return new Promise(resolve => {
+      this.setState(state, resolve);
+    });
   }
 
   // Promise resolver function
   private handlePromise(promise: Promise<any>) {
-    // Store the current promise to fast exit if promise is change during handling
-    const currentPromise = promise;
-    this.setState({
+    return this.setStateAsync({
       status: statusTypes.pending,
-    });
-    promise
-      .then(success => {
-        // Escape early as promise is changed
-        if (currentPromise !== promise) {
-          return;
-        }
-        if (!this.unmounted) {
+    }).then(() => {
+      promise
+        .then(success => {
           this.setState({
             status: statusTypes.resolved,
             value: success,
           });
-        }
-      })
-      .catch(reason => {
-        // Escape early as promise is changed
-        if (currentPromise !== promise) {
-          return;
-        }
-        if (!this.unmounted) {
+        })
+        .catch(reason => {
           this.setState({
             status: statusTypes.rejected,
             value: reason,
           });
-        }
-      });
+        });
+    });
   }
 }
 
