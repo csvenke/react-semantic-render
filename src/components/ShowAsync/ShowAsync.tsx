@@ -47,9 +47,9 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
   // Initialize state
   public readonly state: IShowAsyncState = initialState;
 
-  public async componentDidMount() {
+  public componentDidMount() {
     // Start handling the promise, must happen after mount as setState is called when promise is handled
-    await this.handlePromise(this.props.when);
+    this.handlePromise(this.props.when);
   }
 
   public render() {
@@ -85,24 +85,18 @@ export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState>
     return null;
   }
 
-  private setStateAsync(state: any) {
-    return new Promise(resolve => {
-      this.setState(state, resolve);
-    });
-  }
-
   // Promise resolver function
-  private async handlePromise(promise: Promise<any>) {
-    await this.setStateAsync({ status: statusTypes.pending });
-    await promise
+  private handlePromise(promise: Promise<any>) {
+    this.setState({ status: statusTypes.pending });
+    promise
       .then(success => {
-        this.setStateAsync({
+        this.setState({
           status: statusTypes.resolved,
           value: success,
         });
       })
       .catch(reason => {
-        this.setStateAsync({
+        this.setState({
           status: statusTypes.rejected,
           value: reason,
         });
