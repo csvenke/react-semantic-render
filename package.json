@@ -65,7 +65,7 @@
     "rollup-plugin-filesize": "^4.0.1",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-terser": "^1.0.1",
-    "rollup-plugin-typescript2": "^0.16.1",
+    "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-uglify": "^4.0.0",
     "rollup": "^0.65.0",
     "ts-jest": "^23.0.1",
