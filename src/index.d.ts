@@ -1,21 +1,28 @@
 /// <reference types="react" />
 
-interface ICoreProps {
-  /** Shorthand for primary content. */
-  render?: () => React.ReactNode;
+type Render = (() => React.ReactNode) | null;
 
+type Children = React.ReactNode | (() => React.ReactNode) | null;
+
+interface IRenderProps {
+  /** Shorthand for primary content. */
+  render?: Render;
   /** Primary content. */
-  children?: any;
+  children?: Children;
 }
+
+type MapCallback =
+  | ((item?: any, index?: number, array?: any[]) => React.ReactNode)
+  | null;
 
 declare module 'react-semantic-render/List' {
   interface IListProps {
     /** Array to map. */
     items: any[];
     /** Shorthand for primary content. */
-    render?: (item?: any, index?: number, array?: any[]) => React.ReactNode;
+    render?: MapCallback;
     /** Primary content. */
-    children?: any;
+    children?: MapCallback;
   }
 
   /**
@@ -27,7 +34,7 @@ declare module 'react-semantic-render/List' {
 }
 
 declare module 'react-semantic-render/Show' {
-  interface IShowProps extends ICoreProps {
+  interface IShowProps extends IRenderProps {
     /** Conditional statement.  */
     when: boolean;
   }
@@ -76,7 +83,7 @@ declare module 'react-semantic-render/Switch' {
     children: React.ReactNode;
   }
 
-  interface ISwitchCaseProps extends ICoreProps {
+  interface ISwitchCaseProps extends IRenderProps {
     /** Conditional statement. */
     value: any;
   }
@@ -89,7 +96,7 @@ declare module 'react-semantic-render/Switch' {
   /**
    * Helper component that is accessed from `Switch` component.
    */
-  const SwitchDefault: React.SFC<ICoreProps>;
+  const SwitchDefault: React.SFC<IRenderProps>;
 
   type SwitchComponent = React.SFC<ISwitchProps> & {
     Case?: typeof SwitchCase;

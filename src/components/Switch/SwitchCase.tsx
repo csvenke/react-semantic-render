@@ -1,9 +1,9 @@
 import * as PropTypes from 'prop-types';
-import * as React from 'react';
 
-import { corePropTypes, getChildrenOrRender, ICoreProps } from '../../utils/';
+import { IRenderProps, renderPropsPropTypes } from '../../types';
+import { getChildrenOrRender } from '../../utils/';
 
-export interface ISwitchCaseProps extends ICoreProps {
+export interface ISwitchCaseProps extends IRenderProps {
   /** Conditional statement. */
   value: any;
 }
@@ -11,14 +11,13 @@ export interface ISwitchCaseProps extends ICoreProps {
 /**
  * Helper component that is accessed from `Switch` component.
  */
-// @ts-ignore `value` prop is used by parent component Switch.
-export const SwitchCase: React.SFC<ISwitchCaseProps> = ({ value, render, children }) => {
+export const SwitchCase: React.SFC<ISwitchCaseProps> = ({ children, render }) => {
   return getChildrenOrRender(children, render);
 };
 
 SwitchCase.propTypes = {
   value: PropTypes.any.isRequired,
-  ...corePropTypes,
+  ...renderPropsPropTypes,
 };
 
 export default SwitchCase;

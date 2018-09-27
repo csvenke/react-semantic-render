@@ -1,9 +1,9 @@
 import * as PropTypes from 'prop-types';
-import * as React from 'react';
 
-import { corePropTypes, getChildrenOrRender, ICoreProps } from '../../utils';
+import { IRenderProps, renderPropsPropTypes } from '../../types';
+import { getChildrenOrRender, renderIf } from '../../utils';
 
-export interface IShowProps extends ICoreProps {
+export interface IShowProps extends IRenderProps {
   /** Conditional statement.  */
   when: boolean;
 }
@@ -11,13 +11,13 @@ export interface IShowProps extends ICoreProps {
 /**
  * Renders content if `when` equals true.
  */
-export const Show: React.SFC<IShowProps> = ({ when, render, children }) => {
-  return when ? getChildrenOrRender(children, render) : null;
+export const Show: React.SFC<IShowProps> = ({ when, children, render }) => {
+  return renderIf(when)(getChildrenOrRender(children, render));
 };
 
 Show.propTypes = {
   when: PropTypes.bool.isRequired,
-  ...corePropTypes,
+  ...renderPropsPropTypes,
 };
 
 export default Show;

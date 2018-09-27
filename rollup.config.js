@@ -9,7 +9,7 @@ import pkg from './package.json';
 const createConfig = ({ output, plugins, ...restConfig } = {}) => ({
   input: 'src/index.ts',
   output,
-  external: ['react', 'prop-types', 'tslib'],
+  external: ['react', 'react-dom', 'prop-types', 'tslib'],
   plugins: [
     typescript({
       tsconfig: './tsconfig.json',

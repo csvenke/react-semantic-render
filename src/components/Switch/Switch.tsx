@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
+import { renderIf } from '../../utils';
 import SwitchCase, { ISwitchCaseProps } from './SwitchCase';
 import SwitchDefault from './SwitchDefault';
 
@@ -33,7 +34,7 @@ const isValidSwitchChild = (child: any): child is SwitchElement => {
 /**
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
  */
-export const Switch: SwitchComponent = ({ value, children }) => {
+export const Switch: SwitchComponent = ({ children, value }) => {
   const switchValue = value;
   let match = false;
   let child: any;
@@ -52,11 +53,10 @@ export const Switch: SwitchComponent = ({ value, children }) => {
   }
 
   // Return case if its a match.
-  return match ? React.cloneElement(child) : null;
+  return renderIf(match)(React.cloneElement(child));
 };
 
 Switch.Case = SwitchCase;
-
 Switch.Default = SwitchDefault;
 
 Switch.propTypes = {

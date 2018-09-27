@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { getChildrenOrRender } from './';
+import getChildrenOrRender from './getChildrenOrRender';
 
 describe('with children node and render function', () => {
   const children = <div>result</div>;
@@ -16,6 +16,11 @@ describe('with children node and render function', () => {
   test('should return content from render', () => {
     const wrapper = shallow(getChildrenOrRender(undefined, render));
     expect(wrapper.html()).toEqual(result);
+  });
+
+  test('should return null', () => {
+    const wrapper = getChildrenOrRender(undefined, undefined);
+    expect(wrapper).toEqual(null);
   });
 });
 
@@ -32,5 +37,10 @@ describe('with children function and render function', () => {
   test('should return content from render', () => {
     const wrapper = shallow(getChildrenOrRender(undefined, render));
     expect(wrapper.html()).toEqual(result);
+  });
+
+  test('should return null', () => {
+    const wrapper = getChildrenOrRender(undefined, undefined);
+    expect(wrapper).toEqual(null);
   });
 });
