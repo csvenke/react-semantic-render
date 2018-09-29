@@ -37,7 +37,6 @@ export default [
     input: [
       'src/components/List/List.tsx',
       'src/components/Show/Show.tsx',
-      'src/components/ShowAsync/ShowAsync.tsx',
       'src/components/Switch/Switch.tsx',
     ],
     output: {

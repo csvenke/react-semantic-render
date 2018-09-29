@@ -5,6 +5,16 @@ import React from 'react';
 import { Switch } from 'react-semantic-render';
 ```
 
+#### With render prop
+##### Output
+
+```jsx
+<Switch.Default 
+  render={() => <div>Render me!</div>} 
+/>
+```
+
+#### With children
 ##### Output
 
 ```jsx

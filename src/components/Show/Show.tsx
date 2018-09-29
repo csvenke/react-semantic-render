@@ -1,9 +1,9 @@
 import * as PropTypes from 'prop-types';
 
-import { IRenderProps, renderPropsPropTypes } from '../../types';
+import { IRenderProps, Output, renderPropsPropTypes } from '../../types';
 import { getChildrenOrRender, renderIf } from '../../utils';
 
-export interface IShowProps extends IRenderProps {
+interface IShowProps extends IRenderProps {
   /** Conditional statement.  */
   when: boolean;
 }
@@ -11,7 +11,8 @@ export interface IShowProps extends IRenderProps {
 /**
  * Renders content if `when` equals true.
  */
-export const Show: React.SFC<IShowProps> = ({ when, children, render }) => {
+const Show = (props: IShowProps): Output => {
+  const { when, children, render } = props;
   return renderIf(when)(getChildrenOrRender(children, render));
 };
 

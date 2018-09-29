@@ -1,13 +1,13 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export type Map =
-  | ((item?: any, index?: number, array?: any[]) => React.ReactNode)
-  | null;
+export type Map = (item?: any, index?: number, array?: any[]) => React.ReactNode;
 
-export type Render = (() => React.ReactNode) | null;
+export type Render = () => React.ReactNode;
 
-export type Children = React.ReactNode | (() => React.ReactNode) | null;
+export type Children = React.ReactNode | (() => React.ReactNode);
+
+export type Output = React.ReactElement<any> | null;
 
 export interface IRenderProps {
   /** Shorthand for primary content. */

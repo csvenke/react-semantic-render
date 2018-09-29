@@ -42,7 +42,6 @@
 * __Growing list of semantic helper components__ 
   * __[List](https://csvenke.github.io/react-semantic-render/#/List)__: Renders content from an array of data.
   * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__: Renders content when specified condition is true.
-  * __[ShowAsync](https://csvenke.github.io/react-semantic-render/#/ShowAsync)__: Renders content when specified promise is pending, resolved and rejected.
   * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__: Renders content from first __[Switch.Case](https://csvenke.github.io/react-semantic-render/#/SwitchCase)__ that matches, else __[Switch.Default](https://csvenke.github.io/react-semantic-render/#/SwitchDefault)__ if it exists.
 * __Small bundle size__
 * __Blazing fast__
