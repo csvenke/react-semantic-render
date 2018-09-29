@@ -1,9 +1,10 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Map } from '../../types';
+import { Map, Output } from '../../types';
+import { getRenderProp, isFunction } from '../../utils';
 
-export interface IListProps {
+interface IListProps {
   /** Array to map. */
   items: any[];
 
@@ -17,14 +18,15 @@ export interface IListProps {
 /**
  * Renders content from specified callback function from either `render` or `children` on each element of `items`.
  */
-export const List: React.SFC<IListProps> = ({ items, children, render }) => {
-  const itemRender = children ? children : render;
+const List = (props: IListProps): Output => {
+  const { items, children, render } = props;
+  const renderProp = getRenderProp(children, render);
 
-  if (!itemRender) {
-    return null;
+  if (renderProp && isFunction(renderProp)) {
+    return <React.Fragment>{items.map(renderProp)}</React.Fragment>;
   }
 
-  return <>{items.map(itemRender)}</>;
+  return null;
 };
 
 List.propTypes = {

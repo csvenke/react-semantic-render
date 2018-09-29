@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 
-import { IRenderProps, renderPropsPropTypes } from '../../types';
+import { IRenderProps, Output, renderPropsPropTypes } from '../../types';
 import { getChildrenOrRender } from '../../utils/';
 
 export interface ISwitchCaseProps extends IRenderProps {
@@ -11,7 +11,8 @@ export interface ISwitchCaseProps extends IRenderProps {
 /**
  * Helper component that is accessed from `Switch` component.
  */
-export const SwitchCase: React.SFC<ISwitchCaseProps> = ({ children, render }) => {
+const SwitchCase = (props: ISwitchCaseProps): Output => {
+  const { children, render } = props;
   return getChildrenOrRender(children, render);
 };
 

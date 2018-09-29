@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Show from './';
+import Show from '.';
 
 const input = <div>render me</div>;
 const output = '<div>render me</div>';

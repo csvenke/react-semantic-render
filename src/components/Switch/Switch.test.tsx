@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Switch from './';
+import Switch from '.';
 
 const createElement = (value, values, withDefault = true) => (
   <Switch value={value}>

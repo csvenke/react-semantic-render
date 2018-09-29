@@ -1,8 +1,10 @@
 /// <reference types="react" />
 
-type Render = (() => React.ReactNode) | null;
+type Render = () => React.ReactNode;
 
-type Children = React.ReactNode | (() => React.ReactNode) | null;
+type Children = React.ReactNode | (() => React.ReactNode);
+
+type Output = React.ReactElement<any> | null;
 
 interface IRenderProps {
   /** Shorthand for primary content. */
@@ -11,11 +13,9 @@ interface IRenderProps {
   children?: Children;
 }
 
-type MapCallback =
-  | ((item?: any, index?: number, array?: any[]) => React.ReactNode)
-  | null;
-
 declare module 'react-semantic-render/List' {
+  type MapCallback = (item?: any, index?: number, array?: any[]) => React.ReactNode;
+
   interface IListProps {
     /** Array to map. */
     items: any[];
@@ -28,7 +28,7 @@ declare module 'react-semantic-render/List' {
   /**
    * Renders content from specified callback function from either `render` or `children` on each element of `items`.
    */
-  export const List: React.SFC<IListProps>;
+  const List: (props: IListProps) => Output;
 
   export default List;
 }
@@ -42,37 +42,9 @@ declare module 'react-semantic-render/Show' {
   /**
    * Renders content if `when` equals true.
    */
-  export const Show: React.SFC<IShowProps>;
+  const Show: (props: IShowProps) => Output;
 
   export default Show;
-}
-
-declare module 'react-semantic-render/ShowAsync' {
-  const initialState: {
-    status: string;
-    value: string;
-  };
-
-  interface IShowAsyncProps {
-    /** The promise. */
-    when: Promise<any>;
-    /** Render content when promise is pending. */
-    pending?: () => React.ReactNode;
-    /** Render content when promise is rejected. */
-    rejected?: (error?: any) => React.ReactNode;
-    /** Shorthand for primary content. */
-    render?: (value?: any) => React.ReactNode;
-    /** Primary content. Renders content when promise is resolved. */
-    children?: any;
-  }
-
-  type IShowAsyncState = Readonly<typeof initialState>;
-
-  /**
-   * Renders content when status of specified promise is pending, resolved or rejected.
-   */
-  export class ShowAsync extends React.Component<IShowAsyncProps, IShowAsyncState> {}
-  export default ShowAsync;
 }
 
 declare module 'react-semantic-render/Switch' {
@@ -91,22 +63,21 @@ declare module 'react-semantic-render/Switch' {
   /**
    * Helper component that is accessed from `Switch` component.
    */
-  const SwitchCase: React.SFC<ISwitchCaseProps>;
+  const SwitchCase: (props: ISwitchCaseProps) => Output;
 
   /**
    * Helper component that is accessed from `Switch` component.
    */
-  const SwitchDefault: React.SFC<IRenderProps>;
-
-  type SwitchComponent = React.SFC<ISwitchProps> & {
-    Case?: typeof SwitchCase;
-    Default?: typeof SwitchDefault;
-  };
+  const SwitchDefault: (props: IRenderProps) => Output;
 
   /**
    * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
    */
-  export const Switch: SwitchComponent;
+  const Switch: {
+    (props: ISwitchProps): Output;
+    Case: (props: ISwitchCaseProps) => Output;
+    Default: (props: IRenderProps) => Output;
+  };
 
   export default Switch;
 }
@@ -114,8 +85,7 @@ declare module 'react-semantic-render/Switch' {
 declare module 'react-semantic-render' {
   import List from 'react-semantic-render/List';
   import Show from 'react-semantic-render/Show';
-  import ShowAsync from 'react-semantic-render/ShowAsync';
   import Switch from 'react-semantic-render/Switch';
 
-  export { List, Show, ShowAsync, Switch };
+  export { List, Show, Switch };
 }

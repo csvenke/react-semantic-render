@@ -1,21 +1,20 @@
 import * as React from 'react';
 
+import { Output } from '../../types';
+import getRenderProp from '../getRenderProp/getRenderProp';
 import isEmptyChildren from '../isEmptyChildren/isEmptyChildren';
 import isFunction from '../isFunction/isFunction';
 
-const getChildrenOrRender = (children?: any, render?: any) => {
-  if (children) {
-    if (isFunction(children)) {
-      return React.Children.only(children());
-    }
+const getChildrenOrRender = (children?: any, render?: any): Output => {
+  const result = getRenderProp(children, render);
 
-    if (!isEmptyChildren(children)) {
-      return React.Children.only(children);
+  if (result) {
+    if (isFunction(result)) {
+      return result();
     }
-  }
-
-  if (render) {
-    return React.Children.only(render());
+    if (!isEmptyChildren(result) && React.isValidElement(result)) {
+      return React.Children.only(result);
+    }
   }
 
   return null;
