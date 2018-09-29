@@ -11,23 +11,24 @@ const typescriptConfig = {
   }).parse,
 };
 
-const getComponents = src => {
-  return glob.sync(path.resolve(__dirname, src)).filter(function(module) {
-    return /\/[A-Z]\w*\.tsx$/.test(module);
-  });
+const getComponents = () => {
+  const components = ['List', 'Show', 'Switch'];
+  return components.map(item => `./src/components/${item}/${item}.tsx`);
 };
 
 module.exports = {
   title: app.name,
   version: app.version,
   exampleMode: 'expand',
+  usageMode: 'expand',
   pagePerSection: true,
   skipComponentsWithoutExample: true,
-  pagePerSection: true,
-  components: getComponents('src/components/**/*.tsx'),
   styleguideDir: 'docs',
+  previewDelay: 1000,
   context: {
     faker: 'faker',
+    _: 'lodash',
   },
+  components: getComponents(),
   ...typescriptConfig,
 };

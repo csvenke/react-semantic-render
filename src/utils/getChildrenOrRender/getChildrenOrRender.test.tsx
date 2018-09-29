@@ -44,3 +44,20 @@ describe('with children function and render function', () => {
     expect(wrapper).toEqual(null);
   });
 });
+
+describe('input tests', () => {
+  test('should return null', () => {
+    const wrapper = getChildrenOrRender(123, undefined);
+    expect(wrapper).toEqual(null);
+  });
+
+  test('should return null', () => {
+    const wrapper = getChildrenOrRender(undefined, 123);
+    expect(wrapper).toEqual(null);
+  });
+
+  test('should return null', () => {
+    const wrapper = getChildrenOrRender(123, 123);
+    expect(wrapper).toEqual(null);
+  });
+});

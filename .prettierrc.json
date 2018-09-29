@@ -1,5 +1,4 @@
 {
-  "parser": "typescript",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "printWidth": 89,

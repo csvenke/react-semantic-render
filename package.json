@@ -56,6 +56,7 @@
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
+    "lodash": "^4.17.11",
     "prettier": "^1.14.3",
     "react-docgen-typescript": "^1.9.1",
     "react-dom": "^16.5.2",
@@ -90,8 +91,8 @@
     "lint:fix": "npm run lint:write --fix \"src/**/*.{ts,tsx}\"",
     "lint:write": "tslint -p tsconfig.json -c tslint.json",
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "prettier -c .prettierrc --write",
-    "prettier": "npm run prettier:write \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "prettier -c .prettierrc.json --write",
+    "prettier": "npm run prettier:write \"src/**/*.{ts,tsx,md}\" \"*.{js,yml,json}\"",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "test:prod": "npm run lint && npm run test --coverage --no-cache",
     "test:watch": "jest --watch",
@@ -107,8 +108,12 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier -c .prettierrc --write",
+      "prettier -c .prettierrc.json --write",
       "tslint -c tslint.json --fix",
+      "git add"
+    ],
+    "*.{js,yml,json}": [
+      "prettier -c .prettierrc.json --write",
       "git add"
     ]
   }

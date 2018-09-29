@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "node"
+  - 'node'
 
 notifications:
   email: false
@@ -10,7 +10,7 @@ branches:
   only:
     - master
     - /^greenkeeper.*$/
-  
+
 before_install:
   - npm install -g npm@latest
   - npm install -g greenkeeper-lockfile
@@ -27,6 +27,6 @@ script:
 
 after_success:
   - npm run report-coverage
-  
+
 after_script:
   - greenkeeper-lockfile-upload
