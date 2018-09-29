@@ -22,7 +22,7 @@ const List = (props: IListProps): Output => {
   const { items, children, render } = props;
   const renderProp = getRenderProp(children, render);
 
-  if (renderProp && isFunction(renderProp)) {
+  if (!!renderProp && isFunction(renderProp)) {
     return <React.Fragment>{items.map(renderProp)}</React.Fragment>;
   }
 
