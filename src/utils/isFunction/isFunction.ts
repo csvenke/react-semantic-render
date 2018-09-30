@@ -1,3 +1,3 @@
-const isFunction = (input: any): input is () => any => typeof input === 'function';
+const isFunction = <T>(input: any): input is T => typeof input === 'function';
 
 export default isFunction;
