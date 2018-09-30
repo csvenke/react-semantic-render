@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Output } from '../../types';
-import { renderIf } from '../../utils';
+import { isElement, renderIf } from '../../utils';
 import SwitchCase from './SwitchCase';
 import SwitchDefault from './SwitchDefault';
 
@@ -14,16 +14,9 @@ interface ISwitchProps {
   children: React.ReactNode;
 }
 
-const isSwitchChild = (child: any, element: any) => {
-  return child.type.prototype === element.prototype;
-};
-
-const isValidSwitchChild = (child: any) => {
-  return (
-    React.isValidElement(child) &&
-    (isSwitchChild(child, SwitchCase) || isSwitchChild(child, SwitchDefault))
-  );
-};
+const isValidSwitchChild = (child: any) =>
+  React.isValidElement(child) &&
+  (isElement(child, SwitchCase) || isElement(child, SwitchDefault));
 
 /**
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
@@ -43,7 +36,7 @@ const Switch = (props: ISwitchProps): Output => {
   });
 
   // No match found, return default if it exists.
-  if (!match && isSwitchChild(child, SwitchDefault)) {
+  if (!match && isElement(child, SwitchDefault)) {
     return React.cloneElement(child);
   }
 
