@@ -42,11 +42,12 @@
 * __Growing list of semantic helper components__ 
   * __[List](https://csvenke.github.io/react-semantic-render/#/List)__: Renders content from an array of data.
   * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__: Renders content when specified condition is true.
-  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__: Renders content from first __[Switch.Case](https://csvenke.github.io/react-semantic-render/#/SwitchCase)__ that matches, else __[Switch.Default](https://csvenke.github.io/react-semantic-render/#/SwitchDefault)__ if it exists.
+  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__: Renders content from first case that matches, else default if it exists.
 * __Tiny bundle size__
+* __100% test coverage__
+* __Production ready__
 * __Blazing fast__
 * __TypeScript type definitions__
-* __100% test coverage__
 
 ## Install
 
