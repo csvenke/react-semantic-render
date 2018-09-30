@@ -33823,7 +33823,7 @@ object-assign
     e.exports = {
       config: {
         title: 'react-semantic-render',
-        version: '2.0.1',
+        version: '2.0.2',
         showCode: !1,
         showUsage: !1,
         showSidebar: !0,
