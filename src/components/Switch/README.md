@@ -6,41 +6,45 @@ These helper components can be accessed from the `Switch` component.
 
 ```jsx
 <Switch.Case value={123}>
-  <div>Render me!</div>
+  <button>Click me!</button>
 </Switch.Case>
-
-<Switch.Case
-  value={321}
-  render={() => <div>Render me too!</div>}
-/>
 ```
 
 **Switch.Default**
 
 ```jsx
 <Switch.Default>
-  <div>Render me!</div>
+  <button>Click me!</button>
 </Switch.Default>
-
-<Switch.Default
-  render={() => <div>Render me too!</div>}
-/>
 ```
 
 ### Example usage
 
 ```jsx
-<Switch value={4}>
-  <Switch.Case value={1}>
-    <div>Render me!</div>
-  </Switch.Case>
+const App = ({ showCatchPhrase }) => (
+  <Switch value={showCatchPhrase}>
+    <Switch.Case value={1}>
+      <span>
+        {'1: '}
+        {faker.fake('{{company.catchPhrase}}')}
+      </span>
+    </Switch.Case>
 
-  <Switch.Case value={2}>
-    <div>No, render me!</div>
-  </Switch.Case>
+    <Switch.Case value={2}>
+      <span>
+        {'2: '}
+        {faker.fake('{{company.catchPhrase}}')}
+      </span>
+    </Switch.Case>
 
-  <Switch.Default>
-    <div>Nobody renders better than me!</div>
-  </Switch.Default>
-</Switch>
+    <Switch.Default>
+      <span>
+        {'default: '}
+        {faker.fake('{{company.catchPhrase}}')}
+      </span>
+    </Switch.Default>
+  </Switch>
+);
+
+<App showCatchPhrase={1} />;
 ```

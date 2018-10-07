@@ -1,4 +1,4 @@
-import renderIf from '../renderIf/renderIf';
+import renderIf from '../renderIf';
 
 const getRenderProp = (children?: any, render?: any) => {
   const result = children ? children : render;

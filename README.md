@@ -39,15 +39,17 @@
 
 ## Key features
 
-* __Growing list of semantic helper components__ 
-  * __[List](https://csvenke.github.io/react-semantic-render/#/List)__: Renders content from an array of data.
-  * __[Show](https://csvenke.github.io/react-semantic-render/#/Show)__: Renders content when specified condition is true.
-  * __[Switch](https://csvenke.github.io/react-semantic-render/#/Switch)__: Renders content from first case that matches, else default if it exists.
-* __Tiny bundle size__
-* __100% test coverage__
-* __Production ready__
-* __Blazing fast__
-* __TypeScript type definitions__
+- **Growing list of semantic helper components and hocs**
+  - **[List](https://csvenke.github.io/react-semantic-render/#!/List)**: Renders content from an array of data.
+  - **[Switch](https://csvenke.github.io/react-semantic-render/#!/Switch)**: Renders content from first case that matches, else default if it exists.
+  - **[Show](https://csvenke.github.io/react-semantic-render/#!/Show)**: Renders content when specified condition is true.
+  - **[ShowIfElse](https://csvenke.github.io/react-semantic-render/#!/ShowIfElse)**: Renders content when condition is true, else renders something else.
+  - **[Hideable](https://csvenke.github.io/react-semantic-render/#!/Hideable)**: Higher order component that injects 'hideComponent' prop into specified component.
+- **Tiny bundle size** 😃
+- **Supports treeshaking** 🔥
+- **100% test coverage** 😀
+- **TypeScript type definitions** 😏
+- **Blazing fast** 😎
 
 ## Install
 
@@ -65,34 +67,110 @@ $ yarn add react-semantic-render
 
 ### Example usage
 
-```jsx
-import { Show, List } from 'react-semantic-render';
-```
+Render button when condition is true
 
 ```jsx
-<div>
-  <Show when={true}>
-    <List
-      items={[1, 2, 3, 4, 5]}
-      render={data => <div>{data}</div>}
-    />
+import React from 'react';
+import Show from 'react-semantic-render/Show';
+
+const App = ({ showButton }) => (
+  <Show when={showButton}>
+    <button>Click me!</button>
   </Show>
-</div>
+);
+```
+
+Render list of names
+
+```jsx
+import React from 'react';
+import List from 'react-semantic-render/List';
+
+const App = () => (
+  <ul>
+    <List items={['John', 'Jane', 'Bill', 'Pete']}>
+      {name => (
+        <li key={name}>
+          <span>{name}</span>
+        </li>
+      )}
+    </List>
+  </ul>
+);
+```
+
+Render message when condition is true, else render something else
+
+```jsx
+import React from 'react';
+import Switch from 'react-semantic-render/Switch';
+
+const App = ({ showMessage }) => (
+  <Switch value>
+    <Switch.Case value={showMessage}>
+      <span>Render me!</span>
+    </Switch.Case>
+    <Switch.Default>
+      <span>Nobody renders better than me!</span>
+    </Switch.Default>
+  </Switch>
+);
 ```
 
 ## Why
 
-In the example above you see two very common use cases where you have to render something when a condition is true and render content from an array of data.
+In the example below you see a component named `UserList` that contains two very common use cases where you have to render something when a condition is true and render content from an array of data.
 This is usually solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
-Below you can see how it would look with inline arrow functions.
+```jsx
+const UserList = ({ isLoading, results }) => (
+  <div>
+    {isLoading && <span>Loading...</span>}
+    {!isLoading && !results.length && <span>No results found</span>}
+    {!isLoading &&
+      results.length > 0 && (
+        <ul>
+          {result.map(user => (
+            <li key={user.id}>
+              <span>{user.name}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+  </div>
+);
+```
+
+Here you see how the component above could be rewritten with components from `react-semantic-render`.
+While it might be abit more verbose, the readability is greatly increased and you immeadiatly see whats going on.
 
 ```jsx
-<div>
-  {true ? (
-    {[1, 2, 3, 4, 5].map(data => <div>{data}</div>)}
-  ) : null}
-</div>
+import { List, Switch } from 'react-semantic-render';
+
+const UserList = ({ isLoading, results }) => (
+  <div>
+    <Switch value>
+      <Switch.Case value={isLoading}>
+        <span>Loading...</span>
+      </Switch.Case>
+      <Switch.Case value={!isLoading && !result.length}>
+        <span>No results found</span>
+      </Switch.Case>
+      <Switch.Case value={!isLoading && results.length > 0}>
+        <ul>
+          <List
+            items={results}
+            render={user => (
+              <li key={user.id}>
+                <span>{user.name}</span>
+              </li>
+            )}
+          />
+        </ul>
+      </Switch.Case>
+    </Switch>
+  </div>
+);
 ```
 
 The purpose of this library is to provide helpful semantic render components that makes the `React.Component` render method easier to read and follow.
@@ -106,45 +184,50 @@ For full list of components and how they are used, go to our [documentation](htt
 ## Development
 
 ##### Install dependencies
+
 ```
 $ npm install
 ```
 
 ##### Run linters
+
 ```
 $ npm run lint
-$ npm run lint:fix
 ```
 
 ##### Run tests
+
 ```
 $ npm run test
 $ npm run test:watch
 ```
 
 ##### Build docs
+
 ```
 $ npm run docs
 $ npm run docs:server
 ```
 
 ##### Build project
+
 ```
 $ npm run build
 ```
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style. 
+In lieu of a formal styleguide, take care to maintain the existing coding style.
 
-* Add unit tests for any new or changed functionality.
-* All library components exposed to the user must be documented with jsdoc `/** */`.
-* All library components must have `prop-types` that matches the component props interface.
+- Add unit tests for any new or changed functionality.
+- All library components exposed to the user must be documented with jsdoc `/** */`.
+- All library components must have `prop-types` that matches the component props interface.
 
 #### Commit style guide
+
 We use [conventional commits style](https://conventionalcommits.org/).
 Read up on it before doing your first commit.
-Don't worry about making a mistake, `commitlint` will stop you if you do, and you can try again.
+Don't worry about making mistakes, `commitlint` will stop you and you can try again.
 
 ## Contributors
 
@@ -152,6 +235,7 @@ Don't worry about making a mistake, `commitlint` will stop you if you do, and yo
 <!-- prettier-ignore -->
 | [<img src="https://avatars3.githubusercontent.com/u/9643219?v=4" width="100px;"/><br /><sub><b>Christian Svenkerud</b></sub>](https://github.com/csvenke)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Documentation") [🤔](#ideas-csvenke "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Tests") | [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Tests") |
 | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License

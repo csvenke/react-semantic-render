@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { Output } from '../../types';
-import getRenderProp from '../getRenderProp/getRenderProp';
-import isEmptyChildren from '../isEmptyChildren/isEmptyChildren';
-import isFunction from '../isFunction/isFunction';
+import { TOutput, TRender } from '../../types';
+import getRenderProp from '../getRenderProp';
+import isEmptyChildren from '../isEmptyChildren';
+import isFunction from '../isFunction';
 
-const getChildrenOrRender = (children?: any, render?: any): Output => {
+const getChildrenOrRender = (children?: any, render?: any): TOutput => {
   const result = getRenderProp(children, render);
 
   if (result) {
-    if (isFunction<() => Output>(result)) {
+    if (isFunction<TRender>(result)) {
       return result();
     }
 
