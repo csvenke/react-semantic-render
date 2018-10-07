@@ -14,7 +14,7 @@ module.exports = {
       statements: 90,
     },
   },
-  collectCoverageFrom: ['src/@(components|utils)/**/*.@(ts|tsx)'],
+  collectCoverageFrom: ['src/@(components|hocs|utils)/**/*.@(ts|tsx)'],
   globals: {
     'ts-jest': {
       tsConfig: './tsconfig.jest.json',

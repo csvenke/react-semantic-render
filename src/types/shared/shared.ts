@@ -1,20 +1,20 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-export type Map = (item?: any, index?: number, array?: any[]) => React.ReactNode;
+export type TMap = (item?: any, index?: number, array?: any[]) => React.ReactNode;
 
-export type Render = () => React.ReactNode;
+export type TRender = () => TOutput;
 
-export type Children = React.ReactNode | (() => React.ReactNode);
+export type TChildren = React.ReactNode | (() => React.ReactNode);
 
-export type Output = React.ReactElement<any> | null;
+export type TOutput = React.ReactElement<any> | null;
 
 export interface IRenderProps {
   /** Shorthand for primary content. */
-  render?: Render;
+  render?: TRender;
 
   /** Primary content. */
-  children?: Children;
+  children?: TChildren;
 }
 
 export const renderPropsPropTypes = {

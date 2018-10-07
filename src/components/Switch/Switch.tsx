@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Output } from '../../types';
+import { TOutput } from '../../types';
 import { isElement, renderIf } from '../../utils';
 import SwitchCase from './SwitchCase';
 import SwitchDefault from './SwitchDefault';
@@ -21,7 +21,7 @@ const isValidSwitchChild = (child: any) =>
 /**
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
  */
-const Switch = (props: ISwitchProps): Output => {
+const Switch = (props: ISwitchProps): TOutput => {
   const { children, value } = props;
   const switchValue = value;
   let match = false;

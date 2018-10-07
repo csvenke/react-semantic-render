@@ -1,22 +1,16 @@
 import typescript from 'rollup-plugin-typescript2';
-import { uglify } from 'rollup-plugin-uglify';
 import { terser } from 'rollup-plugin-terser';
-import resolve from 'rollup-plugin-node-resolve';
-import filesize from 'rollup-plugin-filesize';
-import commonjs from 'rollup-plugin-commonjs';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import pkg from './package.json';
 
-const createConfig = ({ output, plugins, ...restConfig } = {}) => ({
+const createConfig = ({ plugins, ...restConfig } = {}) => ({
   input: 'src/index.ts',
-  output,
-  external: ['react', 'react-dom', 'prop-types', 'tslib'],
+  external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)],
   plugins: [
     typescript({
       tsconfig: './tsconfig.json',
       typescript: require('typescript'),
     }),
-    commonjs(),
-    resolve(),
     ...plugins,
   ],
   ...restConfig,
@@ -25,25 +19,26 @@ const createConfig = ({ output, plugins, ...restConfig } = {}) => ({
 export default [
   createConfig({
     output: { file: `lib/${pkg.main}`, format: 'cjs' },
-    plugins: [uglify(), filesize()],
+    plugins: [sizeSnapshot(), terser()],
   }),
   createConfig({
     output: { file: `lib/${pkg.module}`, format: 'esm' },
-    plugins: [terser(), filesize()],
+    plugins: [sizeSnapshot(), terser()],
   }),
   createConfig({
     experimentalCodeSplitting: true,
     optimizeChunks: true,
     input: [
-      'src/components/List/List.tsx',
-      'src/components/Show/Show.tsx',
-      'src/components/Switch/Switch.tsx',
+      './src/components/List/List.tsx',
+      './src/components/Show/Show.tsx',
+      './src/components/ShowIfElse/ShowIfElse.tsx',
+      './src/components/Switch/Switch.tsx',
+      './src/hocs/Hideable/Hideable.tsx',
     ],
     output: {
       dir: 'lib',
       format: 'cjs',
-      exports: 'named',
     },
-    plugins: [uglify()],
+    plugins: [terser()],
   }),
 ];

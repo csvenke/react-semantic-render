@@ -1,14 +1,16 @@
 ### Example usage
 
 ```jsx
-<Show
-  when={true}
-  render={() => (
-    <div>Render me!</div>
-  )}
-/>
+const App = ({ showButton }) => (
+  <div>
+    <Show when={showButton}>
+      <button>Click me!</button>
+    </Show>
+    <Show when={!showButton}>
+      <button>No, click me!</button>
+    </Show>
+  </div>
+);
 
-<Show when={false}>
-  <div>Don't render me!</div>
-</Show>
+<App showButton={true} />;
 ```

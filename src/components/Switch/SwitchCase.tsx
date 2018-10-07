@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 
-import { IRenderProps, Output, renderPropsPropTypes } from '../../types';
+import { IRenderProps, renderPropsPropTypes, TOutput } from '../../types';
 import { getChildrenOrRender } from '../../utils/';
 
 export interface ISwitchCaseProps extends IRenderProps {
@@ -11,7 +11,7 @@ export interface ISwitchCaseProps extends IRenderProps {
 /**
  * Helper component that is accessed from `Switch` component.
  */
-const SwitchCase = (props: ISwitchCaseProps): Output => {
+const SwitchCase = (props: ISwitchCaseProps): TOutput => {
   const { children, render } = props;
   return getChildrenOrRender(children, render);
 };

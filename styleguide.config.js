@@ -1,8 +1,6 @@
-const path = require('path');
-const glob = require('glob');
 const docgen = require('react-docgen');
 const docgenTypescript = require('react-docgen-typescript');
-const app = require('./package.json');
+const pkg = require('./package.json');
 
 const typescriptConfig = {
   resolver: docgen.resolver.findAllComponentDefinitions,
@@ -11,14 +9,9 @@ const typescriptConfig = {
   }).parse,
 };
 
-const getComponents = () => {
-  const components = ['List', 'Show', 'Switch'];
-  return components.map(item => `./src/components/${item}/${item}.tsx`);
-};
-
 module.exports = {
-  title: app.name,
-  version: app.version,
+  title: pkg.name,
+  version: pkg.version,
   exampleMode: 'expand',
   usageMode: 'expand',
   pagePerSection: true,
@@ -29,6 +22,22 @@ module.exports = {
     faker: 'faker',
     _: 'lodash',
   },
-  components: getComponents(),
+  sections: [
+    {
+      name: 'Components',
+      components: [
+        './src/components/List/List.tsx',
+        './src/components/Show/Show.tsx',
+        './src/components/ShowIfElse/ShowIfElse.tsx',
+        './src/components/Switch/Switch.tsx',
+      ],
+      sectionDepth: 0,
+    },
+    {
+      name: 'Hocs',
+      components: ['./src/hocs/Hideable/Hideable.tsx'],
+      sectionDepth: 0,
+    },
+  ],
   ...typescriptConfig,
 };

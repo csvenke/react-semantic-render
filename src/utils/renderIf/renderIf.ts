@@ -1,3 +1,6 @@
-const renderIf = (condition: boolean) => (input: any) => (condition ? input : null);
+const renderIf = (condition: boolean) => (content: any) => {
+  const result = condition && content;
+  return result || null;
+};
 
 export default renderIf;
