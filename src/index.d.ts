@@ -51,10 +51,8 @@ declare module 'react-semantic-render/ShowIfElse' {
   interface IShowIfElse {
     /** Conditional statement.  */
     condition: boolean;
-
     /** Renders when condition is true. */
     if: TRender;
-
     /** Renders when condition is false. */
     else: TRender;
   }
@@ -108,7 +106,7 @@ declare module 'react-semantic-render/Hideable' {
   }
 
   /**
-   * Higher order component that injects 'hideComponent' prop.
+   * Higher order component that injects 'hideComponent' prop into specified component.
    */
   const Hideable: <P extends object>(
     Component: React.ComponentType<P>,
