@@ -43,13 +43,13 @@
   - **[List](https://csvenke.github.io/react-semantic-render/#!/List)**: Renders content from an array of data.
   - **[Switch](https://csvenke.github.io/react-semantic-render/#!/Switch)**: Renders content from first case that matches, else default if it exists.
   - **[Show](https://csvenke.github.io/react-semantic-render/#!/Show)**: Renders content when specified condition is true.
-  - **[ShowIfElse](https://csvenke.github.io/react-semantic-render/#!/ShowIfElse)**: Renders content when condition is true, else renders something else.
-  - **[Hideable](https://csvenke.github.io/react-semantic-render/#!/Hideable)**: Higher order component that injects 'hideComponent' prop into specified component.
-- **Tiny bundle size** 😃
-- **Supports treeshaking** 🔥
-- **100% test coverage** 😀
-- **TypeScript type definitions** 😏
-- **Blazing fast** 😎
+  - **[ShowIfElse](https://csvenke.github.io/react-semantic-render/#!/ShowIfElse)**: Renders specified content when condition is true, else renders other specified content.
+  - **[Hideable](https://csvenke.github.io/react-semantic-render/#!/Hideable)**: Higher order component that makes any component hideable.
+- **Tiny bundle size!**
+- **Supports treeshaking!**
+- **100% test coverage!**
+- **TypeScript type definitions!**
+- **Blazing fast!**
 
 ## Install
 
