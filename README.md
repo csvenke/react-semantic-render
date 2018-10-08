@@ -11,10 +11,10 @@
       <img src="https://img.shields.io/npm/v/react-semantic-render.svg" alt="npm package" />
     </a>
     <a href="https://bundlephobia.com/result?p=react-semantic-render">
-      <img src="https://img.shields.io/bundlephobia/min/react-semantic-render.svg" alt="bundle size" />
+      <img src="https://img.shields.io/bundlephobia/minzip/react-semantic-render.svg" alt="minzipped bundle size" />
     </a>
     <a href="https://travis-ci.com/csvenke/react-semantic-render">
-      <img src="https://travis-ci.com/csvenke/react-semantic-render.svg?branch=master" alt="build status" />
+      <img src="https://travis-ci.com/csvenke/react-semantic-render.svg?branch=master" alt="travis ci build status" />
     </a>
     <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
       <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master&service=github' alt='coverage status' />
@@ -39,7 +39,7 @@
 
 ## Key features
 
-- **Growing list of semantic helper components and hocs**
+- **Growing list of semantic helper components and hocs!**
   - **[List](https://csvenke.github.io/react-semantic-render/#!/List)**: Renders content from an array of data.
   - **[Switch](https://csvenke.github.io/react-semantic-render/#!/Switch)**: Renders content from first case that matches, else default if it exists.
   - **[Show](https://csvenke.github.io/react-semantic-render/#!/Show)**: Renders content when specified condition is true.
@@ -71,7 +71,7 @@ Render button when condition is true
 
 ```jsx
 import React from 'react';
-import Show from 'react-semantic-render/Show';
+import { Show } from 'react-semantic-render';
 
 const App = ({ showButton }) => (
   <Show when={showButton}>
@@ -84,7 +84,7 @@ Render list of names
 
 ```jsx
 import React from 'react';
-import List from 'react-semantic-render/List';
+import { List } from 'react-semantic-render';
 
 const App = () => (
   <ul>
@@ -99,11 +99,11 @@ const App = () => (
 );
 ```
 
-Render message when condition is true, else render something else
+Render message when condition is true, else render button
 
 ```jsx
 import React from 'react';
-import Switch from 'react-semantic-render/Switch';
+import { Switch } from 'react-semantic-render';
 
 const App = ({ showMessage }) => (
   <Switch value>
@@ -111,7 +111,7 @@ const App = ({ showMessage }) => (
       <span>Render me!</span>
     </Switch.Case>
     <Switch.Default>
-      <span>Nobody renders better than me!</span>
+      <button>Click me!</button>
     </Switch.Default>
   </Switch>
 );
@@ -119,57 +119,41 @@ const App = ({ showMessage }) => (
 
 ## Why
 
-In the example below you see a component named `UserList` that contains two very common use cases where you have to render something when a condition is true and render content from an array of data.
+In the example below you see two very common use cases where you have to render something when a condition is true and render content from an array of data.
 This is usually solved with inline arrow functions that are hard to read and easily becomes unmanageable in more complex components.
 
 ```jsx
-const UserList = ({ isLoading, results }) => (
-  <div>
-    {isLoading && <span>Loading...</span>}
-    {!isLoading && !results.length && <span>No results found</span>}
-    {!isLoading &&
-      results.length > 0 && (
-        <ul>
-          {result.map(user => (
-            <li key={user.id}>
-              <span>{user.name}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-  </div>
+const App = ({ isLoading, results }) => (
+    {results.length > 0 ? (
+      <ul>
+        {result.map(user => (
+          <li key={user.id}>
+            <span>{user.name}</span>
+          </li>
+        ))}
+      </ul>
+    ) : null}
 );
 ```
 
 Here you see how the component above could be rewritten with components from `react-semantic-render`.
-While it might be abit more verbose, the readability is greatly increased and you immeadiatly see whats going on.
+While it is abit more verbose, the readability is greatly increased and you immeadiatly see whats going on.
 
 ```jsx
 import { List, Switch } from 'react-semantic-render';
 
-const UserList = ({ isLoading, results }) => (
-  <div>
-    <Switch value>
-      <Switch.Case value={isLoading}>
-        <span>Loading...</span>
-      </Switch.Case>
-      <Switch.Case value={!isLoading && !result.length}>
-        <span>No results found</span>
-      </Switch.Case>
-      <Switch.Case value={!isLoading && results.length > 0}>
-        <ul>
-          <List
-            items={results}
-            render={user => (
-              <li key={user.id}>
-                <span>{user.name}</span>
-              </li>
-            )}
-          />
-        </ul>
-      </Switch.Case>
-    </Switch>
-  </div>
+const App = ({ isLoading, results }) => (
+  <Show when={results.length > 0}>
+    <ul>
+      <List items={results}>
+        {user => (
+          <li key={user.id}>
+            <span>{user.name}</span>
+          </li>
+        )}
+      </List>
+    </ul>
+  </Show>
 );
 ```
 
