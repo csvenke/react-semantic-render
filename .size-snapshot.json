@@ -1,9 +1,4 @@
 {
-  "lib/index.cjs.js": {
-    "bundled": 5651,
-    "minified": 3085,
-    "gzipped": 1047
-  },
   "lib/index.esm.js": {
     "bundled": 5360,
     "minified": 2805,
