@@ -102,7 +102,7 @@ declare module 'react-semantic-render/Switch' {
 
 declare module 'react-semantic-render/Hideable' {
   interface IHideableProps {
-    showWhen: boolean;
+    hideComponent: boolean;
   }
 
   /**
