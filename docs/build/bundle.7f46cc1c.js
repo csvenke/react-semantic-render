@@ -17468,7 +17468,7 @@ object-assign
                 t === i.length - 1 && (o = ''), e(a.end, '', o);
               }),
                 'ExpressionStatement' === this.unparenthesizedParent().type
-                  ? e.appendRight(this.end, ')')
+                  ? e.prependRight(this.end, ')')
                   : e.appendRight(this.end, ', ' + r + ')');
             }),
             (AssignmentExpression.prototype.transpileExponentiation = function transpileExponentiation(
@@ -18143,12 +18143,9 @@ object-assign
               if (this.shouldRewriteAsFunction) {
                 var i =
                     'VariableDeclaration' === this.init.type
-                      ? [].concat.apply(
-                          [],
-                          this.init.declarations.map(function(e) {
-                            return extractNames(e.id);
-                          }),
-                        )
+                      ? this.init.declarations.map(function(e) {
+                          return extractNames(e.id);
+                        })
                       : [],
                   o = this.aliases;
                 (this.args = i.map(function(e) {
@@ -18191,12 +18188,9 @@ object-assign
                 r = 'VariableDeclaration' === this.left.type;
               if (this.shouldRewriteAsFunction) {
                 var i = r
-                  ? [].concat.apply(
-                      [],
-                      this.left.declarations.map(function(e) {
-                        return extractNames(e.id);
-                      }),
-                    )
+                  ? this.left.declarations.map(function(e) {
+                      return extractNames(e.id);
+                    })
                   : [];
                 (this.args = i.map(function(e) {
                   return e in n.aliases ? n.aliases[e].outer : e;
@@ -18758,7 +18752,7 @@ object-assign
             e && (JSXOpeningFragment.__proto__ = e),
             (JSXOpeningFragment.prototype = Object.create(e && e.prototype)),
             (JSXOpeningFragment.prototype.constructor = JSXOpeningFragment),
-            (JSXOpeningFragment.prototype.transpile = function transpile(e, a) {
+            (JSXOpeningFragment.prototype.transpile = function transpile(e) {
               e.overwrite(
                 this.start,
                 this.end,
@@ -21761,26 +21755,26 @@ object-assign
                   this.program.indentExclusionElements.push(this);
               }),
               (Literal.prototype.transpile = function transpile(e, a) {
-                if (a.numericLiteral) {
-                  var t = this.raw.slice(0, 2);
-                  ('0b' !== t && '0o' !== t) ||
+                if (
+                  (a.numericLiteral &&
+                    this.raw.match(/^0[bo]/i) &&
                     e.overwrite(this.start, this.end, String(this.value), {
                       storeName: !0,
                       contentOnly: !0,
-                    });
-                }
-                if (this.regex) {
-                  var n = this.regex,
-                    r = n.pattern,
-                    i = n.flags;
-                  if (a.stickyRegExp && /y/.test(i))
+                    }),
+                  this.regex)
+                ) {
+                  var t = this.regex,
+                    n = t.pattern,
+                    r = t.flags;
+                  if (a.stickyRegExp && /y/.test(r))
                     throw new h('Regular expression sticky flag is not supported', this);
                   a.unicodeRegExp &&
-                    /u/.test(i) &&
+                    /u/.test(r) &&
                     e.overwrite(
                       this.start,
                       this.end,
-                      '/' + oe(r, i) + '/' + i.replace('u', ''),
+                      '/' + oe(n, r) + '/' + r.replace('u', ''),
                       { contentOnly: !0 },
                     );
                 }
@@ -22388,6 +22382,7 @@ object-assign
                     'var' !== r &&
                     ((r = 'var'),
                     e.overwrite(this.start, this.start + this.kind.length, r, {
+                      contentOnly: !0,
                       storeName: !0,
                     })),
                   a.destructuring &&
@@ -22609,7 +22604,7 @@ object-assign
       };
       var ue = {
           chrome: {
-            48: 305357,
+            48: 305359,
             49: 326143,
             50: 391679,
             51: 391679,
@@ -22627,12 +22622,12 @@ object-assign
             63: 1047039,
           },
           firefox: {
-            43: 325853,
-            44: 326109,
-            45: 326111,
-            46: 391647,
-            47: 391679,
-            48: 391679,
+            43: 321757,
+            44: 322013,
+            45: 322015,
+            46: 387551,
+            47: 387583,
+            48: 387583,
             49: 387583,
             50: 387583,
             51: 387583,
@@ -33919,7 +33914,7 @@ object-assign
     e.exports = {
       config: {
         title: 'react-semantic-render',
-        version: '3.0.0',
+        version: '3.0.1',
         showCode: !1,
         showUsage: !1,
         showSidebar: !0,
