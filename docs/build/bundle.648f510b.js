@@ -13,7 +13,7 @@
       'build/' +
       ({}[e] || e) +
       '.' +
-      { 1: 'f9c6b19f' }[e] +
+      { 1: 'd128c4b2' }[e] +
       '.js'
     );
   }
@@ -1207,9 +1207,9 @@
         N
       );
     }
-    var we = t(55),
-      Se = t(11),
-      xe = t(26),
+    var we = t(56),
+      Se = t(10),
+      xe = t(25),
       _e = t(2),
       ze = t(23);
     function MarkdownHeadingRenderer(e) {
@@ -1332,7 +1332,7 @@
           },
         };
       })(PreRenderer),
-      Ke = t(10),
+      Ke = t(9),
       Ne =
         Object.assign ||
         function(e) {
@@ -1547,51 +1547,6 @@
   },
   function(e, a, t) {
     'use strict';
-    var n = t(1),
-      r = function(e) {
-        return function(a) {
-          return (e && a) || null;
-        };
-      },
-      i = function(e, a) {
-        var t = e || a;
-        return r(!!t)(t);
-      },
-      o = function(e) {
-        return 0 === n.Children.count(e);
-      },
-      s = function(e) {
-        return 'function' == typeof e;
-      },
-      c = function(e, a) {
-        var t = i(e, a);
-        if (t) {
-          if (s(t)) return t();
-          if (!o(t) && n.isValidElement(t)) return n.Children.only(t);
-        }
-        return null;
-      },
-      l = function(e, a) {
-        return e.type.prototype === a.prototype;
-      };
-    t.d(a, 'a', function() {
-      return c;
-    }),
-      t.d(a, 'b', function() {
-        return i;
-      }),
-      t.d(a, 'c', function() {
-        return l;
-      }),
-      t.d(a, 'd', function() {
-        return s;
-      }),
-      t.d(a, 'e', function() {
-        return r;
-      });
-  },
-  function(e, a, t) {
-    'use strict';
     t.d(a, 'c', function() {
       return unquote;
     }),
@@ -1791,6 +1746,37 @@
   },
   function(e, a, t) {
     'use strict';
+    var n = t(1),
+      r = function(e, a) {
+        var t = e || a;
+        return t || null;
+      },
+      i = function(e) {
+        return 0 === n.Children.count(e);
+      },
+      o = function(e) {
+        return 'function' == typeof e;
+      },
+      s = function(e, a) {
+        var t = r(e, a);
+        if (t) {
+          if (o(t)) return t();
+          if (!i(t) && n.isValidElement(t)) return n.Children.only(t);
+        }
+        return null;
+      };
+    t.d(a, 'a', function() {
+      return s;
+    }),
+      t.d(a, 'b', function() {
+        return r;
+      }),
+      t.d(a, 'c', function() {
+        return o;
+      });
+  },
+  function(e, a, t) {
+    'use strict';
     e.exports = function() {};
   },
   function(e, a) {
@@ -1811,7 +1797,7 @@
       r = t.n(n),
       i = t(0),
       o = t.n(i),
-      s = t(10),
+      s = t(9),
       c = t(2);
     function TypeRenderer(e) {
       var a = e.classes,
@@ -1890,7 +1876,7 @@
       r = t.n(n),
       i = t(0),
       o = t.n(i),
-      s = t(10),
+      s = t(9),
       c = t(2),
       l = t(3),
       u = t.n(l);
@@ -2224,6 +2210,44 @@
       r = t.n(n),
       i = t(0),
       o = t.n(i),
+      s = t(2);
+    function ParaRenderer(e) {
+      var a = e.classes,
+        t = e.semantic,
+        n = e.children,
+        i = t || 'div';
+      return r.a.createElement(i, { className: a.para }, n);
+    }
+    ParaRenderer.propTypes = {
+      classes: o.a.object.isRequired,
+      semantic: o.a.oneOf(['p']),
+      children: o.a.node.isRequired,
+    };
+    var c = Object(s.a)(function styles(e) {
+      var a = e.space,
+        t = e.color,
+        n = e.fontFamily;
+      return {
+        para: {
+          marginTop: 0,
+          marginBottom: a[2],
+          color: t.base,
+          fontFamily: n.base,
+          fontSize: 'inherit',
+          lineHeight: 1.5,
+        },
+      };
+    })(ParaRenderer);
+    t.d(a, 'a', function() {
+      return c;
+    });
+  },
+  function(e, a, t) {
+    'use strict';
+    var n = t(1),
+      r = t.n(n),
+      i = t(0),
+      o = t.n(i),
       s = t(2),
       c = t(4),
       l = t(20),
@@ -2294,48 +2318,10 @@
     });
   },
   function(e, a, t) {
-    'use strict';
-    var n = t(1),
-      r = t.n(n),
-      i = t(0),
-      o = t.n(i),
-      s = t(2);
-    function ParaRenderer(e) {
-      var a = e.classes,
-        t = e.semantic,
-        n = e.children,
-        i = t || 'div';
-      return r.a.createElement(i, { className: a.para }, n);
-    }
-    ParaRenderer.propTypes = {
-      classes: o.a.object.isRequired,
-      semantic: o.a.oneOf(['p']),
-      children: o.a.node.isRequired,
-    };
-    var c = Object(s.a)(function styles(e) {
-      var a = e.space,
-        t = e.color,
-        n = e.fontFamily;
-      return {
-        para: {
-          marginTop: 0,
-          marginBottom: a[2],
-          color: t.base,
-          fontFamily: n.base,
-          fontSize: 'inherit',
-          lineHeight: 1.5,
-        },
-      };
-    })(ParaRenderer);
-    t.d(a, 'a', function() {
-      return c;
-    });
-  },
-  function(e, a, t) {
     var n = t(100),
       r = t(101),
       i = t(46),
-      o = t(8),
+      o = t(7),
       s = t(15),
       c = t(47),
       l = t(45),
@@ -7381,7 +7367,7 @@
             return Za;
           }.call(a, t, a, n)) === i || (n.exports = r);
       }.call(this));
-    }.call(this, t(12), t(44)(e)));
+    }.call(this, t(11), t(44)(e)));
   },
   function(e, a) {
     e.exports = function requireInRuntime(e, a) {
@@ -7626,7 +7612,7 @@
     };
   },
   function(e, a, t) {
-    var n = t(7).Symbol;
+    var n = t(6).Symbol;
     e.exports = n;
   },
   function(e, a, t) {
@@ -7690,7 +7676,7 @@
   },
   function(e, a, t) {
     (function(e) {
-      var n = t(7),
+      var n = t(6),
         r = t(208),
         i = 'object' == typeof a && a && !a.nodeType && a,
         o = i && 'object' == typeof e && e && !e.nodeType && e,
@@ -12530,63 +12516,6 @@
       r = t.n(n),
       i = t(0),
       o = t.n(i),
-      s = t(3),
-      c = t.n(s),
-      l = t(2),
-      u =
-        Object.assign ||
-        function(e) {
-          for (var a = 1; a < arguments.length; a++) {
-            var t = arguments[a];
-            for (var n in t) Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
-          }
-          return e;
-        };
-    function _objectWithoutProperties(e, a) {
-      var t = {};
-      for (var n in e)
-        a.indexOf(n) >= 0 ||
-          (Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]));
-      return t;
-    }
-    function LinkRenderer(e) {
-      var a = e.classes,
-        t = e.children,
-        n = _objectWithoutProperties(e, ['classes', 'children']);
-      return r.a.createElement(
-        'a',
-        u({}, n, { className: c()(a.link, n.className) }),
-        t,
-      );
-    }
-    LinkRenderer.propTypes = {
-      children: o.a.node,
-      className: o.a.string,
-      classes: o.a.object.isRequired,
-    };
-    var p = Object(l.a)(function styles(e) {
-      var a = e.color;
-      return {
-        link: {
-          '&, &:link, &:visited': {
-            fontSize: 'inherit',
-            color: a.link,
-            textDecoration: 'none',
-          },
-          '&:hover, &:active': { isolate: !1, color: a.linkHover, cursor: 'pointer' },
-        },
-      };
-    })(LinkRenderer);
-    t.d(a, 'a', function() {
-      return p;
-    });
-  },
-  function(e, a, t) {
-    'use strict';
-    var n = t(1),
-      r = t.n(n),
-      i = t(0),
-      o = t.n(i),
       s = t(2);
     function TableRenderer(e) {
       var a = e.classes,
@@ -12673,7 +12602,64 @@
       r = t.n(n),
       i = t(0),
       o = t.n(i),
-      s = t(25),
+      s = t(3),
+      c = t.n(s),
+      l = t(2),
+      u =
+        Object.assign ||
+        function(e) {
+          for (var a = 1; a < arguments.length; a++) {
+            var t = arguments[a];
+            for (var n in t) Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+          }
+          return e;
+        };
+    function _objectWithoutProperties(e, a) {
+      var t = {};
+      for (var n in e)
+        a.indexOf(n) >= 0 ||
+          (Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]));
+      return t;
+    }
+    function LinkRenderer(e) {
+      var a = e.classes,
+        t = e.children,
+        n = _objectWithoutProperties(e, ['classes', 'children']);
+      return r.a.createElement(
+        'a',
+        u({}, n, { className: c()(a.link, n.className) }),
+        t,
+      );
+    }
+    LinkRenderer.propTypes = {
+      children: o.a.node,
+      className: o.a.string,
+      classes: o.a.object.isRequired,
+    };
+    var p = Object(l.a)(function styles(e) {
+      var a = e.color;
+      return {
+        link: {
+          '&, &:link, &:visited': {
+            fontSize: 'inherit',
+            color: a.link,
+            textDecoration: 'none',
+          },
+          '&:hover, &:active': { isolate: !1, color: a.linkHover, cursor: 'pointer' },
+        },
+      };
+    })(LinkRenderer);
+    t.d(a, 'a', function() {
+      return p;
+    });
+  },
+  function(e, a, t) {
+    'use strict';
+    var n = t(1),
+      r = t.n(n),
+      i = t(0),
+      o = t.n(i),
+      s = t(26),
       c = t(23),
       l = t(2),
       u =
@@ -12798,12 +12784,12 @@
       (e.exports = Stack);
   },
   function(e, a, t) {
-    var n = t(17)(t(7), 'Map');
+    var n = t(17)(t(6), 'Map');
     e.exports = n;
   },
   function(e, a, t) {
     var n = t(18),
-      r = t(9),
+      r = t(8),
       i = '[object AsyncFunction]',
       o = '[object Function]',
       s = '[object GeneratorFunction]',
@@ -12872,7 +12858,7 @@
     var n = t(234),
       r = t(258),
       i = t(67),
-      o = t(8),
+      o = t(7),
       s = t(265);
     e.exports = function baseIteratee(e) {
       return 'function' == typeof e
@@ -12887,7 +12873,7 @@
     };
   },
   function(e, a, t) {
-    var n = t(8),
+    var n = t(7),
       r = t(50),
       i = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
       o = /^\w*$/;
@@ -12978,39 +12964,39 @@
     t.r(a);
     var n = t(0),
       r = t(1),
-      i = t(5),
-      o = t(19),
-      s = t(22),
+      i = t(19),
+      o = t(22),
+      s = t(12),
       c = function(e) {
         var a = e.children,
           t = e.render;
-        return Object(i.a)(a, t);
+        return Object(s.a)(a, t);
       };
-    c.propTypes = o.a({ value: n.any.isRequired }, s.a);
+    c.propTypes = i.a({ value: n.any.isRequired }, o.a);
     var l = c,
       u = function(e) {
         var a = e.children,
           t = e.render;
-        return Object(i.a)(a, t);
+        return Object(s.a)(a, t);
       };
-    u.propTypes = s.a;
+    u.propTypes = o.a;
     var p = u,
       d = function(e) {
-        return r.isValidElement(e) && (Object(i.c)(e, l) || Object(i.c)(e, p));
+        return e.props.value;
       },
       m = function(e) {
         var a,
           t = e.children,
           n = e.value,
-          o = !1;
+          i = !1;
         return (
           r.Children.forEach(t, function(e) {
-            if (!1 === o && d(e)) {
-              var t = e.props.value;
-              (a = e), (o = t === n);
+            if (!1 === i && r.isValidElement(e)) {
+              var t = d(e);
+              (a = e), (i = t === n);
             }
           }),
-          !o && Object(i.c)(a, p) ? r.cloneElement(a) : Object(i.e)(o)(r.cloneElement(a))
+          i || void 0 !== d(a) ? (i ? r.cloneElement(a) : null) : r.cloneElement(a)
         );
       };
     (m.Case = l),
@@ -13572,7 +13558,7 @@ object-assign
     (function(a) {
       var t = 'object' == typeof a && a && a.Object === Object && a;
       e.exports = t;
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a) {
     var t = Function.prototype.toString;
@@ -13610,7 +13596,7 @@ object-assign
     e.exports = n;
   },
   function(e, a, t) {
-    var n = t(7).Uint8Array;
+    var n = t(6).Uint8Array;
     e.exports = n;
   },
   function(e, a, t) {
@@ -13640,7 +13626,7 @@ object-assign
   function(e, a, t) {
     var n = t(216),
       r = t(46),
-      i = t(8),
+      i = t(7),
       o = t(47),
       s = t(66),
       c = t(48),
@@ -13686,16 +13672,16 @@ object-assign
         javascript_stringify__WEBPACK_IMPORTED_MODULE_3__,
       ),
       rsg_components_Arguments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(57),
-      rsg_components_Argument__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(25),
-      rsg_components_Code__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10),
+      rsg_components_Argument__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26),
+      rsg_components_Code__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9),
       rsg_components_JsDoc__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(24),
       rsg_components_Markdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4),
       rsg_components_Name__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(20),
       rsg_components_Type__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(16),
-      rsg_components_Text__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(11),
-      rsg_components_Para__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(26),
-      rsg_components_Table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(56),
-      _util__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(6),
+      rsg_components_Text__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(10),
+      rsg_components_Para__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(25),
+      rsg_components_Table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(55),
+      _util__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(5),
       _extends =
         Object.assign ||
         function(e) {
@@ -15091,7 +15077,7 @@ object-assign
           a[r + t] = e[r];
         return r;
       }
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a) {
     e.exports = function arrayMap(e, a) {
@@ -15206,7 +15192,7 @@ object-assign
       (e.exports = f);
   },
   function(e, a, t) {
-    var n = t(9);
+    var n = t(8);
     e.exports = function isStrictComparable(e) {
       return e == e && !n(e);
     };
@@ -15227,7 +15213,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(8),
+    var n = t(7),
       r = t(69),
       i = t(259),
       o = t(106);
@@ -15242,7 +15228,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(9),
+    var n = t(8),
       r = t(272),
       i = t(108),
       o = 'Expected a function',
@@ -15310,7 +15296,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(9),
+    var n = t(8),
       r = t(50),
       i = NaN,
       o = /^\s+|\s+$/g,
@@ -16109,7 +16095,7 @@ object-assign
     var n = t(97),
       r = t(68),
       i = t(268),
-      o = t(8);
+      o = t(7);
     e.exports = function map(e, a) {
       return (o(e) ? n : i)(e, r(a, 3));
     };
@@ -23123,7 +23109,7 @@ object-assign
           new Program(e, t, r, a).export(a)
         );
       }
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a, t) {
     'use strict';
@@ -24057,7 +24043,7 @@ object-assign
       (e.exports = a.default);
   },
   function(e, a, t) {
-    var n = t(7).isFinite;
+    var n = t(6).isFinite;
     e.exports = function isFinite(e) {
       return 'number' == typeof e && n(e);
     };
@@ -24080,7 +24066,7 @@ object-assign
       function globalizeComponent(a) {
         a.name && (e[a.name] = Object(n.a)(a.module, a.name));
       }
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a, t) {
     'use strict';
@@ -24908,7 +24894,7 @@ object-assign
         );
       }),
         (e.exports = n());
-    }.call(this, t(77), t(12)));
+    }.call(this, t(77), t(11)));
   },
   function(e, a, t) {
     'use strict';
@@ -25076,7 +25062,7 @@ object-assign
                 : n;
         var o = Object(i.a)(r);
         a.default = o;
-      }.call(this, t(12), t(143)(e));
+      }.call(this, t(11), t(143)(e));
   },
   function(e, a) {
     e.exports = function(e) {
@@ -25109,7 +25095,7 @@ object-assign
       a.default = function(e) {
         return e;
       };
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a, t) {
     'use strict';
@@ -25117,7 +25103,7 @@ object-assign
       Object.defineProperty(a, '__esModule', { value: !0 });
       var t = '2f1acc6c3a606b082e5eef5e54414ffb';
       null == e[t] && (e[t] = 0), (a.default = e[t]++);
-    }.call(this, t(12)));
+    }.call(this, t(11)));
   },
   function(e, a, t) {
     'use strict';
@@ -32507,7 +32493,7 @@ object-assign
       r = t(86),
       i = t(88),
       o = t(199),
-      s = t(9),
+      s = t(8),
       c = t(93),
       l = t(92);
     e.exports = function baseMerge(e, a, t, u, p) {
@@ -32602,7 +32588,7 @@ object-assign
   function(e, a, t) {
     var n = t(62),
       r = t(183),
-      i = t(9),
+      i = t(8),
       o = t(85),
       s = /^\[object .+?Constructor\]$/,
       c = Function.prototype,
@@ -32655,7 +32641,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(7)['__core-js_shared__'];
+    var n = t(6)['__core-js_shared__'];
     e.exports = n;
   },
   function(e, a) {
@@ -32789,11 +32775,11 @@ object-assign
       o = t(203),
       s = t(204),
       c = t(46),
-      l = t(8),
+      l = t(7),
       u = t(207),
       p = t(47),
       d = t(62),
-      m = t(9),
+      m = t(8),
       h = t(209),
       f = t(48),
       v = t(92),
@@ -32831,7 +32817,7 @@ object-assign
   },
   function(e, a, t) {
     (function(e) {
-      var n = t(7),
+      var n = t(6),
         r = 'object' == typeof a && a && !a.nodeType && a,
         i = r && 'object' == typeof e && e && !e.nodeType && e,
         o = i && i.exports === r ? n.Buffer : void 0,
@@ -32875,7 +32861,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(9),
+    var n = t(8),
       r = Object.create,
       i = (function() {
         function object() {}
@@ -33009,7 +32995,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(9),
+    var n = t(8),
       r = t(45),
       i = t(218),
       o = Object.prototype.hasOwnProperty;
@@ -33143,7 +33129,7 @@ object-assign
     var n = t(29),
       r = t(15),
       i = t(66),
-      o = t(9);
+      o = t(8);
     e.exports = function isIterateeCall(e, a, t) {
       if (!o(t)) return !1;
       var s = typeof a;
@@ -33399,7 +33385,7 @@ object-assign
       i = t(242),
       o = t(245),
       s = t(101),
-      c = t(8),
+      c = t(7),
       l = t(47),
       u = t(48),
       p = 1,
@@ -33603,7 +33589,7 @@ object-assign
   },
   function(e, a, t) {
     var n = t(248),
-      r = t(8);
+      r = t(7);
     e.exports = function baseGetAllKeys(e, a, t) {
       var i = a(e);
       return r(e) ? i : n(i, t(e));
@@ -33651,19 +33637,19 @@ object-assign
     e.exports = n;
   },
   function(e, a, t) {
-    var n = t(17)(t(7), 'DataView');
+    var n = t(17)(t(6), 'DataView');
     e.exports = n;
   },
   function(e, a, t) {
-    var n = t(17)(t(7), 'Promise');
+    var n = t(17)(t(6), 'Promise');
     e.exports = n;
   },
   function(e, a, t) {
-    var n = t(17)(t(7), 'Set');
+    var n = t(17)(t(6), 'Set');
     e.exports = n;
   },
   function(e, a, t) {
-    var n = t(17)(t(7), 'WeakMap');
+    var n = t(17)(t(6), 'WeakMap');
     e.exports = n;
   },
   function(e, a, t) {
@@ -33726,7 +33712,7 @@ object-assign
   function(e, a, t) {
     var n = t(41),
       r = t(97),
-      i = t(8),
+      i = t(7),
       o = t(50),
       s = 1 / 0,
       c = n ? n.prototype : void 0,
@@ -33754,7 +33740,7 @@ object-assign
   function(e, a, t) {
     var n = t(105),
       r = t(46),
-      i = t(8),
+      i = t(7),
       o = t(66),
       s = t(65),
       c = t(51);
@@ -33835,7 +33821,7 @@ object-assign
     };
   },
   function(e, a, t) {
-    var n = t(7);
+    var n = t(6);
     e.exports = function() {
       return n.Date.now();
     };
@@ -33914,7 +33900,7 @@ object-assign
     e.exports = {
       config: {
         title: 'react-semantic-render',
-        version: '3.0.2',
+        version: '3.1.2',
         showCode: !1,
         showUsage: !1,
         showSidebar: !0,
@@ -34021,13 +34007,13 @@ object-assign
     t.r(a);
     var n = t(0),
       r = t(1),
-      i = t(5),
+      i = t(12),
       o = function(e) {
         var a = e.items,
           t = e.children,
           n = e.render,
           o = Object(i.b)(t, n);
-        return o && Object(i.d)(o) ? r.createElement(r.Fragment, null, a.map(o)) : null;
+        return o && Object(i.c)(o) ? r.createElement(r.Fragment, null, a.map(o)) : null;
       };
     (o.propTypes = {
       children: n.func,
@@ -110703,12 +110689,12 @@ object-assign
     var n = t(19),
       r = t(0),
       i = t(22),
-      o = t(5),
+      o = t(12),
       s = function(e) {
         var a = e.when,
           t = e.children,
           n = e.render;
-        return Object(o.e)(a)(Object(o.a)(t, n));
+        return a ? Object(o.a)(t, n) : null;
       };
     (s.propTypes = n.a({ when: r.bool.isRequired }, i.a)), (a.default = s);
   },
@@ -110772,11 +110758,26 @@ object-assign
         r,
       );
     e.exports = [
-      { type: 'markdown', content: '### Example usage' },
+      {
+        type: 'markdown',
+        content: '### Example usage\n\nSimple example with children.',
+      },
       {
         type: 'code',
         content:
-          'const App = ({ showButton }) => (\n  <div>\n    <Show when={showButton}>\n      <button>Click me!</button>\n    </Show>\n    <Show when={!showButton}>\n      <button>No, click me!</button>\n    </Show>\n  </div>\n);\n\n<App showButton={true} />;',
+          'const showButton = true;\n\nconst App = () => (\n  <Show when={showButton}>\n    <button>Click me!</button>\n  </Show>\n);\n\n<App />;',
+        settings: {},
+        evalInContext: i,
+      },
+      {
+        type: 'markdown',
+        content:
+          "Simple example with render. <br />\n_Use this when you don't want your content evaluated unless an condition is true._",
+      },
+      {
+        type: 'code',
+        content:
+          "let obj = undefined;\n\nobj = {\n  label: 'Click me!',\n};\n\nconst App = () => (\n  <Show\n    when={!!obj}\n    render={() => (\n      <button>\n        <span>{obj.label}</span>\n      </button>\n    )}\n  />\n);\n\n<App />;",
         settings: {},
         evalInContext: i,
       },
@@ -110934,13 +110935,12 @@ object-assign
     'use strict';
     t.r(a);
     var n = t(19),
-      r = t(1),
-      i = t(5);
+      r = t(1);
     a.default = function(e) {
       return function(a) {
         var t = a.hideComponent,
-          o = n.b(a, ['hideComponent']);
-        return Object(i.e)(!t)(r.createElement(e, n.a({}, o)));
+          i = n.b(a, ['hideComponent']);
+        return t ? null : r.createElement(e, n.a({}, i));
       };
     };
   },
@@ -111097,11 +111097,11 @@ object-assign
       })(),
       h = t(95),
       f = t(4),
-      v = t(25),
+      v = t(26),
       k = t(57),
       g = t(20),
       b = t(24),
-      y = t(56),
+      y = t(55),
       w =
         Object.assign ||
         function(e) {
@@ -111424,7 +111424,7 @@ object-assign
           docsTabs: [{ id: V, render: Usage }],
         };
       },
-      G = t(55);
+      G = t(56);
     function ComponentsListRenderer(e) {
       var a = e.classes,
         t = e.items;
@@ -112418,7 +112418,7 @@ object-assign
         codeRevision: l.a.number.isRequired,
       });
     var xe = Se,
-      _e = t(26),
+      _e = t(25),
       ze =
         Object.assign ||
         function(e) {
