@@ -80,7 +80,7 @@ const App = ({ showButton }) => (
 );
 ```
 
-Remember to use the render function when you dont want your content evaluated unless a condition is true
+Use the render prop when you dont want your content evaluated unless a condition is true
 
 ```jsx
 import React from 'react';
