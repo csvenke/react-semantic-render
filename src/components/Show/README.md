@@ -1,16 +1,39 @@
 ### Example usage
 
+Simple example with children.
+
 ```jsx
-const App = ({ showButton }) => (
-  <div>
-    <Show when={showButton}>
-      <button>Click me!</button>
-    </Show>
-    <Show when={!showButton}>
-      <button>No, click me!</button>
-    </Show>
-  </div>
+const showButton = true;
+
+const App = () => (
+  <Show when={showButton}>
+    <button>Click me!</button>
+  </Show>
 );
 
-<App showButton={true} />;
+<App />;
+```
+
+Simple example with render. <br />
+*Use this when you don't want your content evaluated unless an condition is true.*
+
+```jsx
+let obj = undefined;
+
+obj = {
+  label: 'Click me!',
+};
+
+const App = () => (
+  <Show
+    when={!!obj}
+    render={() => (
+      <button>
+        <span>{obj.label}</span>
+      </button>
+    )}
+  />
+);
+
+<App />;
 ```

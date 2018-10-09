@@ -32,6 +32,13 @@ describe('with render', () => {
     const wrapper = shallow(element);
     expect(wrapper.html()).toEqual(null);
   });
+
+  test('should not evaluate render if when is undefined', () => {
+    const obj = undefined;
+    const element = <Show when={!!obj} render={() => <div>{obj.label}</div>} />;
+    const wrapper = shallow(element);
+    expect(wrapper.html()).toEqual(null);
+  });
 });
 
 describe('with children and render', () => {

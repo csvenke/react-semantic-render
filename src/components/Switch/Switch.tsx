@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { TOutput } from '../../types';
-import { isElement, renderIf } from '../../utils';
+import { isElement } from '../../utils';
 import SwitchCase from './SwitchCase';
 import SwitchDefault from './SwitchDefault';
 
@@ -41,7 +41,7 @@ const Switch = (props: ISwitchProps): TOutput => {
   }
 
   // Return case if its a match.
-  return renderIf(match)(React.cloneElement(child));
+  return match ? React.cloneElement(child) : null;
 };
 
 Switch.Case = SwitchCase;
