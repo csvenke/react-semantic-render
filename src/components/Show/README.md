@@ -15,7 +15,7 @@ const App = () => (
 ```
 
 Simple example with render. <br />
-*Use this when you don't want your content evaluated unless an condition is true.*
+_Use this when you don't want your content evaluated unless an condition is true._
 
 ```jsx
 let obj = undefined;
