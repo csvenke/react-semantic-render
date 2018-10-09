@@ -2,7 +2,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { TOutput } from '../../types';
-import { isElement } from '../../utils';
 import SwitchCase from './SwitchCase';
 import SwitchDefault from './SwitchDefault';
 
@@ -14,9 +13,7 @@ interface ISwitchProps {
   children: React.ReactNode;
 }
 
-const isValidSwitchChild = (child: any) =>
-  React.isValidElement(child) &&
-  (isElement(child, SwitchCase) || isElement(child, SwitchDefault));
+const getSwitchCaseValue = (element: any) => element.props.value;
 
 /**
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
@@ -28,15 +25,15 @@ const Switch = (props: ISwitchProps): TOutput => {
   let child: any;
 
   React.Children.forEach(children, (element: any) => {
-    if (match === false && isValidSwitchChild(element)) {
-      const caseValue = element.props.value;
+    if (match === false && React.isValidElement(element)) {
+      const caseValue = getSwitchCaseValue(element);
       child = element;
       match = caseValue === switchValue;
     }
   });
 
   // No match found, return default if it exists.
-  if (!match && isElement(child, SwitchDefault)) {
+  if (!match && getSwitchCaseValue(child) === undefined) {
     return React.cloneElement(child);
   }
 
