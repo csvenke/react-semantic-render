@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { renderIf } from '../../utils';
-
 interface IHideableProps {
   hideComponent: boolean;
 }
@@ -12,6 +10,6 @@ interface IHideableProps {
 const Hideable = <P extends object>(
   Component: React.ComponentType<P>,
 ): React.SFC<P & IHideableProps> => ({ hideComponent, ...props }: IHideableProps) =>
-  renderIf(!hideComponent)(<Component {...props} />);
+  !hideComponent ? <Component {...props} /> : null;
 
 export default Hideable;

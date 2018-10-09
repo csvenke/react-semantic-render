@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 
 import { IRenderProps, renderPropsPropTypes, TOutput } from '../../types';
-import { getChildrenOrRender, renderIf } from '../../utils';
+import { getChildrenOrRender } from '../../utils';
 
 interface IShowProps extends IRenderProps {
   /** Conditional statement.  */
@@ -13,7 +13,7 @@ interface IShowProps extends IRenderProps {
  */
 const Show = (props: IShowProps): TOutput => {
   const { when, children, render } = props;
-  return renderIf(when)(getChildrenOrRender(children, render));
+  return when ? getChildrenOrRender(children, render) : null;
 };
 
 Show.propTypes = {
