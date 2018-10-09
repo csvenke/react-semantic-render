@@ -80,6 +80,29 @@ const App = ({ showButton }) => (
 );
 ```
 
+Remember to use the render function when you dont want your content evaluated unless a condition is true
+
+```jsx
+import React from 'react';
+import { Show } from 'react-semantic-render';
+
+let obj = undefined;
+obj = {
+  label: 'Click me!',
+};
+
+const App = () => (
+  <Show
+    when={!!obj}
+    render={() => (
+      <button>
+        <span>{obj.label}</span>
+      </button>
+    )}
+  />
+);
+```
+
 Render list of names
 
 ```jsx
