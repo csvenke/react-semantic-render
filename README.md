@@ -1,41 +1,39 @@
-<div align="center">
-
+<p align="center">
   <img src='./media/logo.png' width="20%" alt='logo' />
+</p>
 
-  <h1>react-semantic-render</h1>
+<h1 align="center">react-semantic-render</h1>
 
-  <h4>Semantic helper components for rendering content with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
+<h4 align="center">Semantic helper components for rendering content with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
-  <p>
-    <a href="https://www.npmjs.com/package/react-semantic-render">
-      <img src="https://img.shields.io/npm/v/react-semantic-render.svg" alt="npm package" />
-    </a>
-    <a href="https://bundlephobia.com/result?p=react-semantic-render">
-      <img src="https://img.shields.io/bundlephobia/minzip/react-semantic-render.svg" alt="minzipped bundle size" />
-    </a>
-    <a href="https://travis-ci.com/csvenke/react-semantic-render">
-      <img src="https://travis-ci.com/csvenke/react-semantic-render.svg?branch=master" alt="travis ci build status" />
-    </a>
-    <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
-      <img src='https://coveralls.io/repos/github/csvenke/react-semantic-render/badge.svg?branch=master&service=github' alt='coverage status' />
-    </a>
-    <a href="https://greenkeeper.io/">
-      <img src="https://badges.greenkeeper.io/csvenke/react-semantic-render.svg" alt="greenkeeper" />
-    </a>
-  </p>
+<p align="center">
+  <a href="https://www.npmjs.com/package/react-semantic-render">
+    <img src="https://badgen.net/npm/v/react-semantic-render" alt="npm package" />
+  </a>
+  <a href="https://bundlephobia.com/result?p=react-semantic-render">
+    <img src="https://badgen.net/bundlephobia/minzip/react-semantic-render" alt="minzipped bundle size" />
+  </a>
+  <a href="https://travis-ci.com/csvenke/react-semantic-render">
+    <img src="https://badgen.net/travis/csvenke/react-semantic-render" alt="travis ci build status" />
+  </a>
+  <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
+    <img src='https://badgen.net/coveralls/c/github/csvenke/react-semantic-render' alt='coverage status' />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/csvenke/react-semantic-render.svg" alt="greenkeeper" />
+  </a>
+</p>
 
-  <p>
-    <a href="#key-features">Key features</a> •
-    <a href="#install">Install</a> •
-    <a href="#why">Why</a> •
-    <a href="#documentation">Documentation</a> •
-    <a href="#development">Development</a> •
-    <a href="#contributing">Contributing</a> •
-    <a href="#contributors">Contributors</a> •
-    <a href="#license">License</a>
-  </p>
-
-</div>
+<p align="center">
+  <a href="#key-features">Key features</a> •
+  <a href="#install">Install</a> •
+  <a href="#why">Why</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#development">Development</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#contributors">Contributors</a> •
+  <a href="#license">License</a>
+</p>
 
 ## Key features
 
