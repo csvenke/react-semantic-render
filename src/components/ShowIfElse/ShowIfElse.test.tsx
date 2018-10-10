@@ -1,5 +1,5 @@
-import { shallow } from 'enzyme';
 import * as React from 'react';
+import renderer from 'react-test-renderer';
 
 import ShowIfElse from '.';
 
@@ -12,11 +12,11 @@ const createComponent = condition => (
 );
 
 test('should return content from if', () => {
-  const result = shallow(createComponent(true));
-  expect(result.html()).toEqual('<div>if</div>');
+  const component = renderer.create(createComponent(true));
+  expect(component.toJSON()).toMatchSnapshot();
 });
 
 test('should return content from else', () => {
-  const result = shallow(createComponent(false));
-  expect(result.html()).toEqual('<div>else</div>');
+  const component = renderer.create(createComponent(false));
+  expect(component.toJSON()).toMatchSnapshot();
 });
