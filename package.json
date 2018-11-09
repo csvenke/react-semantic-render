@@ -67,7 +67,7 @@
     "rollup-plugin-size-snapshot": "^0.7.0",
     "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-typescript2": "^0.17.0",
-    "rollup": "^0.66.2",
+    "rollup": "^0.67.0",
     "ts-jest": "^23.10.3",
     "ts-loader": "^5.2.0",
     "tslint-config-prettier": "^1.15.0",
