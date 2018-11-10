@@ -697,11 +697,8 @@
               return !0;
         }
         function heightAtLine(e) {
-          for (
-            var t = 0, n = (e = visualLine(e)).parent, r = 0;
-            r < n.lines.length;
-            ++r
-          ) {
+          e = visualLine(e);
+          for (var t = 0, n = e.parent, r = 0; r < n.lines.length; ++r) {
             var o = n.lines[r];
             if (o == e) break;
             t += o.height;
@@ -1037,7 +1034,7 @@
               : function(e) {
                   return e.split(/\r\n?|\n/);
                 },
-          $ = window.getSelection
+          q = window.getSelection
             ? function(e) {
                 try {
                   return e.selectionStart != e.selectionEnd;
@@ -1055,23 +1052,23 @@
                   0 != t.compareEndPoints('StartToEnd', t)
                 );
               },
-          q =
+          X =
             'oncopy' in (_ = elt('div')) ||
             (_.setAttribute('oncopy', 'return;'), 'function' == typeof _.oncopy),
-          X = null;
+          Y = null;
         function hasBadZoomedRects(e) {
-          if (null != X) return X;
+          if (null != Y) return Y;
           var t = removeChildrenAndAdd(e, elt('span', 'x')),
             n = t.getBoundingClientRect(),
             r = k(t, 0, 1).getBoundingClientRect();
-          return (X = Math.abs(n.left - r.left) > 1);
+          return (Y = Math.abs(n.left - r.left) > 1);
         }
-        var Y = {},
+        var $ = {},
           Z = {};
         function defineMode(e, t) {
           arguments.length > 2 &&
             (t.dependencies = Array.prototype.slice.call(arguments, 2)),
-            (Y[e] = t);
+            ($[e] = t);
         }
         function resolveMode(e) {
           if ('string' == typeof e && Z.hasOwnProperty(e)) e = Z[e];
@@ -1089,7 +1086,7 @@
         }
         function getMode(e, t) {
           t = resolveMode(t);
-          var n = Y[t.name];
+          var n = $[t.name];
           if (!n) return getMode(e, 'text/plain');
           var r = n(e, t);
           if (J.hasOwnProperty(t.name)) {
@@ -3346,10 +3343,11 @@
         }
         function endOperation(e) {
           var t = e.curOp;
-          finishOperation(t, function(e) {
-            for (var t = 0; t < e.ops.length; t++) e.ops[t].cm.curOp = null;
-            endOperations(e);
-          });
+          t &&
+            finishOperation(t, function(e) {
+              for (var t = 0; t < e.ops.length; t++) e.ops[t].cm.curOp = null;
+              endOperations(e);
+            });
         }
         function endOperations(e) {
           for (var t, n = e.ops, r = 0; r < n.length; r++) endOperation_R1(n[r]);
@@ -4003,23 +4001,25 @@
         var ye = function(e, t) {
           (this.anchor = e), (this.head = t);
         };
-        function normalizeSelection(e, t) {
-          var n = e[t];
-          e.sort(function(e, t) {
+        function normalizeSelection(e, t, n) {
+          var r = e && e.options.selectionsMayTouch,
+            o = t[n];
+          t.sort(function(e, t) {
             return cmp(e.from(), t.from());
           }),
-            (t = indexOf(e, n));
-          for (var r = 1; r < e.length; r++) {
-            var o = e[r],
-              i = e[r - 1];
-            if (cmp(i.to(), o.from()) >= 0) {
-              var a = minPos(i.from(), o.from()),
-                s = maxPos(i.to(), o.to()),
-                l = i.empty() ? o.from() == o.head : i.from() == i.head;
-              r <= t && --t, e.splice(--r, 2, new ye(l ? s : a, l ? a : s));
+            (n = indexOf(t, o));
+          for (var i = 1; i < t.length; i++) {
+            var a = t[i],
+              s = t[i - 1],
+              l = cmp(s.to(), a.from());
+            if (r && !a.empty() ? l > 0 : l >= 0) {
+              var c = minPos(s.from(), a.from()),
+                u = maxPos(s.to(), a.to()),
+                d = s.empty() ? a.from() == a.head : s.from() == s.head;
+              i <= n && --n, t.splice(--i, 2, new ye(d ? u : c, d ? c : u));
             }
           }
-          return new ve(e, t);
+          return new ve(t, n);
         }
         function simpleSelection(e, t) {
           return new ve([new ye(e, t || e)], 0);
@@ -4044,7 +4044,7 @@
             var o = e.sel.ranges[r];
             n.push(new ye(adjustForChange(o.anchor, t), adjustForChange(o.head, t)));
           }
-          return normalizeSelection(n, e.sel.primIndex);
+          return normalizeSelection(e.cm, n, e.sel.primIndex);
         }
         function offsetPos(e, t, n) {
           return e.line == t.line
@@ -4351,12 +4351,12 @@
             i++
           )
             r[i] = extendRange(e.sel.ranges[i], t[i], null, o);
-          var a = normalizeSelection(r, e.sel.primIndex);
+          var a = normalizeSelection(e.cm, r, e.sel.primIndex);
           setSelection(e, a, n);
         }
         function replaceOneSelection(e, t, n, r) {
           var o = e.sel.ranges.slice(0);
-          (o[t] = n), setSelection(e, normalizeSelection(o, e.sel.primIndex), r);
+          (o[t] = n), setSelection(e, normalizeSelection(e.cm, o, e.sel.primIndex), r);
         }
         function setSimpleSelection(e, t, n, r) {
           setSelection(e, simpleSelection(t, n), r);
@@ -4374,7 +4374,9 @@
           return (
             signal(e, 'beforeSelectionChange', e, r),
             e.cm && signal(e.cm, 'beforeSelectionChange', e.cm, r),
-            r.ranges != t.ranges ? normalizeSelection(r.ranges, r.ranges.length - 1) : t
+            r.ranges != t.ranges
+              ? normalizeSelection(e.cm, r.ranges, r.ranges.length - 1)
+              : t
           );
         }
         function setSelectionReplaceHistory(e, t, n) {
@@ -4417,7 +4419,7 @@
             (o || l != a.anchor || c != a.head) &&
               (o || (o = t.ranges.slice(0, i)), (o[i] = new ye(l, c)));
           }
-          return o ? normalizeSelection(o, t.primIndex) : t;
+          return o ? normalizeSelection(e.cm, o, t.primIndex) : t;
         }
         function skipAtomicInner(e, t, n, r, o) {
           var i = getLine(e, t.line);
@@ -5335,13 +5337,13 @@
               for (var r = [], o = 0; o < e.length; o++)
                 r[o] = new ye(clipPos(this, e[o].anchor), clipPos(this, e[o].head));
               null == t && (t = Math.min(e.length - 1, this.sel.primIndex)),
-                setSelection(this, normalizeSelection(r, t), n);
+                setSelection(this, normalizeSelection(this.cm, r, t), n);
             }
           }),
           addSelection: docMethodOp(function(e, t, n) {
             var r = this.sel.ranges.slice(0);
             r.push(new ye(clipPos(this, e), clipPos(this, t || e))),
-              setSelection(this, normalizeSelection(r, r.length - 1), n);
+              setSelection(this, normalizeSelection(this.cm, r, r.length - 1), n);
           }),
           getSelection: function(e) {
             for (var t, n = this.sel.ranges, r = 0; r < n.length; r++) {
@@ -5538,8 +5540,9 @@
             return markText(this, (e = clipPos(this, e)), e, n, 'bookmark');
           },
           findMarksAt: function(e) {
+            e = clipPos(this, e);
             var t = [],
-              n = getLine(this, (e = clipPos(this, e)).line).markedSpans;
+              n = getLine(this, e.line).markedSpans;
             if (n)
               for (var r = 0; r < n.length; ++r) {
                 var o = n[r];
@@ -5650,7 +5653,7 @@
             );
           },
           unlinkDoc: function(e) {
-            if ((e instanceof CodeMirror$1 && (e = e.doc), this.linked))
+            if ((e instanceof CodeMirror && (e = e.doc), this.linked))
               for (var t = 0; t < this.linked.length; ++t) {
                 var n = this.linked[t];
                 if (n.doc == e) {
@@ -6579,7 +6582,7 @@
               ((Ee = r ? n : null),
               !r &&
                 88 == n &&
-                !q &&
+                !X &&
                 (y ? e.metaKey : e.ctrlKey) &&
                 t.replaceSelection('', null, 'cut')),
               18 != n ||
@@ -6644,25 +6647,24 @@
                 setTimeout(function() {
                   return (n.scroller.draggable = !0);
                 }, 100));
-            else {
-              var r = e_button(e);
-              if (3 == r && S ? !contextMenuInGutter(t, e) : !clickInGutter(t, e)) {
-                var o = posFromMouse(t, e),
-                  i = o ? clickRepeat(o, r) : 'single';
-                window.focus(),
-                  1 == r && t.state.selectingText && t.state.selectingText(e),
-                  (o && handleMappedButton(t, r, o, i, e)) ||
-                    (1 == r
-                      ? o
-                        ? leftButtonDown(t, o, i, e)
-                        : e_target(e) == n.scroller && e_preventDefault(e)
-                      : 2 == r
-                        ? (o && extendSelection(t.doc, o),
-                          setTimeout(function() {
-                            return n.input.focus();
-                          }, 20))
-                        : 3 == r && (S ? onContextMenu(t, e) : delayBlurEvent(t)));
-              }
+            else if (!clickInGutter(t, e)) {
+              var r = posFromMouse(t, e),
+                o = e_button(e),
+                i = r ? clickRepeat(r, o) : 'single';
+              window.focus(),
+                1 == o && t.state.selectingText && t.state.selectingText(e),
+                (r && handleMappedButton(t, o, r, i, e)) ||
+                  (1 == o
+                    ? r
+                      ? leftButtonDown(t, r, i, e)
+                      : e_target(e) == n.scroller && e_preventDefault(e)
+                    : 2 == o
+                      ? (r && extendSelection(t.doc, r),
+                        setTimeout(function() {
+                          return n.input.focus();
+                        }, 20))
+                      : 3 == o &&
+                        (S ? t.display.input.onContextMenu(e) : delayBlurEvent(t)));
             }
         }
         function handleMappedButton(e, t, n, r, o) {
@@ -6795,14 +6797,14 @@
           r.addNew
             ? -1 == s
               ? ((s = c.length),
-                setSelection(i, normalizeSelection(c.concat([a]), s), {
+                setSelection(i, normalizeSelection(e, c.concat([a]), s), {
                   scroll: !1,
                   origin: '*mouse',
                 }))
               : c.length > 1 && c[s].empty() && 'char' == r.unit && !r.extend
                 ? (setSelection(
                     i,
-                    normalizeSelection(c.slice(0, s).concat(c.slice(s + 1)), 0),
+                    normalizeSelection(e, c.slice(0, s).concat(c.slice(s + 1)), 0),
                     { scroll: !1, origin: '*mouse' },
                   ),
                   (l = i.sel))
@@ -6834,7 +6836,7 @@
                 o.length || o.push(new ye(n, n)),
                   setSelection(
                     i,
-                    normalizeSelection(l.ranges.slice(0, s).concat(o), s),
+                    normalizeSelection(e, l.ranges.slice(0, s).concat(o), s),
                     { origin: '*mouse', scroll: !1 },
                   ),
                   e.scrollIntoView(t);
@@ -6848,7 +6850,7 @@
                   : ((b = C.anchor), (w = maxPos(x.to(), C.head)));
                 var S = l.ranges.slice(0);
                 (S[s] = bidiSimplify(e, new ye(clipPos(i, w), b))),
-                  setSelection(i, normalizeSelection(S, s), N);
+                  setSelection(i, normalizeSelection(e, S, s), N);
               }
           }
           var p = o.wrapper.getBoundingClientRect(),
@@ -6953,6 +6955,7 @@
           eventInWidget(e.display, t) ||
             contextMenuInGutter(e, t) ||
             signalDOMEvent(e, t, 'contextmenu') ||
+            S ||
             e.display.input.onContextMenu(t);
         }
         function contextMenuInGutter(e, t) {
@@ -7005,9 +7008,9 @@
               return updateScrollbars(e);
             }, 100);
         }
-        function CodeMirror$1(e, t) {
+        function CodeMirror(e, t) {
           var n = this;
-          if (!(this instanceof CodeMirror$1)) return new CodeMirror$1(e, t);
+          if (!(this instanceof CodeMirror)) return new CodeMirror(e, t);
           (this.options = t = t ? copyObj(t) : {}),
             copyObj(ze, t, !1),
             setGuttersForLineNumbers(t);
@@ -7016,7 +7019,7 @@
             ? (r = new ke(r, t.mode, null, t.lineSeparator, t.direction))
             : t.mode && (r.modeOption = t.mode),
             (this.doc = r);
-          var o = new CodeMirror$1.inputStyles[t.inputStyle](this),
+          var o = new CodeMirror.inputStyles[t.inputStyle](this),
             i = (this.display = new Display(e, r, o));
           for (var c in ((i.wrapper.CodeMirror = this),
           updateGutters(this),
@@ -7084,10 +7087,9 @@
                     return signalDOMEvent(e, t) || e_preventDefault(t);
                   },
             ),
-            S ||
-              V(t.scroller, 'contextmenu', function(t) {
-                return onContextMenu(e, t);
-              });
+            V(t.scroller, 'contextmenu', function(t) {
+              return onContextMenu(e, t);
+            });
           var n,
             r = { end: 0 };
           function finishTouch() {
@@ -7196,7 +7198,7 @@
               return onBlur(e, t);
             });
         }
-        (CodeMirror$1.defaults = ze), (CodeMirror$1.optionHandlers = Re);
+        (CodeMirror.defaults = ze), (CodeMirror.optionHandlers = Re);
         var Ve = [];
         function indentLine(e, t, n, r) {
           var o,
@@ -7246,7 +7248,7 @@
             }
           }
         }
-        CodeMirror$1.defineInitHook = function(e) {
+        CodeMirror.defineInitHook = function(e) {
           return Ve.push(e);
         };
         var Ue = null;
@@ -7285,7 +7287,8 @@
                       f.line,
                       Math.min(getLine(i, f.line).text.length, f.ch + lst(l).length),
                     ))
-                  : Ue &&
+                  : s &&
+                    Ue &&
                     Ue.lineWise &&
                     Ue.text.join('\n') == t &&
                     (h = f = Pos(h.line, 0))),
@@ -8112,7 +8115,7 @@
             if (
               this.contextMenuPending ||
               !t.state.focused ||
-              ($(n) && !r && !this.composing) ||
+              (q(n) && !r && !this.composing) ||
               t.isReadOnly() ||
               t.options.disableInput ||
               t.state.keySeq
@@ -8421,6 +8424,7 @@
               option('resetSelectionOnContextMenu', !0),
               option('lineWiseCopyCut', !0),
               option('pasteLinesPerSelection', !0),
+              option('selectionsMayTouch', !1),
               option('readOnly', !1, function(e, t) {
                 'nocursor' == t && (onBlur(e), e.display.input.blur()),
                   e.display.input.readOnlyChanged(t);
@@ -8473,8 +8477,8 @@
                 !0,
               ),
               option('phrases', null);
-          })(CodeMirror$1),
-          (function(e) {
+          })(CodeMirror),
+          (function addEditorMethods(e) {
             var t = e.optionHandlers,
               n = (e.helpers = {});
             (e.prototype = {
@@ -8954,43 +8958,41 @@
               (e.registerGlobalHelper = function(t, r, o, i) {
                 e.registerHelper(t, r, i), n[t]._global.push({ pred: o, val: i });
               });
-          })(CodeMirror$1);
+          })(CodeMirror);
         var _e = 'iter insert remove copy getEditor constructor'.split(' ');
         for (var Ke in ke.prototype)
           ke.prototype.hasOwnProperty(Ke) &&
             indexOf(_e, Ke) < 0 &&
-            (CodeMirror$1.prototype[Ke] = (function(e) {
+            (CodeMirror.prototype[Ke] = (function(e) {
               return function() {
                 return e.apply(this.doc, arguments);
               };
             })(ke.prototype[Ke]));
         return (
           eventMixin(ke),
-          (CodeMirror$1.inputStyles = { textarea: Ge, contenteditable: je }),
-          (CodeMirror$1.defineMode = function(e) {
-            CodeMirror$1.defaults.mode ||
-              'null' == e ||
-              (CodeMirror$1.defaults.mode = e),
+          (CodeMirror.inputStyles = { textarea: Ge, contenteditable: je }),
+          (CodeMirror.defineMode = function(e) {
+            CodeMirror.defaults.mode || 'null' == e || (CodeMirror.defaults.mode = e),
               defineMode.apply(this, arguments);
           }),
-          (CodeMirror$1.defineMIME = function defineMIME(e, t) {
+          (CodeMirror.defineMIME = function defineMIME(e, t) {
             Z[e] = t;
           }),
-          CodeMirror$1.defineMode('null', function() {
+          CodeMirror.defineMode('null', function() {
             return {
               token: function(e) {
                 return e.skipToEnd();
               },
             };
           }),
-          CodeMirror$1.defineMIME('text/plain', 'null'),
-          (CodeMirror$1.defineExtension = function(e, t) {
-            CodeMirror$1.prototype[e] = t;
+          CodeMirror.defineMIME('text/plain', 'null'),
+          (CodeMirror.defineExtension = function(e, t) {
+            CodeMirror.prototype[e] = t;
           }),
-          (CodeMirror$1.defineDocExtension = function(e, t) {
+          (CodeMirror.defineDocExtension = function(e, t) {
             ke.prototype[e] = t;
           }),
-          (CodeMirror$1.fromTextArea = function fromTextArea(e, t) {
+          (CodeMirror.fromTextArea = function fromTextArea(e, t) {
             if (
               (((t = t ? copyObj(t) : {}).value = e.value),
               !t.tabindex && e.tabIndex && (t.tabindex = e.tabIndex),
@@ -9030,7 +9032,7 @@
                 });
             }),
               (e.style.display = 'none');
-            var a = CodeMirror$1(function(t) {
+            var a = CodeMirror(function(t) {
               return e.parentNode.insertBefore(t, e.nextSibling);
             }, t);
             return a;
@@ -9051,7 +9053,7 @@
               (e.scrollbarModel = pe),
               (e.Pos = Pos),
               (e.cmpPos = cmp),
-              (e.modes = Y),
+              (e.modes = $),
               (e.mimeModes = Z),
               (e.resolveMode = resolveMode),
               (e.getMode = getMode),
@@ -9077,9 +9079,9 @@
               (e.contains = contains),
               (e.rmClass = L),
               (e.keyNames = Te);
-          })(CodeMirror$1),
-          (CodeMirror$1.version = '5.40.2'),
-          CodeMirror$1
+          })(CodeMirror),
+          (CodeMirror.version = '5.41.0'),
+          CodeMirror
         );
       })();
     },
@@ -10745,31 +10747,34 @@
             if ('variable' == e) return (m.marked = 'property'), cont();
           }
           function objprop(e, t) {
-            if ('async' == e) return (m.marked = 'property'), cont(objprop);
-            if ('variable' == e || 'keyword' == m.style) {
-              return (
-                (m.marked = 'property'),
-                'get' == t || 'set' == t
-                  ? cont(getterSetter)
-                  : (c &&
-                      m.state.fatArrowAt == m.stream.start &&
-                      (n = m.stream.match(/^\s*:\s*/, !1)) &&
-                      (m.state.fatArrowAt = m.stream.pos + n[0].length),
+            return 'async' == e
+              ? ((m.marked = 'property'), cont(objprop))
+              : 'variable' == e || 'keyword' == m.style
+                ? ((m.marked = 'property'),
+                  'get' == t || 'set' == t
+                    ? cont(getterSetter)
+                    : (c &&
+                        m.state.fatArrowAt == m.stream.start &&
+                        (n = m.stream.match(/^\s*:\s*/, !1)) &&
+                        (m.state.fatArrowAt = m.stream.pos + n[0].length),
+                      cont(afterprop)))
+                : 'number' == e || 'string' == e
+                  ? ((m.marked = s ? 'property' : m.style + ' property'),
                     cont(afterprop))
-              );
-              var n;
-            } else {
-              if ('number' == e || 'string' == e)
-                return (
-                  (m.marked = s ? 'property' : m.style + ' property'), cont(afterprop)
-                );
-              if ('jsonld-keyword' == e) return cont(afterprop);
-              if (c && isModifier(t)) return (m.marked = 'keyword'), cont(objprop);
-              if ('[' == e) return cont(expression, maybetype, expect(']'), afterprop);
-              if ('spread' == e) return cont(expressionNoComma, afterprop);
-              if ('*' == t) return (m.marked = 'keyword'), cont(objprop);
-              if (':' == e) return pass(afterprop);
-            }
+                  : 'jsonld-keyword' == e
+                    ? cont(afterprop)
+                    : c && isModifier(t)
+                      ? ((m.marked = 'keyword'), cont(objprop))
+                      : '[' == e
+                        ? cont(expression, maybetype, expect(']'), afterprop)
+                        : 'spread' == e
+                          ? cont(expressionNoComma, afterprop)
+                          : '*' == t
+                            ? ((m.marked = 'keyword'), cont(objprop))
+                            : ':' == e
+                              ? pass(afterprop)
+                              : void 0;
+            var n;
           }
           function getterSetter(e) {
             return 'variable' != e
