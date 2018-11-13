@@ -1,34 +1,30 @@
-import { shallow } from 'enzyme';
 import * as React from 'react';
+import renderer from 'react-test-renderer';
 
 import List from '.';
 
 describe('with render', () => {
   const input = [1, 2, 3];
-  const output = '<div>1</div><div>2</div><div>3</div>';
 
   test('should return primary content from render', () => {
     const element = <List items={input} render={n => <div key={n}>{n}</div>} />;
-    const wrapper = shallow(element);
-    expect(wrapper.html()).toEqual(output);
+    const component = renderer.create(element);
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('with children', () => {
   const input = [1, 2, 3];
-  const output = '<div>1</div><div>2</div><div>3</div>';
 
   test('should return primary content from children', () => {
     const element = <List items={input}>{n => <div key={n}>{n}</div>}</List>;
-    const wrapper = shallow(element);
-    expect(wrapper.html()).toEqual(output);
+    const component = renderer.create(element);
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('with children and render', () => {
   const input = [1, 2, 3];
-  const outputChildren = '<div>1</div><div>2</div><div>3</div>';
-  const outputRender = '<a>1</a><a>2</a><a>3</a>';
 
   test('should return primary content from children and ignore render', () => {
     const element = (
@@ -36,9 +32,8 @@ describe('with children and render', () => {
         {n => <div key={n}>{n}</div>}
       </List>
     );
-    const wrapper = shallow(element);
-    expect(wrapper.html()).toEqual(outputChildren);
-    expect(wrapper.html()).not.toEqual(outputRender);
+    const component = renderer.create(element);
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
@@ -47,7 +42,7 @@ describe('without children and render', () => {
 
   test('should return null', () => {
     const element = <List items={input} />;
-    const wrapper = shallow(element);
-    expect(wrapper.html()).toEqual(null);
+    const component = renderer.create(element);
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

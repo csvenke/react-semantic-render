@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return content from else 1`] = `
+<div>
+  else
+</div>
+`;
+
+exports[`should return content from if 1`] = `
+<div>
+  if
+</div>
+`;

@@ -47,6 +47,7 @@
     "@types/node": "^10.11.3",
     "@types/prop-types": "^15.5.6",
     "@types/react-dom": "^16.0.8",
+    "@types/react-test-renderer": "^16.0.3",
     "@types/react": "^16.4.16",
     "all-contributors-cli": "^5.4.0",
     "coveralls": "^3.0.2",
@@ -60,6 +61,7 @@
     "prettier": "^1.14.3",
     "react-docgen-typescript": "^1.10.0",
     "react-dom": "^16.5.2",
+    "react-test-renderer": "^16.5.2",
     "react-styleguidist": "^8.0.3",
     "react": "^16.5.2",
     "rimraf": "^2.6.2",
@@ -86,7 +88,7 @@
     "deploy": "npm run build && cd lib && npm publish && cd ..",
     "docs:server": "styleguidist server",
     "docs": "styleguidist build",
-    "lint:write": "tslint --fix -p tsconfig.json -c tslint.json",
+    "lint:write": "tslint --fix -c tslint.json",
     "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier -c .prettierrc.json --write",
     "prettier": "npm run prettier:write \"src/**/*.{ts,tsx,md}\" \"*.{js,yml,json}\"",
@@ -94,19 +96,21 @@
     "test:prod": "npm run lint && npm run test --coverage --no-cache",
     "test:watch": "jest --watch",
     "test": "jest",
-    "tslint:check": "tslint-config-prettier-check ./tslint.json"
+    "tslint:check": "tslint-config-prettier-check ./tslint.json",
+    "type-check:watch": "npm run type-check -- --watch",
+    "type-check": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test"
+      "pre-push": "npm run test && tsc --noEmit"
     }
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier -c .prettierrc.json --write",
-      "tslint -c tslint.json --fix",
+      "tslint --fix -c tslint.json",
       "git add"
     ],
     "*.{js,yml,json}": [

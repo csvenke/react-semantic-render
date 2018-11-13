@@ -1,5 +1,5 @@
-import { shallow } from 'enzyme';
 import * as React from 'react';
+import renderer from 'react-test-renderer';
 
 import Switch from '.';
 
@@ -18,77 +18,83 @@ const createElement = (value, values, withDefault = true) => (
   </Switch>
 );
 
-const getResult = index => `<div>case ${index}</div>`;
-
 describe('without default case', () => {
   test('should return content from first case', () => {
-    const wrapper = shallow(createElement(0, [0, 1, 2], false));
-    expect(wrapper.html()).toEqual(getResult(0));
+    const component = renderer.create(createElement(0, [0, 1, 2], false));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content from second case', () => {
-    const wrapper = shallow(createElement(1, [0, 1, 2], false));
-    expect(wrapper.html()).toEqual(getResult(1));
+    const component = renderer.create(createElement(1, [0, 1, 2], false));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content from third case', () => {
-    const wrapper = shallow(createElement(2, [0, 1, 2], false));
-    expect(wrapper.html()).toEqual(getResult(2));
+    const component = renderer.create(createElement(2, [0, 1, 2], false));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return null', () => {
-    const wrapper = shallow(createElement(3, [0, 1, 2], false));
-    expect(wrapper.html()).toEqual(null);
+    const component = renderer.create(createElement(3, [0, 1, 2], false));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('with default case', () => {
   test('should return content from first case', () => {
-    const wrapper = shallow(createElement(0, [0, 1, 2]));
-    expect(wrapper.html()).toEqual(getResult(0));
+    const component = renderer.create(createElement(0, [0, 1, 2]));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content from second case', () => {
-    const wrapper = shallow(createElement(1, [0, 1, 2]));
-    expect(wrapper.html()).toEqual(getResult(1));
+    const component = renderer.create(createElement(1, [0, 1, 2]));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content from third case', () => {
-    const wrapper = shallow(createElement(2, [0, 1, 2]));
-    expect(wrapper.html()).toEqual(getResult(2));
+    const component = renderer.create(createElement(2, [0, 1, 2]));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return null', () => {
-    const wrapper = shallow(createElement(3, [0, 1, 2]));
-    expect(wrapper.html()).toEqual('<div>default</div>');
+    const component = renderer.create(createElement(3, [0, 1, 2]));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('input tests', () => {
   test('should return content when value is number', () => {
-    const wrapper = shallow(createElement(3, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
-    expect(wrapper.html()).toEqual(getResult(3));
+    const component = renderer.create(createElement(3, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content when value is string', () => {
-    const wrapper = shallow(createElement('salsa', [0, 1, 2, 3, 'salsa', 5, 6, 7, 8]));
-    expect(wrapper.html()).toEqual(getResult(4));
+    const component = renderer.create(
+      createElement('salsa', [0, 1, 2, 3, 'salsa', 5, 6, 7, 8]),
+    );
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content when value is boolean (true)', () => {
-    const wrapper = shallow(createElement(true, [0, 1, 2, 3, 4, 5, true, 7, 8, 9]));
-    expect(wrapper.html()).toEqual(getResult(6));
+    const component = renderer.create(
+      createElement(true, [0, 1, 2, 3, 4, 5, true, 7, 8, 9]),
+    );
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   test('should return content when value is boolean (false)', () => {
-    const wrapper = shallow(createElement(false, [0, 1, 2, 3, 4, 5, false, 7, 8, 9]));
-    expect(wrapper.html()).toEqual(getResult(6));
+    const component = renderer.create(
+      createElement(false, [0, 1, 2, 3, 4, 5, false, 7, 8, 9]),
+    );
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('misc tests', () => {
   test('should return content from first occurence when multiple matches', () => {
-    const wrapper = shallow(createElement(true, [0, 1, 2, true, 4, 5, true, 7, 8, 9]));
-    expect(wrapper.html()).toEqual(getResult(3));
+    const component = renderer.create(
+      createElement(true, [0, 1, 2, true, 4, 5, true, 7, 8, 9]),
+    );
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

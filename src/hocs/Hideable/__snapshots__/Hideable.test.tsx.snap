@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return null 1`] = `null`;
+
+exports[`should show component 1`] = `
+<button>
+  Click me!
+</button>
+`;
