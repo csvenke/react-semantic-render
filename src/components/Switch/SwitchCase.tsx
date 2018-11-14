@@ -11,10 +11,9 @@ export interface ISwitchCaseProps extends IRenderProps {
 /**
  * Helper component that is accessed from `Switch` component.
  */
-const SwitchCase = (props: ISwitchCaseProps): TOutput => {
-  const { children, render } = props;
-  return getChildrenOrRender(children, render);
-};
+function SwitchCase(props: ISwitchCaseProps): TOutput {
+  return getChildrenOrRender(props.children, props.render);
+}
 
 SwitchCase.propTypes = {
   value: PropTypes.any.isRequired,

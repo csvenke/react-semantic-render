@@ -18,12 +18,14 @@ interface IShowIfElse {
 /**
  * Renders content from if when condition equals true, else renders content from else.
  */
-const ShowIfElse = (props: IShowIfElse): TOutput => (
-  <Switch value={true}>
-    <Switch.Case value={props.condition} render={props.if} />
-    <Switch.Default render={props.else} />
-  </Switch>
-);
+function ShowIfElse(props: IShowIfElse): TOutput {
+  return (
+    <Switch value={true}>
+      <Switch.Case value={props.condition} render={props.if} />
+      <Switch.Default render={props.else} />
+    </Switch>
+  );
+}
 
 ShowIfElse.propTypes = {
   condition: PropTypes.bool.isRequired,

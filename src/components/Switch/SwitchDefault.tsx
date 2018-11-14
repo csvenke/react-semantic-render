@@ -4,10 +4,9 @@ import { getChildrenOrRender } from '../../utils/';
 /**
  * Helper component that is accessed from `Switch` component.
  */
-const SwitchDefault = (props: IRenderProps): TOutput => {
-  const { children, render } = props;
-  return getChildrenOrRender(children, render);
-};
+function SwitchDefault(props: IRenderProps): TOutput {
+  return getChildrenOrRender(props.children, props.render);
+}
 
 SwitchDefault.propTypes = renderPropsPropTypes;
 

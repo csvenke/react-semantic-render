@@ -11,10 +11,9 @@ interface IShowProps extends IRenderProps {
 /**
  * Renders content if `when` equals true.
  */
-const Show = (props: IShowProps): TOutput => {
-  const { when, children, render } = props;
-  return when ? getChildrenOrRender(children, render) : null;
-};
+function Show(props: IShowProps): TOutput {
+  return props.when ? getChildrenOrRender(props.children, props.render) : null;
+}
 
 Show.propTypes = {
   when: PropTypes.bool.isRequired,
