@@ -1,8 +1,4 @@
-<p align="center">
-  <img src='./media/logo.png' width="20%" alt='logo' />
-</p>
-
-<h1 align="center">react-semantic-render</h1>
+<h2 align="center">react-semantic-render</h2>
 
 <h4 align="center">Semantic helper components for rendering content with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
@@ -203,15 +199,7 @@ $ npm run lint
 ##### Run tests
 
 ```
-$ npm run test
-$ npm run test:watch
-```
-
-##### Build docs
-
-```
-$ npm run docs
-$ npm run docs:server
+$ npm test
 ```
 
 ##### Build project
@@ -224,24 +212,11 @@ $ npm run build
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 
-- Add unit tests for any new or changed functionality.
-- All library components exposed to the user must be documented with jsdoc `/** */`.
-- All library components must have `prop-types` that matches the component props interface.
-
 #### Commit style guide
 
 We use [conventional commits style](https://conventionalcommits.org/).
 Read up on it before doing your first commit.
 Don't worry about making mistakes, `commitlint` will stop you and you can try again.
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/9643219?v=4" width="100px;"/><br /><sub><b>Christian Svenkerud</b></sub>](https://github.com/csvenke)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Documentation") [🤔](#ideas-csvenke "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Tests") | [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Tests") |
-| :---: | :---: |
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
