@@ -2,9 +2,6 @@ import PropTypes from 'prop-types'
 
 import render from './internal/render'
 
-/**
- * Renders content if `when` equals true.
- */
 function Show (props) {
   return props.when ? render(props) : null
 }

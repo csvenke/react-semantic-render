@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 
 import render from './internal/render'
 
-/**
- * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
- */
 function Switch (props) {
   let match = false
   let child
@@ -18,12 +15,10 @@ function Switch (props) {
     }
   })
 
-  // No match found, return default if it exists.
   if (!match && child.props.value === undefined) {
     return React.cloneElement(child)
   }
 
-  // Return case if its a match.
   return match ? React.cloneElement(child) : null
 }
 

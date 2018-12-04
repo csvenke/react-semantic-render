@@ -22,7 +22,7 @@
 
 <p align="center">
   <a href="#install">Install</a> •
-  <a href="#documentation">Usage</a> •
+  <a href="#usage">Usage</a> •
   <a href="#why">Why</a> •
   <a href="#development">Development</a> •
   <a href="#contributing">Contributing</a> •

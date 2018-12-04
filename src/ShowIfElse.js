@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 
 import Switch from './Switch'
 
-/**
- * Renders content from if when condition equals true, else renders content from else.
- */
 function ShowIfElse (props) {
   return (
     <Switch value>
