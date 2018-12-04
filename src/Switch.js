@@ -7,7 +7,6 @@ import render from './internal/render'
  * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
  */
 function Switch (props) {
-  const switchValue = props.value
   let match = false
   let child
 
@@ -15,7 +14,7 @@ function Switch (props) {
     if (match === false && React.isValidElement(element)) {
       const caseValue = element.props.value
       child = element
-      match = caseValue === switchValue
+      match = caseValue === props.value
     }
   })
 

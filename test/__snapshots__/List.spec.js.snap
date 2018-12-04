@@ -14,7 +14,91 @@ Array [
 ]
 `;
 
+exports[`with children and render should return primary content from children and ignore render 2`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with children and render should return primary content from children and ignore render 3`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with children and render should return primary content from children and ignore render 4`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
 exports[`with children should return primary content from children 1`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with children should return primary content from children 2`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with children should return primary content from children 3`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with children should return primary content from children 4`] = `
 Array [
   <div>
     1
@@ -42,4 +126,52 @@ Array [
 ]
 `;
 
+exports[`with render should return primary content from render 2`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with render should return primary content from render 3`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
+exports[`with render should return primary content from render 4`] = `
+Array [
+  <div>
+    1
+  </div>,
+  <div>
+    2
+  </div>,
+  <div>
+    3
+  </div>,
+]
+`;
+
 exports[`without children and render should return null 1`] = `null`;
+
+exports[`without children and render should return null 2`] = `null`;
+
+exports[`without children and render should return null 3`] = `null`;
+
+exports[`without children and render should return null 4`] = `null`;
