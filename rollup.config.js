@@ -26,14 +26,14 @@ const createConfig = mutator => {
 export default [
   createConfig(config => {
     config.output = {
-      file: pkg.module,
+      file: 'dist/' + pkg.module,
       format: 'esm'
     }
     return config
   }),
   createConfig(config => {
     config.output = {
-      file: pkg.main,
+      file: 'dist/' + pkg.main,
       format: 'cjs'
     }
     return config
