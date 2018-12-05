@@ -1,7 +1,3 @@
-<p align="center">
-  <img src='./media/logo.png' width="20%" alt='logo' />
-</p>
-
 <h1 align="center">react-semantic-render</h1>
 
 <h4 align="center">Semantic helper components for rendering content with <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
@@ -25,29 +21,13 @@
 </p>
 
 <p align="center">
-  <a href="#key-features">Key features</a> •
   <a href="#install">Install</a> •
+  <a href="#usage">Usage</a> •
   <a href="#why">Why</a> •
-  <a href="#documentation">Documentation</a> •
   <a href="#development">Development</a> •
   <a href="#contributing">Contributing</a> •
-  <a href="#contributors">Contributors</a> •
   <a href="#license">License</a>
 </p>
-
-## Key features
-
-- **Growing list of semantic helper components and hocs!**
-  - **[List](https://csvenke.github.io/react-semantic-render/#!/List)**: Renders content from an array of data.
-  - **[Switch](https://csvenke.github.io/react-semantic-render/#!/Switch)**: Renders content from first case that matches, else default if it exists.
-  - **[Show](https://csvenke.github.io/react-semantic-render/#!/Show)**: Renders content when specified condition is true.
-  - **[ShowIfElse](https://csvenke.github.io/react-semantic-render/#!/ShowIfElse)**: Renders specified content when condition is true, else renders other specified content.
-  - **[Hideable](https://csvenke.github.io/react-semantic-render/#!/Hideable)**: Higher order component that makes any component hideable.
-- **Tiny bundle size!**
-- **Supports treeshaking!**
-- **100% test coverage!**
-- **TypeScript type definitions!**
-- **Blazing fast!**
 
 ## Install
 
@@ -63,79 +43,92 @@ Using yarn:
 $ yarn add react-semantic-render
 ```
 
-### Example usage
+## Usage
 
-Render button when condition is true
+**Show**
+
+Renders content if `when` equals true.
 
 ```jsx
-import React from 'react';
 import { Show } from 'react-semantic-render';
 
-const App = ({ showButton }) => (
-  <Show when={showButton}>
-    <button>Click me!</button>
-  </Show>
-);
+<Show when={true}>
+  <button>click me!</button>
+</Show>
 ```
-
 Use the render prop when you dont want your content evaluated unless a condition is true
 
 ```jsx
-import React from 'react';
-import { Show } from 'react-semantic-render';
+import { Show } from 'react-semantic-render'
 
-let obj = undefined;
-obj = {
-  label: 'Click me!',
-};
-
-const App = () => (
-  <Show
-    when={!!obj}
-    render={() => (
-      <button>
-        <span>{obj.label}</span>
-      </button>
-    )}
-  />
-);
+<Show 
+  when={!!label}
+  render={() => (
+    <button>{label}</button>
+  )}
+/>
 ```
 
-Render list of names
+**List**
+
+Renders content from specified callback function from either `render` or `children` on each element of `items`.
 
 ```jsx
-import React from 'react';
-import { List } from 'react-semantic-render';
+import { List } from 'react-semantic-render'
 
-const App = () => (
-  <ul>
-    <List items={['John', 'Jane', 'Bill', 'Pete']}>
-      {name => (
-        <li key={name}>
-          <span>{name}</span>
-        </li>
-      )}
-    </List>
-  </ul>
-);
+<List items={['Jack', 'Jane', 'Joe']}>
+  {name => (
+    <span>{name}</span>
+  )}
+</List>
 ```
 
-Render message when condition is true, else render button
+**Switch**
+
+Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
 
 ```jsx
-import React from 'react';
-import { Switch } from 'react-semantic-render';
+import { Switch } from 'react-semantic-render'
 
-const App = ({ showMessage }) => (
-  <Switch value>
-    <Switch.Case value={showMessage}>
-      <span>Render me!</span>
-    </Switch.Case>
-    <Switch.Default>
-      <button>Click me!</button>
-    </Switch.Default>
-  </Switch>
-);
+<Switch value={3}>
+  <Switch.Case value={3}>
+    <span>Render me!</span>
+  </Switch.Case>
+  <Switch.Default>
+    <button>Click me!</button>
+  </Switch.Default>
+</Switch>
+```
+
+**ShowIfElse**
+
+Renders content from if when condition equals true, else renders content from else.
+
+```jsx
+import { ShowIfElse } from 'react-semantic-render'
+
+<ShowIfElse
+  condition={true}
+  if={() => (
+    <button>Render me!</button>
+  )}
+  else={() => (
+    <button>No, render me!</button>
+  )}
+/>
+```
+
+**Hideable**
+
+Higher order component that injects 'hide' prop into specified component.
+
+```jsx
+import { Hideable } from 'react-semantic-render'
+import { Button } from './components'
+
+const HideableButton = Hideable(Button)
+
+<HideableButton hide={true} label="Click me!" />
 ```
 
 ## Why
@@ -182,10 +175,6 @@ The purpose of this library is to provide helpful semantic render components tha
 
 Do you have an idea about a component you think belong here? [Tell us here!](https://github.com/csvenke/react-semantic-render/issues/new)
 
-## Documentation
-
-For full list of components and how they are used, go to our [documentation](https://csvenke.github.io/react-semantic-render/).
-
 ## Development
 
 ##### Install dependencies
@@ -194,54 +183,21 @@ For full list of components and how they are used, go to our [documentation](htt
 $ npm install
 ```
 
-##### Run linters
-
-```
-$ npm run lint
-```
-
 ##### Run tests
 
 ```
-$ npm run test
-$ npm run test:watch
-```
-
-##### Build docs
-
-```
-$ npm run docs
-$ npm run docs:server
-```
-
-##### Build project
-
-```
-$ npm run build
+$ npm test
 ```
 
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 
-- Add unit tests for any new or changed functionality.
-- All library components exposed to the user must be documented with jsdoc `/** */`.
-- All library components must have `prop-types` that matches the component props interface.
-
 #### Commit style guide
 
 We use [conventional commits style](https://conventionalcommits.org/).
 Read up on it before doing your first commit.
 Don't worry about making mistakes, `commitlint` will stop you and you can try again.
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/9643219?v=4" width="100px;"/><br /><sub><b>Christian Svenkerud</b></sub>](https://github.com/csvenke)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Documentation") [🤔](#ideas-csvenke "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=csvenke "Tests") | [<img src="https://avatars2.githubusercontent.com/u/41568251?v=4" width="100px;"/><br /><sub><b>Leiv Fredrik Berge</b></sub>](https://github.com/bergelf)<br />[💻](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Code") [📖](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Documentation") [🤔](#ideas-bergelf "Ideas, Planning, & Feedback") [⚠️](https://github.com/csvenke/react-semantic-render/commits?author=bergelf "Tests") |
-| :---: | :---: |
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 

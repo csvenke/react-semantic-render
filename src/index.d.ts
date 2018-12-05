@@ -1,5 +1,3 @@
-/// <reference types="react" />
-
 type TRender = () => React.ReactNode;
 
 type TChildren = React.ReactNode | (() => React.ReactNode);
@@ -102,14 +100,14 @@ declare module 'react-semantic-render/Switch' {
 
 declare module 'react-semantic-render/Hideable' {
   interface IHideableProps {
-    hideComponent: boolean;
+    hide: boolean;
   }
 
   /**
    * Higher order component that injects 'hideComponent' prop into specified component.
    */
   const Hideable: <P extends object>(
-    Component: React.ComponentType<P>,
+    WrappedComponent: React.ComponentType<P>,
   ) => React.SFC<P & IHideableProps>;
 
   export default Hideable;

@@ -1,24 +1,4 @@
-# dependencies
-/node_modules
-
-# testing
-
-# production
-/lib
-/build
-/coverage
-/false
-
-# workspace
-/styleguide
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.rpt2_cache
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+node_modules
+.vscode
+dist
+coverage

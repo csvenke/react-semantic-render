@@ -1,6 +1,6 @@
 {
   "name": "react-semantic-render",
-  "version": "3.1.3",
+  "version": "4.0.0",
   "description": "Semantic helper components for rendering content with React.",
   "author": "Christian Svenkerud",
   "contributors": [
@@ -13,10 +13,6 @@
     "type": "git",
     "url": "https://github.com/csvenke/react-semantic-render.git"
   },
-  "main": "index.js",
-  "module": "index.esm.js",
-  "types": "index.d.ts",
-  "private": false,
   "license": "MIT",
   "keywords": [
     "react",
@@ -30,91 +26,66 @@
     "semantic",
     "conditional"
   ],
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && rollup -c",
+    "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp src/index.d.ts dist/",
+    "deploy": "npm run build && npm run build:copy && cd dist && npm publish && cd ..",
+    "lint": "eslint --fix  \"src/**/*.js\" *.js",
+    "test": "jest",
+    "pretest": "npm run build",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
+  },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "15.6.2"
   },
   "peerDependencies": {
-    "react-dom": "^16.5.2",
-    "react": "^16.5.2"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
-    "@commitlint/travis-cli": "^7.1.2",
-    "@types/enzyme-adapter-react-16": "^1.0.3",
-    "@types/enzyme": "^3.1.14",
-    "@types/jest": "^23.3.4",
-    "@types/node": "^10.11.3",
-    "@types/prop-types": "^15.5.6",
-    "@types/react-dom": "^16.0.8",
-    "@types/react-test-renderer": "^16.0.3",
-    "@types/react": "^16.4.16",
-    "all-contributors-cli": "^5.4.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "coveralls": "^3.0.2",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "enzyme": "^3.6.0",
-    "faker": "^4.1.0",
-    "husky": "^1.1.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint": "^5.9.0",
+    "husky": "^1.2.0",
     "jest": "^23.6.0",
-    "lint-staged": "^7.3.0",
-    "lodash": "^4.17.11",
-    "prettier": "^1.14.3",
-    "react-docgen-typescript": "^1.10.0",
-    "react-dom": "^16.5.2",
-    "react-test-renderer": "^16.5.2",
-    "react-styleguidist": "^8.0.3",
-    "react": "^16.5.2",
-    "rimraf": "^2.6.2",
+    "lint-staged": "^8.1.0",
+    "react-dom": "^16.6.3",
+    "react-test-renderer": "^16.6.3",
+    "react": "^16.6.3",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-size-snapshot": "^0.7.0",
     "rollup-plugin-terser": "^3.0.0",
-    "rollup-plugin-typescript2": "^0.17.0",
-    "rollup": "^0.67.0",
-    "ts-jest": "^23.10.3",
-    "ts-loader": "^5.2.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-plugin-prettier": "^2.0.0",
-    "tslint-react": "^3.6.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.1",
-    "webpack": "^4.20.1"
-  },
-  "scripts": {
-    "build": "npm run clean:build && rollup -c && npm run copy:build",
-    "clean:build": "rimraf ./lib && rimraf ./build",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate",
-    "copy:build": "cp package.json lib/ && cp README.md lib/ && cp LICENSE lib/ && cp src/index.d.ts lib/",
-    "deploy": "npm run build && cd lib && npm publish && cd ..",
-    "docs:server": "styleguidist server",
-    "docs": "styleguidist build",
-    "lint:write": "tslint --fix -c tslint.json",
-    "lint": "npm run lint:write  \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "prettier -c .prettierrc.json --write",
-    "prettier": "npm run prettier:write \"src/**/*.{ts,tsx,md}\" \"*.{js,yml,json}\"",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "test:prod": "npm run lint && npm run test --coverage --no-cache",
-    "test:watch": "jest --watch",
-    "test": "jest",
-    "tslint:check": "tslint-config-prettier-check ./tslint.json",
-    "type-check:watch": "npm run type-check -- --watch",
-    "type-check": "tsc --noEmit"
+    "rollup": "^0.67.3"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test && tsc --noEmit"
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier -c .prettierrc.json --write",
-      "tslint --fix -c tslint.json",
-      "git add"
-    ],
-    "*.{js,yml,json}": [
-      "prettier -c .prettierrc.json --write",
+    "*.{js,jsx}": [
+      "eslint --fix",
       "git add"
     ]
   }
