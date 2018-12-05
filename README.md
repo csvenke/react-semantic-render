@@ -7,7 +7,7 @@
     <img src="https://badgen.net/npm/v/react-semantic-render" alt="npm package" />
   </a>
   <a href="https://bundlephobia.com/result?p=react-semantic-render">
-    <img src="https://badgen.net/bundlephobia/minzip/react-semantic-render" alt="minzipped bundle size" />
+    <img src="https://badgen.net/bundlephobia/min/react-semantic-render" alt="min bundle size" />
   </a>
   <a href="https://travis-ci.com/csvenke/react-semantic-render">
     <img src="https://badgen.net/travis/csvenke/react-semantic-render" alt="travis ci build status" />
