@@ -45,9 +45,15 @@ $ yarn add react-semantic-render
 
 ## Usage
 
-**Show**
+### Show
 
 Renders content if `when` equals true.
+
+| Property  | Type  | Description
+|---|---|---|---|---|
+| `when`   | boolean  | Conditional statement
+| `render`  | function  | Shorthand for primary content
+| `children`   | node  | Primary content
 
 ```jsx
 import { Show } from 'react-semantic-render';
@@ -69,9 +75,15 @@ import { Show } from 'react-semantic-render'
 />
 ```
 
-**List**
+### List
 
 Renders content from specified callback function from either `render` or `children` on each element of `items`.
+
+| Property  | Type  | Description
+|---|---|---|---|---|
+| `items`   | any[]  | Array to map
+| `render`  | function  | Shorthand for primary content
+| `children`   | node  | Primary content
 
 ```jsx
 import { List } from 'react-semantic-render'
@@ -83,9 +95,14 @@ import { List } from 'react-semantic-render'
 </List>
 ```
 
-**Switch**
+### Switch
 
 Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
+
+| Property  | Type  | Description
+|---|---|---|---|---| 
+| `value`   | boolean  | Conditional statement
+| `children`   | node  | Primary content
 
 ```jsx
 import { Switch } from 'react-semantic-render'
@@ -100,9 +117,15 @@ import { Switch } from 'react-semantic-render'
 </Switch>
 ```
 
-**ShowIfElse**
+### ShowIfElse
 
 Renders content from if when condition equals true, else renders content from else.
+
+| Property  | Type  | Description
+|---|---|---|---|---|
+| `condition`   | boolean  | Conditional statement
+| `if`  | function  | Renders when condition is true
+| `else`   | function  | Renders when condition is false
 
 ```jsx
 import { ShowIfElse } from 'react-semantic-render'
@@ -118,9 +141,13 @@ import { ShowIfElse } from 'react-semantic-render'
 />
 ```
 
-**Hideable**
+### Hideable
 
 Higher order component that injects 'hide' prop into specified component.
+
+| Property  | Type  | Description
+|---|---|---|---|---|
+| `hide`   | boolean  | Conditional statement
 
 ```jsx
 import { Hideable } from 'react-semantic-render'

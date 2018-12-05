@@ -104,7 +104,7 @@ declare module 'react-semantic-render/Hideable' {
   }
 
   /**
-   * Higher order component that injects 'hideComponent' prop into specified component.
+   * Higher order component that injects 'hide' prop into specified component.
    */
   const Hideable: <P extends object>(
     WrappedComponent: React.ComponentType<P>,
