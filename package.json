@@ -39,7 +39,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "prop-types": "15.6.2"
+    "prop-types": "15.7.0"
   },
   "peerDependencies": {
     "react": "^16.6.3",
