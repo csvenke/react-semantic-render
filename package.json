@@ -31,9 +31,9 @@
   "types": "index.d.ts",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp src/index.d.ts dist/",
+    "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp lib/index.d.ts dist/",
     "deploy": "npm run build && npm run build:copy && cd dist && npm publish && cd ..",
-    "lint": "eslint --fix  \"src/**/*.js\" *.js",
+    "lint": "eslint --fix  \"lib/**/*.js\" *.js",
     "test": "jest",
     "pretest": "npm run build",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"

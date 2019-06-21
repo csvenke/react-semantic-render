@@ -5,7 +5,7 @@ import { createTests } from './utils'
 import { List as List1 } from '../dist/index.cjs'
 import { List as List2 } from '../dist/index.esm'
 import List3 from '../dist/List'
-import List4 from '../src/List'
+import List4 from '../lib/List'
 
 const runTests = createTests(List1, List2, List3, List4)
 

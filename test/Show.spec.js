@@ -5,7 +5,7 @@ import { createTests } from './utils'
 import { Show as Show1 } from '../dist/index.cjs'
 import { Show as Show2 } from '../dist/index.esm'
 import Show3 from '../dist/Show'
-import Show4 from '../src/Show'
+import Show4 from '../lib/Show'
 
 const runTests = createTests(Show1, Show2, Show3, Show4)
 

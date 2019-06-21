@@ -5,7 +5,7 @@ import { createTests } from './utils'
 import { Switch as Switch1 } from '../dist/index.cjs'
 import { Switch as Switch2 } from '../dist/index.esm'
 import Switch3 from '../dist/Switch'
-import Switch4 from '../src/Switch'
+import Switch4 from '../lib/Switch'
 
 const runTests = createTests(Switch1, Switch2, Switch3, Switch4)
 

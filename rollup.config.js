@@ -5,7 +5,7 @@ import replace from 'rollup-plugin-replace'
 import pkg from './package.json'
 
 const defaultConfig = Object.freeze({
-  input: 'src/index.js',
+  input: 'lib/index.js',
   external: ['react', 'react-dom', 'prop-types'],
   plugins: [
     replace({
@@ -42,9 +42,9 @@ export default [
     config.experimentalCodeSplitting = true
     config.optimizeChunks = true
     config.input = [
-      './src/List',
-      './src/Show',
-      './src/Switch'
+      './lib/List',
+      './lib/Show',
+      './lib/Switch'
     ]
     config.output = {
       dir: 'dist',
