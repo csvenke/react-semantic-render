@@ -45,24 +45,6 @@ declare module 'react-semantic-render/Show' {
   export default Show;
 }
 
-declare module 'react-semantic-render/ShowIfElse' {
-  interface IShowIfElse {
-    /** Conditional statement.  */
-    condition: boolean;
-    /** Renders when condition is true. */
-    if: TRender;
-    /** Renders when condition is false. */
-    else: TRender;
-  }
-
-  /**
-   * Renders content from if when condition equals true, else renders content from else.
-   */
-  const ShowIfElse: (props: IShowIfElse) => TOutput;
-
-  export default ShowIfElse;
-}
-
 declare module 'react-semantic-render/Switch' {
   interface ISwitchProps {
     /** Conditional statement. */
@@ -98,27 +80,10 @@ declare module 'react-semantic-render/Switch' {
   export default Switch;
 }
 
-declare module 'react-semantic-render/Hideable' {
-  interface IHideableProps {
-    hide: boolean;
-  }
-
-  /**
-   * Higher order component that injects 'hide' prop into specified component.
-   */
-  const Hideable: <P extends object>(
-    WrappedComponent: React.ComponentType<P>,
-  ) => React.SFC<P & IHideableProps>;
-
-  export default Hideable;
-}
-
 declare module 'react-semantic-render' {
-  import Hideable from 'react-semantic-render/Hideable';
   import List from 'react-semantic-render/List';
   import Show from 'react-semantic-render/Show';
-  import ShowIfElse from 'react-semantic-render/ShowIfElse';
   import Switch from 'react-semantic-render/Switch';
 
-  export { List, Show, ShowIfElse, Switch, Hideable };
+  export { List, Show, Switch };
 }

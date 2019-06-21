@@ -44,9 +44,7 @@ export default [
     config.input = [
       './src/List',
       './src/Show',
-      './src/Switch',
-      './src/Hideable',
-      './src/ShowIfElse'
+      './src/Switch'
     ]
     config.output = {
       dir: 'dist',
