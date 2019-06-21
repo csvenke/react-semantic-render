@@ -1,6 +1,6 @@
 {
   "name": "react-semantic-render",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Semantic helper components for rendering content with React.",
   "author": "Christian Svenkerud",
   "contributors": [
