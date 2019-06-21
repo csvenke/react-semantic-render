@@ -117,47 +117,6 @@ import { Switch } from 'react-semantic-render'
 </Switch>
 ```
 
-### ShowIfElse
-
-Renders content from if when condition equals true, else renders content from else.
-
-| Property  | Type  | Description
-|---|---|---|
-| `condition`   | boolean  | Conditional statement
-| `if`  | function  | Renders when condition is true
-| `else`   | function  | Renders when condition is false
-
-```jsx
-import { ShowIfElse } from 'react-semantic-render'
-
-<ShowIfElse
-  condition={true}
-  if={() => (
-    <button>Render me!</button>
-  )}
-  else={() => (
-    <button>No, render me!</button>
-  )}
-/>
-```
-
-### Hideable
-
-Higher order component that injects 'hide' prop into specified component.
-
-| Property  | Type  | Description
-|---|---|---|
-| `hide`   | boolean  | Conditional statement
-
-```jsx
-import { Hideable } from 'react-semantic-render'
-import { Button } from './components'
-
-const HideableButton = Hideable(Button)
-
-<HideableButton hide={true} label="Click me!" />
-```
-
 ## Why
 
 In the example below you see two very common use cases where you have to render something when a condition is true and render content from an array of data.
