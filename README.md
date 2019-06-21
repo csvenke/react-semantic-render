@@ -166,13 +166,13 @@ Do you have an idea about a component you think belong here? [Tell us here!](htt
 ##### Install dependencies
 
 ```
-$ npm install
+$ yarn install
 ```
 
 ##### Run tests
 
 ```
-$ npm test
+$ yarn test
 ```
 
 ## Contributing
