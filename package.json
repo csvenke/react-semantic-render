@@ -32,10 +32,10 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp lib/index.d.ts dist/",
-    "deploy": "npm run build && npm run build:copy && cd dist && npm publish && cd ..",
+    "deploy": "yarn build && yarn build:copy && cd dist && yarn publish && cd ..",
     "lint": "eslint --fix  \"lib/**/*.js\" *.js",
     "test": "jest",
-    "pretest": "npm run build",
+    "pretest": "yarn build",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
