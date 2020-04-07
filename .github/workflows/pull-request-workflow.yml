@@ -1,4 +1,4 @@
-name: pull_request
+name: pull request
 
 on: [pull_request]
 
