@@ -32,7 +32,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp lib/index.d.ts dist/",
-    "release": "yarn semantic-release --dry-run",
+    "release": "yarn semantic-release",
     "lint": "eslint --fix  \"lib/**/*.js\" *.js",
     "test": "jest",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
