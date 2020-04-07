@@ -35,7 +35,6 @@
     "deploy": "yarn build && yarn build:copy && cd dist && yarn publish && cd ..",
     "lint": "eslint --fix  \"lib/**/*.js\" *.js",
     "test": "jest",
-    "pretest": "yarn build",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
