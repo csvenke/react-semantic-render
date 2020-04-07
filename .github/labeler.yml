@@ -1,0 +1,11 @@
+repo:
+  - ./*
+
+lib:
+  - lib/**/*.js
+
+test:
+  - test/**/*.js
+
+ci:
+  - ".github/**/*"
