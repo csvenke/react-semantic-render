@@ -32,7 +32,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp lib/index.d.ts dist/",
-    "deploy": "yarn build && yarn build:copy && cd dist && yarn publish && cd ..",
+    "release": "yarn semantic-release --dry-run",
     "lint": "eslint --fix  \"lib/**/*.js\" *.js",
     "test": "jest",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
@@ -50,6 +50,10 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^8.0.0",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/github": "^7.0.5",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
@@ -73,7 +77,8 @@
     "rollup": "^1.16.2",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-terser": "^3.0.0"
+    "rollup-plugin-terser": "^3.0.0",
+    "semantic-release": "^17.0.4"
   },
   "husky": {
     "hooks": {
