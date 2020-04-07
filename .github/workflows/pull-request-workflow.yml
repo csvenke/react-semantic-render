@@ -1,0 +1,21 @@
+name: Pull Request Workflow
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out project
+        uses: actions/checkout@v2
+      - name: Setting up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Installing dependencies
+        run: yarn install
+      - name: Building project
+        run: yarn build
+      - name: Running tests
+        run: yarn test
