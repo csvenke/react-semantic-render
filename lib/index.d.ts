@@ -59,21 +59,17 @@ declare module 'react-semantic-render/Switch' {
   }
 
   /**
-   * Helper component that is accessed from `Switch` component.
-   */
-  const SwitchCase: (props: ISwitchCaseProps) => TOutput;
-
-  /**
-   * Helper component that is accessed from `Switch` component.
-   */
-  const SwitchDefault: (props: IRenderProps) => TOutput;
-
-  /**
    * Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
    */
   const Switch: {
     (props: ISwitchProps): TOutput;
+    /**
+     * Helper component that is accessed from `Switch` component.
+     */
     Case: (props: ISwitchCaseProps) => TOutput;
+    /**
+     * Helper component that is accessed from `Switch` component.
+     */
     Default: (props: IRenderProps) => TOutput;
   };
 
