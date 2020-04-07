@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import { Show as Show1 } from '../dist/index.cjs'
 import { Show as Show2 } from '../dist/index.esm'
 import Show3 from '../dist/Show'
-import Show4 from '../lib/Show'
+import Show4 from '../src/Show'
 
 const describeEach = describe.each([Show1, Show2, Show3, Show4])
 const input = <div>render me</div>

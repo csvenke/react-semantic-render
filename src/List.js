@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import getRenderMethod from './internal/getRenderMethod'
+import getRenderMethod from './utils/getRenderMethod'
 
 function List (props) {
   const method = getRenderMethod(props.children, props.render)

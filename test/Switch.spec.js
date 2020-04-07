@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import { Switch as Switch1 } from '../dist/index.cjs'
 import { Switch as Switch2 } from '../dist/index.esm'
 import Switch3 from '../dist/Switch'
-import Switch4 from '../lib/Switch'
+import Switch4 from '../src/Switch'
 
 const describeEach = describe.each([Switch1, Switch2, Switch3, Switch4])
 

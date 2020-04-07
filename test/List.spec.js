@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import { List as List1 } from '../dist/index.cjs'
 import { List as List2 } from '../dist/index.esm'
 import List3 from '../dist/List'
-import List4 from '../lib/List'
+import List4 from '../src/List'
 
 const describeEach = describe.each([List1, List2, List3, List4])
 

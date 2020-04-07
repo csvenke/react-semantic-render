@@ -5,7 +5,7 @@ import replace from 'rollup-plugin-replace'
 import pkg from './package.json'
 
 const defaultConfig = {
-  input: 'lib/index.js',
+  input: 'src/index.js',
   external: ['react', 'react-dom', 'prop-types'],
   plugins: [
     replace({
@@ -38,9 +38,9 @@ export default [
   }),
   createConfig({
     input: [
-      './lib/List',
-      './lib/Show',
-      './lib/Switch'
+      './src/List',
+      './src/Show',
+      './src/Switch'
     ],
     output: {
       dir: 'dist',

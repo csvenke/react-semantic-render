@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import render from './internal/render'
+import render from './utils/render'
 
 function Switch (props) {
   let match = false
