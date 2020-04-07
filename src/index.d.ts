@@ -13,7 +13,7 @@ interface IRenderProps {
   children?: TChildren;
 }
 
-declare module 'react-semantic-render/List' {
+declare module "react-semantic-render/List" {
   interface IListProps {
     /** Array to map. */
     items: any[];
@@ -31,7 +31,7 @@ declare module 'react-semantic-render/List' {
   export default List;
 }
 
-declare module 'react-semantic-render/Show' {
+declare module "react-semantic-render/Show" {
   interface IShowProps extends IRenderProps {
     /** Conditional statement.  */
     when: boolean;
@@ -45,7 +45,7 @@ declare module 'react-semantic-render/Show' {
   export default Show;
 }
 
-declare module 'react-semantic-render/Switch' {
+declare module "react-semantic-render/Switch" {
   interface ISwitchProps {
     /** Conditional statement. */
     value: any;
@@ -76,10 +76,10 @@ declare module 'react-semantic-render/Switch' {
   export default Switch;
 }
 
-declare module 'react-semantic-render' {
-  import List from 'react-semantic-render/List';
-  import Show from 'react-semantic-render/Show';
-  import Switch from 'react-semantic-render/Switch';
+declare module "react-semantic-render" {
+  import List from "react-semantic-render/List";
+  import Show from "react-semantic-render/Show";
+  import Switch from "react-semantic-render/Switch";
 
   export { List, Show, Switch };
 }

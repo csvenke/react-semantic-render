@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function isEmptyChildren (children) {
-  return React.Children.count(children) === 0
+function isEmptyChildren(children) {
+  return React.Children.count(children) === 0;
 }
 
-export default isEmptyChildren
+export default isEmptyChildren;

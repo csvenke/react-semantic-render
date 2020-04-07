@@ -1,15 +1,15 @@
-import isFunction from './isFunction'
+import isFunction from "./isFunction";
 
-function getRenderMethod (children, render) {
+function getRenderMethod(children, render) {
   if (children) {
-    return children
+    return children;
   }
 
   if (render && isFunction(render)) {
-    return render
+    return render;
   }
 
-  return null
+  return null;
 }
 
-export default getRenderMethod
+export default getRenderMethod;

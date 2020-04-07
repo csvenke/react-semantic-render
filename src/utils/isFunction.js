@@ -1,5 +1,5 @@
-function isFunction (input) {
-  return typeof input === 'function'
+function isFunction(input) {
+  return typeof input === "function";
 }
 
-export default isFunction
+export default isFunction;
