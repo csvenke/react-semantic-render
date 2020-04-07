@@ -4,7 +4,7 @@ import replace from 'rollup-plugin-replace'
 
 import pkg from './package.json'
 
-const defaultConfig = Object.freeze({
+const defaultConfig = {
   input: 'lib/index.js',
   external: ['react', 'react-dom', 'prop-types'],
   plugins: [
@@ -16,40 +16,35 @@ const defaultConfig = Object.freeze({
     }),
     terser()
   ]
-})
-
-const createConfig = mutator => {
-  const config = { ...defaultConfig }
-  return mutator(config)
 }
 
+const createConfig = (config) => ({
+  ...defaultConfig,
+  ...config
+})
+
 export default [
-  createConfig(config => {
-    config.output = {
+  createConfig({
+    output: {
       file: 'dist/' + pkg.module,
       format: 'esm'
     }
-    return config
   }),
-  createConfig(config => {
-    config.output = {
+  createConfig({
+    output: {
       file: 'dist/' + pkg.main,
       format: 'cjs'
     }
-    return config
   }),
-  createConfig(config => {
-    config.experimentalCodeSplitting = true
-    config.optimizeChunks = true
-    config.input = [
+  createConfig({
+    input: [
       './lib/List',
       './lib/Show',
       './lib/Switch'
-    ]
-    config.output = {
+    ],
+    output: {
       dir: 'dist',
       format: 'cjs'
     }
-    return config
   })
 ]
