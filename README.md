@@ -9,14 +9,11 @@
   <a href="https://bundlephobia.com/result?p=react-semantic-render">
     <img src="https://badgen.net/bundlephobia/min/react-semantic-render" alt="min bundle size" />
   </a>
-  <a href="https://travis-ci.com/csvenke/react-semantic-render">
-    <img src="https://badgen.net/travis/csvenke/react-semantic-render" alt="travis ci build status" />
+  <a href="https://github.com/csvenke/react-semantic-render/actions?query=workflow%3Amaster">
+    <img src="https://github.com/csvenke/react-semantic-render/workflows/master/badge.svg" alt="master workflow" />
   </a>
-  <a href='https://coveralls.io/github/csvenke/react-semantic-render?branch=master'>
-    <img src='https://badgen.net/coveralls/c/github/csvenke/react-semantic-render' alt='coverage status' />
-  </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/csvenke/react-semantic-render.svg" alt="greenkeeper" />
+  <a href="https://github.com/csvenke/react-semantic-render/actions?query=workflow%3A%22pull+request%22">
+    <img src="https://github.com/csvenke/react-semantic-render/workflows/pull%20request/badge.svg" alt="pull request workflow" />
   </a>
 </p>
 
