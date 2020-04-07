@@ -16,6 +16,9 @@ const defaultConfig = {
     }),
     terser(),
   ],
+  treeshake: {
+    moduleSideEffects: false,
+  },
 };
 
 const createConfig = (config) => ({

@@ -29,6 +29,7 @@
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "build:copy": "cp package.json dist/ && cp README.md dist/ && cp LICENSE dist/ && cp src/index.d.ts dist/",
