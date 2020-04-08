@@ -46,63 +46,55 @@ $ yarn add react-semantic-render
 
 Renders content if `when` equals true.
 
-| Property  | Type  | Description |
-|---|---|---|
-| `when`   | boolean  | Conditional statement |
-| `render`  | function  | Shorthand for primary content |
-| `children`   | node  | Primary content |
+| Property   | Type     | Description                   |
+| ---------- | -------- | ----------------------------- |
+| `when`     | boolean  | Conditional statement         |
+| `render`   | function | Shorthand for primary content |
+| `children` | node     | Primary content               |
 
 ```jsx
-import { Show } from 'react-semantic-render';
+import { Show } from "react-semantic-render";
 
 <Show when={true}>
   <button>click me!</button>
-</Show>
+</Show>;
 ```
+
 Use the render prop when you dont want your content evaluated unless a condition is true
 
 ```jsx
-import { Show } from 'react-semantic-render'
+import { Show } from "react-semantic-render";
 
-<Show 
-  when={!!label}
-  render={() => (
-    <button>{label}</button>
-  )}
-/>
+<Show when={!!label} render={() => <button>{label}</button>} />;
 ```
 
 ### List
 
 Renders content from specified callback function from either `render` or `children` on each element of `items`.
 
-| Property  | Type  | Description
-|---|---|---|
-| `items`   | any[]  | Array to map
-| `render`  | function  | Shorthand for primary content
-| `children`   | node  | Primary content
+| Property   | Type     | Description                   |
+| ---------- | -------- | ----------------------------- |
+| `items`    | any[]    | Array to map                  |
+| `render`   | function | Shorthand for primary content |
+| `children` | node     | Primary content               |
 
 ```jsx
-import { List } from 'react-semantic-render'
+import { List } from "react-semantic-render";
 
-<List items={['Jack', 'Jane', 'Joe']}>
-  {name => (
-    <span>{name}</span>
-  )}
-</List>
+<List items={["Jack", "Jane", "Joe"]}>{(name) => <span>{name}</span>}</List>;
 ```
 
 ### Switch
 
 Renders content from first `Switch.Case` that matches `value`, else `Switch.Default` if it exists.
 
-| Property  | Type  | Description
-|---|---|---|
-| `value`   | boolean  | Conditional statement
-| `children`   | node  | Primary content
+| Property   | Type    | Description           |
+| ---------- | ------- | --------------------- |
+| `value`    | boolean | Conditional statement |
+| `children` | node    | Primary content       |
 
 ```jsx
-import { Switch } from 'react-semantic-render'
+import { Switch } from "react-semantic-render";
 
 <Switch value={3}>
   <Switch.Case value={3}>
@@ -111,7 +103,7 @@ import { Switch } from 'react-semantic-render'
   <Switch.Default>
     <button>Click me!</button>
   </Switch.Default>
-</Switch>
+</Switch>;
 ```
 
 ## Why
@@ -137,13 +129,13 @@ Here you see how the component above could be rewritten with components from `re
 While it is abit more verbose, the readability is greatly increased and you immeadiatly see whats going on.
 
 ```jsx
-import { List, Switch } from 'react-semantic-render';
+import { List, Switch } from "react-semantic-render";
 
 const App = ({ isLoading, results }) => (
   <Show when={results.length > 0}>
     <ul>
       <List items={results}>
-        {user => (
+        {(user) => (
           <li key={user.id}>
             <span>{user.name}</span>
           </li>
