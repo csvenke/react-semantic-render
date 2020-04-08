@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   build:
-    name: Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checking out project
@@ -21,6 +21,7 @@ jobs:
         run: yarn test
 
   label:
+    name: Label
     runs-on: ubuntu-latest
     steps:
       - uses: actions/labeler@v2
