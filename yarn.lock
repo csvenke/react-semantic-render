@@ -1008,10 +1008,10 @@
   dependencies:
     find-up "^4.0.0"
 
-"@csvenke/prettier-config@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@csvenke/prettier-config/-/prettier-config-1.0.2.tgz#a54590d7d80fea50a34b5fde1f7ccecfd0756d03"
-  integrity sha512-SHIIoX8yVrPfAG1txbsfT+Jmsoy39h659zzcCe3Eq8CvfUl1gH3DHXJPX4thfzasRcMPaiMN0kZr/hLcJV6j6g==
+"@csvenke/prettier-config@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@csvenke/prettier-config/-/prettier-config-3.0.0.tgz#9763961654f93b34a64ee3a760336df05f75cc62"
+  integrity sha512-oYF8/ze62UR4PwGYw/SAADql/zWE2AESS7XK5jjCarQKTYbyQMo5Q+PdQW/4Q5M9fsX/2O6jqoE/7y3qfD+vUQ==
 
 "@iarna/cli@^1.2.0":
   version "1.2.0"
