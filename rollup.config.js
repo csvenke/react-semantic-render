@@ -9,41 +9,41 @@ const defaultConfig = {
   external: ["react", "react-dom", "prop-types"],
   plugins: [
     replace({
-      "process.env.NODE_ENV": JSON.stringify("production"),
+      "process.env.NODE_ENV": JSON.stringify("production")
     }),
     babel({
-      exclude: ["node_modules/**"],
+      exclude: ["node_modules/**"]
     }),
-    terser(),
+    terser()
   ],
   treeshake: {
-    moduleSideEffects: false,
-  },
+    moduleSideEffects: false
+  }
 };
 
-const createConfig = (config) => ({
+const createConfig = config => ({
   ...defaultConfig,
-  ...config,
+  ...config
 });
 
 export default [
   createConfig({
     output: {
       file: "dist/" + pkg.module,
-      format: "esm",
-    },
+      format: "esm"
+    }
   }),
   createConfig({
     output: {
       file: "dist/" + pkg.main,
-      format: "cjs",
-    },
+      format: "cjs"
+    }
   }),
   createConfig({
     input: ["./src/List", "./src/Show", "./src/Switch"],
     output: {
       dir: "dist",
-      format: "cjs",
-    },
-  }),
+      format: "cjs"
+    }
+  })
 ];

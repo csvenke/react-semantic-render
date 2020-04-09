@@ -8,7 +8,7 @@ import Show4 from "../src/Show";
 
 const data = {
   input: <div>render me</div>,
-  output: { type: "div", props: {}, children: ["render me"] },
+  output: { type: "div", props: {}, children: ["render me"] }
 };
 
 const tests = [
@@ -18,9 +18,9 @@ const tests = [
     props: {
       when: true,
       children: data.input,
-      render: null,
+      render: null
     },
-    result: data.output,
+    result: data.output
   },
   {
     description:
@@ -28,9 +28,9 @@ const tests = [
     props: {
       when: false,
       children: data.input,
-      render: null,
+      render: null
     },
-    result: null,
+    result: null
   },
   {
     description:
@@ -38,9 +38,9 @@ const tests = [
     props: {
       when: true,
       children: null,
-      render: () => data.input,
+      render: () => data.input
     },
-    result: data.output,
+    result: data.output
   },
   {
     description:
@@ -48,18 +48,18 @@ const tests = [
     props: {
       when: false,
       children: null,
-      render: () => data.input,
+      render: () => data.input
     },
-    result: null,
+    result: null
   },
   {
     description: "should not evaluate render if when is false",
     props: {
       when: false,
       children: null,
-      render: () => doesNotExist.a.b.c,
+      render: () => doesNotExist.a.b.c
     },
-    result: null,
+    result: null
   },
   {
     description:
@@ -67,9 +67,9 @@ const tests = [
     props: {
       when: true,
       children: data.input,
-      render: () => <div>do not render me!</div>,
+      render: () => <div>do not render me!</div>
     },
-    result: data.output,
+    result: data.output
   },
   {
     description:
@@ -77,9 +77,9 @@ const tests = [
     props: {
       when: false,
       children: data.input,
-      render: () => <div>do not render me!</div>,
+      render: () => <div>do not render me!</div>
     },
-    result: null,
+    result: null
   },
   {
     description:
@@ -87,27 +87,27 @@ const tests = [
     props: {
       when: true,
       children: null,
-      render: null,
+      render: null
     },
-    result: null,
+    result: null
   },
   {
     description: "should return null if when is true and render returns null",
     props: {
       when: true,
       children: null,
-      render: () => null,
+      render: () => null
     },
-    result: null,
+    result: null
   },
   {
     description: "should return result if when is true and children is string",
     props: {
       when: true,
       children: "Hello World",
-      render: null,
+      render: null
     },
-    result: "Hello World",
+    result: "Hello World"
   },
   {
     description:
@@ -115,33 +115,33 @@ const tests = [
     props: {
       when: true,
       children: null,
-      render: () => "Hello World",
+      render: () => "Hello World"
     },
-    result: "Hello World",
-  },
+    result: "Hello World"
+  }
 ];
 
 const testCases = [
   {
     description: "dist/index.cjs",
     component: Show1,
-    tests,
+    tests
   },
   {
     description: "dist/index.esm",
     component: Show2,
-    tests,
+    tests
   },
   {
     description: "dist/Show",
     component: Show3,
-    tests,
+    tests
   },
   {
     description: "src/Show",
     component: Show4,
-    tests,
-  },
+    tests
+  }
 ];
 
 describe.each(testCases)("Show", ({ description, component, tests }) => {

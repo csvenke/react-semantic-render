@@ -10,7 +10,7 @@ function List(props) {
 List.propTypes = {
   children: PropTypes.func,
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
-  render: PropTypes.func,
+  render: PropTypes.func
 };
 
 export default List;
