@@ -51,7 +51,7 @@
     "@babel/preset-react": "7.9.4",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "@csvenke/prettier-config": "1.0.2",
+    "@csvenke/prettier-config": "2.0.0",
     "@semantic-release/commit-analyzer": "8.0.1",
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.0.5",
