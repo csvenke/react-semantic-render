@@ -19,6 +19,8 @@ jobs:
         run: yarn build
       - name: Running tests
         run: yarn test
+      - name: Running prettier
+        run: yarn prettier:check
 
   label:
     name: Label
