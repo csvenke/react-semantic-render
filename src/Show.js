@@ -9,7 +9,7 @@ function Show(props) {
 Show.propTypes = {
   when: PropTypes.bool.isRequired,
   children: PropTypes.node,
-  render: PropTypes.func,
+  render: PropTypes.func
 };
 
 export default Show;

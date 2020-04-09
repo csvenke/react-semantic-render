@@ -81,7 +81,7 @@ Renders content from specified callback function from either `render` or `childr
 ```jsx
 import { List } from "react-semantic-render";
 
-<List items={["Jack", "Jane", "Joe"]}>{(name) => <span>{name}</span>}</List>;
+<List items={["Jack", "Jane", "Joe"]}>{name => <span>{name}</span>}</List>;
 ```
 
 ### Switch
@@ -135,7 +135,7 @@ const App = ({ isLoading, results }) => (
   <Show when={results.length > 0}>
     <ul>
       <List items={results}>
-        {(user) => (
+        {user => (
           <li key={user.id}>
             <span>{user.name}</span>
           </li>

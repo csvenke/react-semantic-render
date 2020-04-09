@@ -8,7 +8,7 @@ import Switch4 from "../src/Switch";
 
 const describeEach = describe.each([Switch1, Switch2, Switch3, Switch4]);
 
-const makeCreateElement = (Switch) => (value, values, withDefault = true) => (
+const makeCreateElement = Switch => (value, values, withDefault = true) => (
   <Switch value={value}>
     {values.map((item, index) => (
       <Switch.Case key={item} value={item}>
@@ -23,7 +23,7 @@ const makeCreateElement = (Switch) => (value, values, withDefault = true) => (
   </Switch>
 );
 
-describeEach("without default case", (Switch) => {
+describeEach("without default case", Switch => {
   const createElement = makeCreateElement(Switch);
 
   it("should return content from first case", () => {
@@ -47,7 +47,7 @@ describeEach("without default case", (Switch) => {
   });
 });
 
-describeEach("with default case", (Switch) => {
+describeEach("with default case", Switch => {
   const createElement = makeCreateElement(Switch);
 
   it("should return content from first case", () => {
@@ -71,7 +71,7 @@ describeEach("with default case", (Switch) => {
   });
 });
 
-describeEach("input tests", (Switch) => {
+describeEach("input tests", Switch => {
   const createElement = makeCreateElement(Switch);
 
   it("should return content when value is number", () => {
@@ -103,7 +103,7 @@ describeEach("input tests", (Switch) => {
   });
 });
 
-describeEach("misc tests", (Switch) => {
+describeEach("misc tests", Switch => {
   const createElement = makeCreateElement(Switch);
 
   it("should return content from first occurence when multiple matches", () => {

@@ -7,7 +7,7 @@ function Switch(props) {
   let match = false;
   let child;
 
-  React.Children.forEach(props.children, (element) => {
+  React.Children.forEach(props.children, element => {
     if (match === false && React.isValidElement(element)) {
       const caseValue = element.props.value;
       child = element;
@@ -28,7 +28,7 @@ Switch.Default = render;
 
 Switch.propTypes = {
   children: PropTypes.node.isRequired,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired
 };
 
 export default Switch;
