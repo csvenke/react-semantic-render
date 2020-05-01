@@ -65,7 +65,7 @@
     "babel-preset-react": "6.24.1",
     "husky": "4.2.5",
     "jest": "25.5.3",
-    "lint-staged": "10.2.1",
+    "lint-staged": "10.2.2",
     "prettier": "2.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
