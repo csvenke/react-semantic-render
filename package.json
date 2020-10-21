@@ -58,7 +58,7 @@
     "@semantic-release/npm": "7.0.6",
     "@semantic-release/release-notes-generator": "9.0.1",
     "@types/jest": "26.0.15",
-    "@types/node": "13.13.27",
+    "@types/node": "13.13.28",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "25.5.1",
     "babel-preset-env": "1.7.0",
