@@ -46,8 +46,8 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "7.12.17",
-    "@babel/preset-env": "7.12.17",
+    "@babel/core": "7.13.1",
+    "@babel/preset-env": "7.13.0",
     "@babel/preset-react": "7.12.13",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
