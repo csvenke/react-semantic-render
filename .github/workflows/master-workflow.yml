@@ -25,7 +25,7 @@ jobs:
       - name: Running prettier
         run: yarn prettier:check
       - name: Uploading dist
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: dist
           path: dist
