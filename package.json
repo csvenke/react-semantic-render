@@ -46,9 +46,9 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "7.18.5",
-    "@babel/preset-env": "7.18.2",
-    "@babel/preset-react": "7.17.12",
+    "@babel/core": "7.21.3",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-react": "7.18.6",
     "@commitlint/cli": "8.3.6",
     "@commitlint/config-conventional": "8.3.6",
     "@csvenke/prettier-config": "3.0.0",
